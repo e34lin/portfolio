@@ -292,8 +292,10 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 .cred-year { margin: 0; }
 
 @media (max-width: 800px) {
+  .panel { grid-template-columns: 1fr; }
+  .panel > .section-title, .panel > :not(.section-title) { grid-column: 1; }
   .meta-row { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .cards2, .procon, .comps, .finals, .stats, .quotes { grid-template-columns: 1fr; }
+  .cards2, .cards3, .procon, .comps, .finals, .stats, .quotes { grid-template-columns: 1fr; }
   .journey { grid-template-columns: 1fr 1fr; row-gap: 16px; }
 }
 .reveal { opacity: 0; transform: translateY(8px); transition: opacity 300ms ease, transform 300ms cubic-bezier(.2,.6,.2,1); }
