@@ -89,6 +89,18 @@ deploying. I held off because:
   downside if I guessed wrong, so it's the one I'm flagging rather than
   just doing.
 
+**Noticed, not touched: `uploads/` is 59MB of raw design exports.** Layered
+Figma SVGs, iPhone mockup frames, slide exports — your working files, not
+referenced by any page (`assets/` is what's actually served). If you deploy
+this repo as-is to Netlify/Vercel/GitHub Pages, all 59MB goes along for the
+ride and sits at guessable-but-unlisted URLs on your live domain. I didn't
+touch it — it's your source material and deleting or moving 59MB of
+someone's working files without being asked is not a call I'll make
+unsupervised. Two options when you're back: point your host's publish
+directory at a subfolder that excludes `uploads/`, or tell me to move it
+somewhere outside the deployed tree (a sibling `_source/` folder, say) and
+I'll do that as its own reversible commit.
+
 **Recommendation:** once you've picked a host and confirmed clean internal
 links won't fight with your Claude Design workflow, say the word and I'll
 do the full href sweep in one pass (fast, mechanical, easy to verify once
