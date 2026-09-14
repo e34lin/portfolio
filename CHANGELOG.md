@@ -7,6 +7,22 @@ single one without affecting the others.
 
 ## Autonomous session — recruiter-lens pass (while you were away)
 
+**Favicon, meta descriptions, Open Graph/Twitter tags — added, all six
+pages.** A branded "EL" favicon (`assets/favicon.svg`, your site's accent
+color), a `<meta name="description">`, and `og:title`/`og:description`/
+`og:type` (plus `og:image` on the two pages with a strong existing
+thumbnail — Crafting Sandbox and NaSYMSurgical) on every page. Verified at
+runtime, not just in the source, that the `.dc.html` helmet actually
+injects these into the live `<head>`. Purely additive — nothing existing
+changed.
+
+**robots.txt — added.** Bare `Allow: /`. Didn't add a `sitemap.xml`: the
+sitemap spec requires absolute URLs, and I don't know what domain this
+will end up published at — a sitemap with a placeholder domain is worse
+than no sitemap if you forget to fix it. Tell me the domain once you have
+one and I'll generate it in under a minute.
+
+
 **Content audit — no changes made.** Read every page end to end (`index.dc.html`,
 `about.dc.html`, and all four `projects/*.dc.html` case studies) specifically
 looking for what a big-tech hiring panel would flag: typos, filler, vague
