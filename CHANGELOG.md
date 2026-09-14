@@ -63,7 +63,6 @@ small phones (iPhone SE class, 320px):
 Re-verified all six pages at all five widths (320 through 1024px): zero
 overflow anywhere. Confirmed no desktop regression via screenshot diff.
 
-
 **Favicon, meta descriptions, Open Graph/Twitter tags — added, all six
 pages.** A branded "EL" favicon (`assets/favicon.svg`, your site's accent
 color), a `<meta name="description">`, and `og:title`/`og:description`/
@@ -78,7 +77,6 @@ sitemap spec requires absolute URLs, and I don't know what domain this
 will end up published at — a sitemap with a placeholder domain is worse
 than no sitemap if you forget to fix it. Tell me the domain once you have
 one and I'll generate it in under a minute.
-
 
 **Content audit — no changes made.** Read every page end to end (`index.dc.html`,
 `about.dc.html`, and all four `projects/*.dc.html` case studies) specifically
