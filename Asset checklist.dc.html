@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/styles.css">
+<script src="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/_ds_bundle.js"></script>
+<title>Asset checklist</title>
+<style>
+:root { --edge: clamp(20px, 5vw, 64px); --label-ink: color-mix(in srgb, var(--color-text) 68%, transparent); }
+body { margin: 0; text-wrap: pretty; }
+a { color: var(--color-accent-700); }
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 var(--edge) 96px; }
+.head { padding: 64px 0 32px; }
+h1 { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px,4vw,42px); line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
+.sub { font-size: 16px; line-height: 1.6; max-width: 56ch; margin: 16px 0 0; color: color-mix(in srgb, var(--color-text) 76%, transparent); }
+.grp { padding: 28px 0; border-top: 1px solid var(--color-divider); }
+.grp-h { display: flex; align-items: baseline; gap: 12px; margin: 0 0 4px; }
+.grp-t { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 19px; letter-spacing: -0.01em; margin: 0; }
+.grp-c { font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin: 0; }
+.grp-n { font-size: 14px; line-height: 1.55; color: var(--label-ink); margin: 0 0 18px; max-width: 60ch; }
+ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+li { display: grid; grid-template-columns: 18px minmax(0,1fr); gap: 12px; align-items: start; font-size: 15px; line-height: 1.55; }
+li::before { content: ""; width: 15px; height: 15px; margin-top: 4px; border-radius: 4px; border: 1px solid var(--color-divider); background: var(--glass-bg); }
+li[data-p="high"]::before { border-color: var(--color-accent); box-shadow: inset 0 0 0 2px var(--color-bg), inset 0 0 0 9px var(--color-accent-300); }
+li > .what, li > .why { grid-column: 2; }
+.what { color: var(--color-text); }
+.why { color: var(--label-ink); }
+.key { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12.5px; color: var(--label-ink); padding-top: 24px; border-top: 1px solid var(--color-divider); margin-top: 8px; }
+.key b { color: var(--color-accent-700); font-weight: 600; }
+</style>
+</helmet>
+<div class="wrap">
+  <div class="head">
+    <h1>Assets and content to hunt down</h1>
+    <p class="sub">Ordered by how much each one would improve the portfolio. Filled circles are the ones worth doing first — each of those closes a gap a reader will notice.</p>
+  </div>
+
+  <section class="grp">
+    <div class="grp-h"><p class="grp-t">Edge — retokenizing</p><p class="grp-c">4 slots empty</p></div>
+    <p class="grp-n">The most evidence-starved page. Its central claim is that nothing changed visually, which is impossible to believe without seeing it.</p>
+    <ul>
+      <li data-p="high"><span class="what">A hero shot of Edge itself, for the top of the page.</span> <span class="why">Lead with the product before the token detail — the page currently opens on prose.</span></li>
+      <li data-p="high"><span class="what">Real token names and values for the mapping table.</span> <span class="why">The table, the hover tooltips and the live theme demo all use illustrative values right now.</span></li>
+      <li data-p="high"><span class="what">A before/after pair of one component, visually identical.</span> <span class="why">Proves the 1:1 mapping in one glance. The single highest-value image on the site.</span></li>
+      <li data-p="high"><span class="what">The same surface under both themes.</span> <span class="why">The payoff image — shows what the migration bought.</span></li>
+      <li data-p="high"><span class="what">The token mapping table.</span> <span class="why">Would let me replace the invented schematic with the real thing.</span></li>
+      <li><span class="what">A Chromium source snippet showing hardcoded values.</span> <span class="why">Evidence you actually went into the codebase.</span></li>
+      <li><span class="what">Redrawn Figma components on semantic tokens.</span></li>
+      <li><span class="what">One craft find — an inconsistency the audit exposed.</span> <span class="why">Currently the section is my draft with no example.</span></li>
+    </ul>
+  </section>
+
+  <section class="grp">
+    <div class="grp-h"><p class="grp-t">Edge — design systems</p><p class="grp-c">2 slots empty</p></div>
+    <p class="grp-n">Strong argument, no visuals at all. Component work is inherently visual, so this page suffers most from having nothing to look at.</p>
+    <ul>
+      <li data-p="high"><span class="what">The component library overview.</span> <span class="why">One image showing the real surface area of 20–25 components.</span></li>
+      <li data-p="high"><span class="what">A marketing video made using the illustration guideline.</span> <span class="why">Adoption you can point at — a different team using something you wrote.</span></li>
+      <li data-p="high"><span class="what">The illustration guideline itself.</span> <span class="why">And what it specifies: canvas sizes, palette, line weight, do-and-don't examples.</span></li>
+      <li><span class="what">One component with all its states laid out.</span> <span class="why">Would make the "undrawn states" section concrete.</span></li>
+      <li><span class="what">Before/after of an edgeified feature.</span> <span class="why">Upstream's version next to the Edge version.</span></li>
+      <li><span class="what">Four thumbnails for the next-project cards.</span> <span class="why">One per case study, at the foot of each page.</span></li>
+    </ul>
+  </section>
+
+  <section class="grp">
+    <div class="grp-h"><p class="grp-t">Numbers and outcomes</p><p class="grp-c">content, not images</p></div>
+    <p class="grp-n">Both Edge pages argue well and end quietly. Any of these would give them a real ending.</p>
+    <ul>
+      <li data-p="high"><span class="what">How many patches or divergences were retired.</span> <span class="why">Even approximate. The alignment story has no measured result.</span></li>
+      <li data-p="high"><span class="what">Revisit the internal code names before publishing.</span> <span class="why">Toggle is off so nothing shows, but Phoenix / MAI / Kumo are still in the page source. Strip the spans if you want them genuinely gone.</span></li>
+      <li><span class="what">Decide whether any artifact needs gating.</span> <span class="why">If so, gate one image — not a case study — and do it at the host, since a client-side password hides nothing.</span></li>
+      <li><span class="what">How many components ended up tokenized, and over how long.</span></li>
+      <li><span class="what">Confirm the engineering lead's quote is fair to publish.</span> <span class="why">It's now a pull quote on the Edge page, attributed to "Partner engineering lead" with no name.</span></li>
+      <li><span class="what">Anything else said back to you by a partner team or leadership.</span> <span class="why">One sentence of external validation outranks a paragraph of self-description.</span></li>
+      <li><span class="what">Whether Crafting Sandbox shipped, and what happened after.</span></li>
+    </ul>
+  </section>
+
+  <section class="grp">
+    <div class="grp-h"><p class="grp-t">Homepage and cross-cutting</p></div>
+    <ul>
+      <li data-p="high"><span class="what">Four homepage thumbnails.</span> <span class="why">Currently all placeholders — the first thing anyone sees.</span></li>
+      <li><span class="what">A portrait for the About page.</span></li>
+      <li><span class="what">Decide the featured pair.</span> <span class="why">Two Microsoft systems pieces up top makes the range look narrower than it is.</span></li>
+    </ul>
+  </section>
+
+  <div class="key"><span><b>●</b> do first</span><span>○ when convenient</span></div>
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="../_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/styles.css">
+<script src="../_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<title>Microsoft Edge — Elizabeth Lin</title>
+<style>
+:root { --display: "Instrument Serif", Georgia, serif; --leading: 26px; --edge: clamp(20px, 5vw, 72px); --measure: 58ch; --label-ink: color-mix(in srgb, var(--color-text) 70%, transparent); }
+body { margin: 0; text-wrap: pretty; }
+a { color: var(--color-accent-700); }
+a:hover { color: var(--color-accent); }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 var(--edge); }
+.nav { padding-inline: max(var(--edge), calc((100% - 1160px) / 2 + var(--edge))); position: sticky; top: 0; z-index: 10; }
+.nav a.nav-brand { font-size: 18px; font-family: var(--font-heading); font-weight: var(--font-heading-weight); color: var(--color-text); }
+.nav a.nav-brand:hover { color: var(--color-accent); }
+.backlink { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; letter-spacing: 0.01em; text-decoration: none; color: color-mix(in srgb, var(--color-text) 76%, transparent); padding: calc(1.1 * var(--leading)) 0 0; }
+.backlink:hover { color: var(--color-accent); }
+.backlink + .header { padding-top: calc(1.1 * var(--leading)); }
+.backlink span { font-size: 15px; line-height: 1; }
+.kicker { display: block; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 var(--space-3); }
+.header { padding: calc(2.4 * var(--leading)) 0 calc(1.8 * var(--leading)); }
+.display { font-family: var(--display); font-weight: 400; font-size: clamp(32px, 4.6vw, 52px); line-height: 1.04; letter-spacing: -0.015em; margin: 0; max-width: 20ch; }
+.hero-q { font-size: 18px; line-height: 1.55; max-width: 54ch; margin: var(--space-4) 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.meta-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); row-gap: var(--space-4); column-gap: var(--space-6); margin-top: var(--space-6); align-items: start; }
+.meta-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--label-ink); margin: 0 0 4px; }
+.meta-value { font-size: 15px; margin: 0; font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+.hero-figure { margin: 0 0 calc(0.6 * var(--leading)); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
+.hero-figure image-slot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+
+[data-div="none"] .panel { border-top-color: transparent; }
+.panel { display: grid; grid-template-columns: minmax(0,190px) minmax(0,1fr); gap: var(--space-3) clamp(24px,4vw,64px); align-items: start; padding: calc(1.7 * var(--leading)) 0; border-top: 1px solid var(--color-divider); }
+.panel > .section-title { grid-column: 1; grid-row: 1; }
+.panel > :not(.section-title) { grid-column: 2; }
+.panel.breathe { padding-top: calc(2.4 * var(--leading)); padding-bottom: calc(2.4 * var(--leading)); }
+.section-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 17.5px; line-height: 1.3; letter-spacing: -0.005em; margin: 0; color: var(--color-text); }
+[data-st="caps"] .section-title { font-size: 12.5px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--label-ink); }
+[data-st="accent"] .section-title { color: var(--color-accent-700); }
+[data-st="ticked"] .section-title { position: relative; padding-left: 16px; }
+[data-st="ticked"] .section-title::before { content: ""; position: absolute; left: 0; top: 0.42em; width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); }
+.section-body { font-size: 16px; line-height: 1.6; max-width: var(--measure); margin: 0; color: color-mix(in srgb, var(--color-text) 82%, transparent); }
+.section-body + .section-body { margin-top: var(--space-3); }
+.lede { font-size: 17.5px; line-height: 1.55; color: var(--color-text); }
+
+.chapter { display: flex; align-items: center; gap: clamp(14px,2vw,22px); margin: calc(2.6 * var(--leading)) 0 0; }
+.chapter[data-ch="band"] { padding: 15px clamp(20px,2.4vw,28px); border-radius: var(--radius-md); background: var(--color-accent); color: var(--color-bg); box-shadow: var(--shadow-sm); }
+.chapter[data-ch="tint"] { padding: 15px clamp(20px,2.4vw,28px); border-radius: var(--radius-md); background: var(--color-accent-100); border: 1px solid var(--color-accent-300); color: var(--color-accent-700); }
+.chapter[data-ch="rule"] { display: block; padding-top: calc(1.1 * var(--leading)); border-top: 1px solid var(--color-accent); color: var(--color-accent-700); }
+.chapter[data-ch="eyebrow"] { display: block; padding-top: calc(1.1 * var(--leading)); border-top: 1px solid var(--color-divider); }
+.chapter[data-ch="eyebrow"] .chapter-t { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent); }
+.chapter[data-ch="number"] { padding-top: calc(1.1 * var(--leading)); border-top: 1px solid var(--color-divider); }
+.chapter[data-ch="large"] { display: block; padding-top: calc(1.4 * var(--leading)); }
+.chapter[data-ch="large"] .chapter-t { font-size: clamp(38px,5vw,60px); line-height: 1; letter-spacing: -0.03em; }
+.chapter[data-ch="rule"] .chapter-t, .chapter[data-ch="number"] .chapter-t { font-size: clamp(28px,3.4vw,40px); line-height: 1.05; letter-spacing: -0.025em; }
+.chapter[data-ch="number"] { display: block; }
+.chapter-t { font-family: var(--display); font-weight: 400; font-size: clamp(19px,2.1vw,24px); line-height: 1.2; letter-spacing: -0.01em; margin: 0; }
+.chapter + .panel { border-top: 0; padding-top: calc(1.5 * var(--leading)); }
+[data-rail-target] { scroll-margin-top: 90px; }
+
+.list { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-3); max-width: 68ch; }
+.list li { font-size: 16px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 82%, transparent); padding-left: 18px; position: relative; }
+.list li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); }
+.list li strong { color: var(--color-text); font-weight: 600; }
+
+.cards3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: clamp(20px,2.6vw,32px); margin-top: var(--space-4); }
+.plain-h { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 15px; margin: 0 0 6px; }
+.plain-b { font-size: 14.5px; line-height: 1.55; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.tcard { padding: 18px 20px; border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); }
+.tcard-n { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 15px; margin: 0 0 6px; }
+.tcard-b { font-size: 14.5px; line-height: 1.55; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+
+.pull { margin: var(--space-4) 0 0; padding: 20px 24px; border-radius: var(--radius-md); background: var(--color-accent-100); border: 1px solid var(--color-accent-300); font-size: 16.5px; line-height: 1.55; color: var(--color-accent-700); max-width: 62ch; }
+
+/* token mapping schematic */
+.map { margin: var(--space-4) 0 0; padding: clamp(18px,2.2vw,26px); border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); }
+.map-head { display: grid; grid-template-columns: 84px 14px minmax(0,228px) 14px minmax(0,1fr) minmax(0,1fr); gap: 10px; align-items: end; margin-bottom: 12px; }
+.map-h { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label-ink); margin: 0; }
+.map-row { display: grid; grid-template-columns: 84px 14px minmax(0,228px) 14px minmax(0,1fr) minmax(0,1fr); gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--color-divider); }
+.map-arrow { text-align: center; color: var(--color-accent-700); font-size: 14px; }
+.chip { display: flex; align-items: center; gap: 8px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; line-height: 1.3; color: var(--color-text); }
+.sw { width: 13px; height: 13px; border-radius: 3px; flex: none; border: 1px solid color-mix(in srgb, var(--color-text) 18%, transparent); }
+.tok { position: relative; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; line-height: 1.3; color: var(--color-accent-700); word-break: normal; overflow-wrap: break-word; }
+.tok[data-spec-on] { cursor: help; border-bottom: 1px dotted var(--color-accent-300); }
+[data-cn="on"] .tok[data-spec-on]::after { content: attr(data-spec-on); }
+[data-cn="off"] .tok[data-spec-off]::after { content: attr(data-spec-off); }
+.tok[data-spec-on]::after { position: absolute; left: 0; bottom: calc(100% + 9px); white-space: pre; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; letter-spacing: 0.01em; padding: 8px 10px; border-radius: var(--radius-sm); background: var(--color-text); color: var(--color-bg); box-shadow: var(--shadow-md); opacity: 0; transform: translateY(4px); transition: opacity 140ms ease, transform 140ms ease; pointer-events: none; z-index: 6; }
+.tok[data-spec-on]:hover::after, .tok[data-spec-on]:focus-visible::after { opacity: 1; transform: none; }
+.map { overflow: visible; }
+.map-out { display: flex; gap: 6px; align-items: center; }
+.map-out .chip { font-size: 11px; gap: 6px; }
+.map-note { font-size: 12.5px; line-height: 1.5; color: var(--label-ink); margin: 12px 0 0; }
+
+
+
+/* diagrams */
+.dg { margin: var(--space-4) 0 0; padding: clamp(18px,2.2vw,26px); border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); }
+.dg-h { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label-ink); margin: 0 0 16px; }
+.dg-note { font-size: 12.5px; line-height: 1.5; color: var(--label-ink); margin: 16px 0 0; }
+
+/* two rendering worlds */
+.worlds { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px,1.8vw,22px); }
+.world { padding: 16px 18px 18px; border-radius: var(--radius-md); border: 1px solid var(--color-divider); background: color-mix(in srgb, var(--color-text) 3%, transparent); }
+.world-n { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 14.5px; margin: 0 0 3px; }
+.world-s { font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--label-ink); margin: 0 0 12px; }
+.world-l { display: grid; gap: 6px; margin: 0 0 14px; padding: 0; list-style: none; }
+.world-l li { font-size: 13px; line-height: 1.45; color: color-mix(in srgb, var(--color-text) 78%, transparent); padding-left: 14px; position: relative; }
+.world-l li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 5px; height: 5px; border-radius: 50%; background: var(--color-accent); }
+.world-tag { display: inline-block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; padding: 5px 8px; border-radius: var(--radius-sm); background: var(--color-bg); border: 1px solid var(--color-divider); color: var(--label-ink); }
+.worlds-join { grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+.worlds-join::before, .worlds-join::after { content: ""; flex: 1; height: 1px; background: var(--color-accent-300); }
+.worlds-join span { font-size: 12.5px; color: var(--color-accent-700); white-space: nowrap; }
+
+/* token layer stack */
+.stack { display: grid; gap: 10px; }
+.layer { display: grid; grid-template-columns: minmax(0,132px) minmax(0,1fr); gap: clamp(14px,2vw,24px); align-items: center; padding: 14px 16px; border-radius: var(--radius-md); border: 1px solid var(--color-divider); background: color-mix(in srgb, var(--color-text) 3%, transparent); }
+.layer[data-top] { border-color: var(--color-accent-300); background: var(--color-accent-100); }
+.layer-n { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 13.5px; margin: 0; }
+.layer-n small { display: block; font-family: var(--font-body, inherit); font-weight: 400; font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--label-ink); margin-top: 3px; }
+.layer-b { font-size: 13.5px; line-height: 1.5; margin: 0; color: color-mix(in srgb, var(--color-text) 80%, transparent); }
+.layer-b code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: var(--color-accent-700); }
+.stack-arrow { justify-self: center; font-size: 13px; line-height: 1; color: var(--color-accent-700); }
+@media (max-width: 700px) { .worlds { grid-template-columns: 1fr; } .layer { grid-template-columns: 1fr; gap: 6px; } }
+
+/* live theme demo */
+.demo { margin: var(--space-4) 0 0; }
+.demo-bar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.demo-h { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label-ink); margin: 0; }
+.swap { display: inline-flex; gap: 4px; padding: 3px; border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); }
+.swap button { font: inherit; font-size: 12.5px; line-height: 1; padding: 8px 12px; border: 0; border-radius: var(--radius-sm); background-color: transparent; color: var(--label-ink); cursor: pointer; }
+.swap button:hover { color: var(--color-text); }
+.swap button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.demo[data-theme="ph"] .swap-ph, .demo[data-theme="mai"] .swap-mai { background-color: var(--color-accent); color: var(--color-bg); }
+
+.chrome { --dt-bg: #f3f3f3; --dt-surface: #ffffff; --dt-fg: #1b1a19; --dt-fg-mute: #6b6a68; --dt-line: #e2e2e2; --dt-brand: #0078d4; --dt-radius: 6px;
+  border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-divider); box-shadow: var(--shadow-sm);
+  background-color: var(--dt-bg); }
+.demo[data-theme="mai"] .chrome { --dt-bg: #eae6ff; --dt-surface: #faf8ff; --dt-fg: #2a2140; --dt-fg-mute: #6f6591; --dt-line: #ded7f5; --dt-brand: #7a5af0; --dt-radius: 10px; }
+.ch-tabs { display: flex; align-items: flex-end; gap: 6px; padding: 8px 10px 0; }
+.ch-tab { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: var(--dt-radius) var(--dt-radius) 0 0; font-size: 12px; color: var(--dt-fg-mute); background-color: transparent; }
+.ch-tab[data-on] { background-color: var(--dt-surface); color: var(--dt-fg); }
+.ch-dot { width: 9px; height: 9px; border-radius: 50%; background-color: var(--dt-brand); flex: none; }
+.ch-bar { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background-color: var(--dt-surface); border-bottom: 1px solid var(--dt-line); }
+.ch-ico { width: 16px; height: 16px; border-radius: 4px; background-color: var(--dt-fg-mute); opacity: 0.35; flex: none; }
+.ch-omni { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; background-color: var(--dt-bg); border: 1px solid var(--dt-line); font-size: 12px; color: var(--dt-fg-mute); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.ch-lock { width: 10px; height: 10px; border-radius: 2px; background-color: var(--dt-brand); flex: none; }
+.ch-body { background-color: var(--dt-surface); padding: 22px 20px 26px; display: grid; gap: 12px; }
+.ch-h { height: 14px; width: 46%; border-radius: 4px; background-color: var(--dt-fg); opacity: 0.82; }
+.ch-l { height: 8px; border-radius: 4px; background-color: var(--dt-fg-mute); opacity: 0.3; }
+.ch-l.s { width: 72%; }
+.ch-btn { justify-self: start; margin-top: 6px; padding: 9px 16px; border-radius: var(--dt-radius); background-color: var(--dt-brand); color: #fff; font-size: 12.5px; }
+.demo-note { font-size: 12.5px; line-height: 1.5; color: var(--label-ink); margin: 12px 0 0; }
+.inline-fig { margin: var(--space-4) 0 0; }
+.inline-fig { overflow: hidden; border-radius: var(--radius-md); }
+.inline-fig image-slot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; transition: transform 420ms cubic-bezier(.2,.6,.2,1); }
+.inline-fig:hover image-slot { transform: scale(1.02); }
+.inline-fig figcaption { font-size: 13px; line-height: 1.45; margin-top: 10px; color: var(--label-ink); }
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px,2vw,24px); margin-top: var(--space-4); }
+.gallery figure { margin: 0; display: flex; flex-direction: column; }
+.gallery image-slot { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; }
+.gallery figcaption { font-size: 13px; line-height: 1.45; margin-top: 10px; color: var(--label-ink); }
+.panel > .gallery, .panel > .map, .panel > .demo, .panel > .pull, .panel > .dg { grid-column: 2; }
+
+/* code-name toggle */
+[data-cn="on"] .cn-off, [data-cn="off"] .cn-on { display: none; }
+
+.rail { display: none; }
+@media (min-width: 1560px) {
+  .rail { display: block; position: fixed; top: 50%; transform: translateY(-50%); left: calc((100vw - 1160px) / 2 - 188px); width: 164px; z-index: 5; }
+  .rail-grp { margin: 0 0 18px; }
+  .rail-grp:last-child { margin-bottom: 0; }
+  .rail-h { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 7px; font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+  .rail a { display: block; font-size: 12px; line-height: 1.45; padding: 3px 0 3px 14px; text-decoration: none; color: var(--label-ink); border-left: 1px solid var(--color-divider); transition: color 120ms ease, border-color 120ms ease; }
+  .rail a:hover { color: var(--color-text); border-left-color: var(--color-accent-300); }
+  .rail a[data-active] { color: var(--color-text); border-left-color: var(--color-accent); }
+}
+
+.next { margin: 0 0 calc(2 * var(--leading)); padding: clamp(28px,3vw,44px); border-radius: var(--radius-lg); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3) clamp(24px,3vw,40px); text-decoration: none; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); box-shadow: var(--shadow-sm); color: var(--color-text); transition: box-shadow 200ms ease, transform 200ms ease; }
+.next:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.next-label { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 6px; color: var(--label-ink); }
+.next { transition: box-shadow 200ms ease, transform 200ms ease; }
+.next:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.next-title { font-family: var(--display); font-weight: 400; font-size: clamp(24px,3vw,34px); margin: 0 0 8px; letter-spacing: -0.01em; }
+.next-body { max-width: 46ch; }
+.next-desc { font-size: 15px; line-height: 1.55; margin: 0 0 10px; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.next-go { font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); }
+.next-fig { margin: 0; width: clamp(140px, 22%, 220px); flex: none; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+.next-fig image-slot { display: block; width: 100%; aspect-ratio: 4/3; }
+@media (max-width: 700px) { .next-fig { display: none; } }
+footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-3) var(--space-6); padding: calc(1.2 * var(--leading)) 0 calc(2 * var(--leading)); margin-top: calc(0.6 * var(--leading)); border-top: 1px solid var(--color-divider); font-size: 13px; color: var(--label-ink); }.cred-name { font-family: var(--display); font-weight: 400; font-size: 19px; line-height: 1; color: var(--color-text); margin: 0; }
+.cred-links { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.cred-links a { color: var(--label-ink); text-decoration: none; border-bottom: 1px solid var(--color-divider); padding-bottom: 2px; }
+.cred-links a:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+.cred-year { margin: 0; }
+
+@media (max-width: 800px) {
+  .panel { grid-template-columns: 1fr; }
+  .panel > .section-title, .panel > :not(.section-title) { grid-column: 1; }
+  .gallery { grid-template-columns: 1fr; }
+  .meta-row { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .map-head { display: none; }
+  .map-row { grid-template-columns: 1fr; gap: 6px; }
+  .map-arrow { text-align: left; }
+}
+.reveal { opacity: 0; transform: translateY(8px); transition: opacity 300ms ease, transform 300ms cubic-bezier(.2,.6,.2,1); }
+.reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal, .reveal.is-in { opacity: 1; transform: none; transition: none; } }
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 20; pointer-events: none; }
+.progress span { display: block; height: 100%; width: 0%; background: var(--color-accent); transition: width 90ms linear; }
+</style>
+</helmet>
+<div data-st="{{ titleStyle }}" data-div="{{ dividerStyle }}" data-cn="{{ codeNames }}">
+<div class="progress"><span></span></div>
+<nav class="nav">
+  <a href="../index.dc.html" class="nav-brand" style="text-decoration:none;">Elizabeth Lin</a>
+  <a href="../index.dc.html#work">Work</a>
+  <a href="../about.dc.html">About</a>
+  <a href="mailto:lizlin.lin@gmail.com"><button type="button" class="btn btn-primary">Get in touch</button></a>
+</nav>
+<nav class="rail" aria-label="Sections">
+  <div class="rail-grp">
+    <p class="rail-h">Overview</p>
+    <a href="#background">Background</a>
+    <a href="#system">The system we were adopting</a>
+    <a href="#problem">The problem</a>
+  </div>
+  <div class="rail-grp">
+    <p class="rail-h">Investigation</p>
+    <a href="#source">Reading the source</a>
+    <a href="#found">What the code showed</a>
+  </div>
+  <div class="rail-grp">
+    <p class="rail-h">Approach</p>
+    <a href="#directions">Two directions</a>
+    <a href="#mapping">The 1:1 mapping</a>
+    <a href="#sequence">Sequencing the rollout</a>
+    <a href="#engineering">Working with engineering</a>
+    <a href="#craft">What tokenizing exposed</a>
+  </div>
+  <div class="rail-grp">
+    <p class="rail-h">Outcome</p>
+    <a href="#shipped">What shipped</a>
+    <a href="#reflection">Reflection</a>
+  </div>
+</nav>
+<div class="wrap">
+
+  <a class="backlink" href="../index.dc.html#work"><span>←</span>All work</a>
+
+  <header class="header">
+    <span class="kicker">Microsoft Edge</span>
+    <h1 class="display">Retokenizing a browser while the design system was still moving</h1>
+    <p class="hero-q">How do you migrate an entire browser UI onto a new token system that is still being defined, without the browser changing appearance?</p>
+    <div class="meta-row">
+      <div><p class="meta-label">Role</p><p class="meta-value">Product Designer, sole on audit</p></div>
+      <div><p class="meta-label">Company</p><p class="meta-value">Microsoft, 2024–</p></div>
+      <div><p class="meta-label">Scope</p><p class="meta-value">Shared components, then surfaces</p></div>
+      <div><p class="meta-label">Partners</p><p class="meta-value">~6 engineers</p></div>
+    </div>
+  </header>
+
+  <figure class="hero-figure">
+    <image-slot id="edge-hero" shape="rect" placeholder="Drop the hero — Edge UI, or the token system in Figma"></image-slot>
+  </figure>
+
+  <section class="panel" id="background" data-rail-target>
+    <p class="section-title">Background</p>
+    <p class="section-body lede">Edge's design files were built on Fluent. Edge's code was not. The two had never shared a token layer, so the interface people designed and the interface that shipped were described by different systems.</p>
+    <p class="section-body">Microsoft was consolidating its products onto one design system — the same visual language across everything, and a browser built for the shift to AI. Edge could not join that until its interface was described in a vocabulary the system could speak.</p>
+    <p class="section-body">The browser ships continuously, and midway through the work a new semantic token system arrived, bringing multiple themes with it. All of that was true at once, and it shaped every decision in this project.</p>
+  </section>
+
+  <section class="panel" id="system" data-rail-target>
+    <p class="section-title">The system we were adopting</p>
+    <p class="section-body"><span class="cn-on">MAI</span><span class="cn-off">The new system</span> was Microsoft's shared semantic token set: one vocabulary of role-based tokens, with themes layered on top, so a product could take on a different appearance by changing what its tokens resolve to rather than by being redesigned.</p>
+    <p class="section-body">I was part of that system's design group as well as Edge's adoption of it, which meant I saw both sides — what the system wanted to be in the abstract, and what a shipping product actually needed from it on a schedule. Nearly everything I contributed to the system came out of Edge: cases a browser has that the token set had not yet accounted for.</p>
+    <p class="section-body">It was young. Names, structure and component-level tokens were all still settling while we were building against them, which is the constraint the rest of this project is a response to.</p>
+  </section>
+
+  <section class="panel" id="problem" data-rail-target>
+    <p class="section-title">The problem</p>
+    <p class="section-body">Themes were the goal, but you cannot theme what is hard-coded. Before any theme could exist, the browser had to stop referring to specific values and start referring to roles — and design and code had to be describing the same interface first.</p>
+    <ul class="list" style="margin-top: var(--space-4)">
+      <li><strong>Code shared no tokens with Fluent.</strong> The interface referenced colors directly. Fluent existed in Figma and nowhere in the codebase.</li>
+      <li><strong>Design and production disagreed.</strong> The Figma files described a Fluent-based interface that was not what shipped, so neither side could be trusted as the source of truth.</li>
+      <li><strong>The target changed mid-project.</strong> As we were preparing the code changes, the org adopted a new semantic token system, and it was still being defined while we moved onto it.</li>
+      <li><strong>The scope was the whole browser.</strong> Not a component library in isolation — every surface a user touches.</li>
+    </ul>
+  </section>
+
+  <div class="chapter" data-ch="{{ chapterStyle }}" data-n="01"><h2 class="chapter-t">Investigation</h2></div>
+
+  <section class="panel" id="source" data-rail-target>
+    <p class="section-title">Reading the source</p>
+    <p class="section-body">Edge is built on Chromium. Rather than audit the design files and hope they matched, I went into the codebase directly to find what the interface was actually made of. I ran that audit alone and documented every finding, and it took about two months.</p>
+    <p class="section-body">That meant learning enough of the repository to know where interface values live, how they are referenced, and which layer a given color comes from. Edge also renders in two different worlds — native Views surfaces and WebUI surfaces — which do not share a styling mechanism, so a value had to be traced differently depending on where it lived.</p>
+    <p class="section-body">It is a very large codebase and none of it is organised for a designer, but it was the only place the real answer existed.</p>
+    <div class="dg">
+      <p class="dg-h">One browser, two rendering worlds</p>
+      <div class="worlds">
+        <div class="world">
+          <p class="world-n">Views</p>
+          <p class="world-s">Native chrome</p>
+          <ul class="world-l">
+            <li>Tabs, address bar, toolbar, menus</li>
+            <li>Drawn by the browser itself, in C++</li>
+            <li>Colors set in component source</li>
+          </ul>
+          <span class="world-tag">no CSS</span>
+        </div>
+        <div class="world">
+          <p class="world-n">WebUI</p>
+          <p class="world-s">Pages rendered as web</p>
+          <ul class="world-l">
+            <li>Settings, history, downloads, flyouts</li>
+            <li>Built as web pages inside the browser</li>
+            <li>Colors set in stylesheets</li>
+          </ul>
+          <span class="world-tag">CSS</span>
+        </div>
+        <div class="worlds-join"><span>Both had to end up reading from the same semantic tokens</span></div>
+      </div>
+      <p class="dg-note">The two halves of the interface don't share a styling mechanism, so the same value had to be traced — and later replaced — in two different ways depending on where it lived.</p>
+    </div>
+
+    <figure class="inline-fig">
+      <image-slot id="edge-audit" shape="rect" placeholder="Drop a Chromium source snippet — a component file with the hardcoded values"></image-slot>
+      <figcaption>Where the real values lived: hardcoded in the component source, with no token between the component and the color.</figcaption>
+    </figure>
+  </section>
+
+  <section class="panel" id="found" data-rail-target>
+    <p class="section-title">What the code showed</p>
+    <div class="cards3">
+      <div class="tcard">
+        <p class="tcard-n">Hard-coded values throughout</p>
+        <p class="tcard-b">Colors written into components directly, with no token standing between the component and the value.</p>
+      </div>
+      <div class="tcard">
+        <p class="tcard-n">No shared layer with Fluent</p>
+        <p class="tcard-b">Fluent lived in the design files only. The deltas were not drift within one system — they were two systems that had never met.</p>
+      </div>
+      <div class="tcard">
+        <p class="tcard-n">No mechanism to stay honest</p>
+        <p class="tcard-b">Nothing connected the two, so any correction made in one place would drift out of the other again.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="chapter" data-ch="{{ chapterStyle }}" data-n="02"><h2 class="chapter-t">Approach</h2></div>
+
+  <section class="panel" id="directions" data-rail-target>
+    <p class="section-title">Closing the gap in both directions</p>
+    <p class="section-body">We were about to reconcile the code against Fluent when the semantic system landed. Rather than do the work twice, we changed target: redraw Edge in Figma on the new semantic tokens, and map those tokens to the values production was already shipping.</p>
+    <p class="section-body">That meant redrawing a great deal of the browser in Figma — not to change how it looked, but to rebuild it out of tokens instead of raw values, so the design files finally described the same interface the code did, in the vocabulary both would use going forward. Other designers took on surfaces; I set the mapping they drew against and reviewed the craft on what came back.</p>
+  </section>
+
+  <section class="panel" id="mapping" data-rail-target>
+    <p class="section-title">The 1:1 mapping</p>
+    <p class="section-body">The decision that made this shippable: every new semantic token was mapped so it resolved 1:1 to the appearance already shipping. The architecture underneath the browser changed completely. The browser looked exactly the same.</p>
+    <div class="pull">Migrate the plumbing invisibly first. Once every surface reads from a token, a new theme is a configuration change rather than a redesign.</div>
+    <div class="dg">
+      <p class="dg-h">What changed underneath</p>
+      <div class="stack">
+        <div class="layer" data-top>
+          <p class="layer-n">Theme<small>swappable</small></p>
+          <p class="layer-b">Decides what each role resolves to. Swapping this is what changes how the browser looks — <span class="cn-on">Phoenix, then MAI</span><span class="cn-off">one theme, then the next</span>.</p>
+        </div>
+        <p class="stack-arrow">↑</p>
+        <div class="layer">
+          <p class="layer-n">Semantic token<small>the role</small></p>
+          <p class="layer-b"><code>color.neutral.background.subtle</code> — names the job the value is doing, not the value itself.</p>
+        </div>
+        <p class="stack-arrow">↑</p>
+        <div class="layer">
+          <p class="layer-n">Component<small>in code</small></p>
+          <p class="layer-b">Asks for a role instead of naming a color. Before the migration it named the color directly, which is why no theme was possible.</p>
+        </div>
+      </div>
+      <p class="dg-note">The component stopped knowing what color it is. That single change is what turned a redesign into a configuration change.</p>
+    </div>
+
+    <div class="map">
+      <div class="map-head">
+        <p class="map-h">Before — in code</p><span></span>
+        <p class="map-h">Semantic token</p><span></span>
+        <p class="map-h"><span class="cn-on">Phoenix</span><span class="cn-off">Theme one</span></p>
+        <p class="map-h"><span class="cn-on">MAI</span><span class="cn-off">Theme two</span></p>
+      </div>
+      <div class="map-row">
+        <span class="chip"><span class="sw" style="background:#0078d4"></span>#0078D4</span>
+        <span class="map-arrow">→</span>
+        <span class="tok" tabindex="0" data-spec-on="Phoenix    #0078D4
+MAI        #7A5AF0" data-spec-off="Theme one  #0078D4
+Theme two  #7A5AF0">color.brand.background.primary</span>
+        <span class="map-arrow">→</span>
+        <span class="map-out"><span class="sw" style="background:#0078d4"></span><span class="chip">unchanged</span></span>
+        <span class="map-out"><span class="sw" style="background:#7a5af0"></span><span class="chip">swaps</span></span>
+      </div>
+      <div class="map-row">
+        <span class="chip"><span class="sw" style="background:#f3f3f3"></span>#F3F3F3</span>
+        <span class="map-arrow">→</span>
+        <span class="tok" tabindex="0" data-spec-on="Phoenix    #F3F3F3
+MAI        #EAE6FF" data-spec-off="Theme one  #F3F3F3
+Theme two  #EAE6FF">color.neutral.background.subtle</span>
+        <span class="map-arrow">→</span>
+        <span class="map-out"><span class="sw" style="background:#f3f3f3"></span><span class="chip">unchanged</span></span>
+        <span class="map-out"><span class="sw" style="background:#eae6ff"></span><span class="chip">swaps</span></span>
+      </div>
+      <div class="map-row">
+        <span class="chip"><span class="sw" style="background:#1b1a19"></span>#1B1A19</span>
+        <span class="map-arrow">→</span>
+        <span class="tok" tabindex="0" data-spec-on="Phoenix    #1B1A19
+MAI        #2A2140" data-spec-off="Theme one  #1B1A19
+Theme two  #2A2140">color.neutral.foreground.primary</span>
+        <span class="map-arrow">→</span>
+        <span class="map-out"><span class="sw" style="background:#1b1a19"></span><span class="chip">unchanged</span></span>
+        <span class="map-out"><span class="sw" style="background:#2a2140"></span><span class="chip">swaps</span></span>
+      </div>
+      <p class="map-note">Illustrative — the shape of the mapping, not the real token names or values. The first theme resolved to what was already shipping, so the migration produced no visual diff; the second was mapped in the same pass, ready to switch on.</p>
+    </div>
+    <p class="section-body" style="margin-top: var(--space-4)">We mapped the second theme at the same time. <span class="cn-on">Every token got both its Phoenix value and its MAI value</span><span class="cn-off">Every token got a value in each of the two themes</span>, so the appearance swap was already specified before anyone asked for it — a configuration change rather than a second migration.</p>
+    <p class="section-body">This is also what made a moving specification survivable. Only names were in flight, never appearances, so when the semantic system changed underneath us we were re-pointing references rather than re-deciding how Edge should look.</p>
+  </section>
+
+  <section class="panel" id="sequence" data-rail-target>
+    <p class="section-title">Sequencing the rollout</p>
+    <p class="section-body">I ordered the migration shared components first, surfaces second. The twenty or so general components — button, and its neighbours — account for most of what the browser is made of, so tokenizing them once moved a large fraction of the interface before any individual feature was touched.</p>
+    <p class="section-body">Only then did we go surface by surface: favorites flyout, then the next one, across both Views and WebUI. By that point each surface was mostly assembled from parts that were already correct, and the remaining work was the handful of values specific to it.</p>
+    <div class="gallery">
+      <figure><image-slot id="edge-1" shape="rect" placeholder="Drop the token mapping table"></image-slot><figcaption>The mapping table: every semantic token and what it resolved to in each theme.</figcaption></figure>
+      <figure><image-slot id="edge-2" shape="rect" placeholder="Drop redrawn Figma components on semantic tokens"></image-slot><figcaption>Shared components redrawn in Figma on the semantic layer.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="panel" id="engineering" data-rail-target>
+    <p class="section-title">Working with engineering</p>
+    <p class="section-body">I worked directly with a partner team of about six engineers. Having read the source myself, I could talk about the change in terms of the files it touched and ask what was actually feasible, rather than handing over a spec and finding out later that it was not.</p>
+    <p class="section-body">For each component we traced the shipped value back to the role it was playing and assigned the semantic token for that role. Where the system had no token for a case Edge needed, I defined one — and fed it back to the system owners, because a real product need is exactly what a young semantic set is missing.</p>
+    <p class="section-body">It also made me the person engineers came to. A large share of the browser was being tokenized at once and plenty of features had no Figma at all, so when a team hit a value with no drawing behind it, the question came to me to resolve. The engineering lead thanked me for that specifically — which said more about where the bottleneck had been than any documentation could.</p>
+    <div class="pull" style="font-style: normal">"Thank you for answering all the token questions for the things that didn't have Figma drawn."<span style="display:block; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; margin-top:12px; opacity:0.8">Partner engineering lead</span></div>
+    <p class="section-body">The instability was the hard part. <span class="cn-on">Before MAI there was another theme, Kumo, that we nearly adopted</span><span class="cn-off">An earlier candidate theme was nearly adopted before the one we settled on</span>, and component tokens in the new system kept changing underneath us. Engineering absorbed a steady trickle of small revisions as a result. The 1:1 mapping is what kept that trickle small: churn landed on names and references, never on how anything looked.</p>
+  </section>
+
+  <section class="panel" id="craft" data-rail-target>
+    <p class="section-title">What tokenizing exposed</p>
+    <p class="section-body">Assigning a semantic token forces you to say what a value is <em>for</em>. That question does not have an answer everywhere, and the places it did not were the interesting ones.</p>
+    <p class="section-body">Reviewing surface after surface, I kept finding the same class of problem: one color doing two unrelated jobs, or two near-identical colors doing the same job on different surfaces. Nobody had decided those — they were the residue of values copied between files over years. A token cannot express "this gray, because the file next to it used this gray," so each one had to be resolved into an actual decision.</p>
+    <p class="section-body">I kept those corrections separate from the migration and logged them as their own work. Folding them in would have broken the guarantee the whole project rested on: that nothing changed appearance. Held apart, they became a list of things worth fixing on purpose, with a reason attached to each.</p>
+    <figure class="inline-fig">
+      <image-slot id="edge-craft" shape="rect" placeholder="Drop a craft find — an inconsistency the audit surfaced, before and after"></image-slot>
+      <figcaption>A case the audit surfaced: the same role rendered two ways across surfaces, resolved into one token.</figcaption>
+    </figure>
+  </section>
+
+  <div class="chapter" data-ch="{{ chapterStyle }}" data-n="03"><h2 class="chapter-t">Outcome</h2></div>
+
+  <section class="panel" id="shipped" data-rail-target>
+    <p class="section-title">What shipped</p>
+    <p class="section-body">The semantic tokens shipped. Edge's interface now reads from a semantic layer rather than from hard-coded values, and for the first time Figma and production describe the same system in the same vocabulary.</p>
+    <p class="section-body">Then the swap actually happened. Edge shipped first on <span class="cn-on">the Phoenix theme</span><span class="cn-off">the first theme</span>, which resolved to the appearance the product already had, and then moved to <span class="cn-on">the MAI compact theme</span><span class="cn-off">the shared system's compact theme</span> — visually aligned to the shared Microsoft language, with the adjustments Edge's own surfaces needed. A change of that size, made by swapping what the tokens resolve to rather than by reopening every component.</p>
+    <p class="section-body">The browser also simply looks more consistent than it did. Surfaces that had drifted apart over years now resolve from the same set of roles, so they agree by construction rather than by anyone remembering to check.</p>
+    <div class="demo" data-theme="{{ demoTheme }}">
+      <div class="demo-bar">
+        <p class="demo-h">The same interface, two themes</p>
+        <div class="swap">
+          <button type="button" class="swap-ph" aria-pressed="{{ phPressed }}" onClick="{{ showPhoenix }}"><span class="cn-on">Phoenix</span><span class="cn-off">Theme one</span></button>
+          <button type="button" class="swap-mai" aria-pressed="{{ maiPressed }}" onClick="{{ showMai }}"><span class="cn-on">MAI</span><span class="cn-off">Theme two</span></button>
+        </div>
+      </div>
+      <div class="chrome">
+        <div class="ch-tabs">
+          <div class="ch-tab" data-on><span class="ch-dot"></span>Semantic tokens</div>
+          <div class="ch-tab">Component audit</div>
+        </div>
+        <div class="ch-bar">
+          <span class="ch-ico"></span><span class="ch-ico"></span>
+          <span class="ch-omni"><span class="ch-lock"></span>learn.microsoft.com/edge</span>
+          <span class="ch-ico"></span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-h"></div>
+          <div class="ch-l"></div><div class="ch-l"></div><div class="ch-l s"></div>
+          <div class="ch-btn">Primary action</div>
+        </div>
+      </div>
+      <p class="demo-note">Schematic, with illustrative values — but the mechanism is the real one. Nothing in the markup changes between the two states; only what the tokens resolve to.</p>
+    </div>
+
+    <figure class="inline-fig">
+      <image-slot id="edge-themes" shape="rect" placeholder="Drop the payoff — the same surface under both themes, side by side"></image-slot>
+      <figcaption>The payoff: one interface, themed by configuration.</figcaption>
+    </figure>
+  </section>
+
+  <section class="panel" id="reflection" data-rail-target>
+    <p class="section-title">Reflection</p>
+    <p class="section-body">The most useful thing I did on this project was read the code. Every plan built on the design files would have been a plan for a browser that did not exist, and no amount of care in Figma would have surfaced that.</p>
+    <p class="section-body">The second was refusing to bundle a visual change into a structural one. It was tempting to fix the appearance and the architecture in a single pass. Keeping them apart is what made the work reviewable, and what let the project survive a specification that changed twice while we were building against it.</p>
+    <p class="section-body">What I would carry forward: when a system is still forming, the most valuable thing a designer can do is be specific about what their product actually needs. The gaps I found were not obstacles to the migration — they were the contribution.</p>
+  </section>
+
+  <a class="next" href="./edge-components.dc.html">
+    <div class="next-body">
+      <p class="next-label">Next project</p>
+      <h2 class="next-title">Edge design systems</h2>
+      <p class="next-desc">Deciding which parts of a browser are worth owning, and which should go back upstream.</p>
+      <span class="next-go">Read it →</span>
+    </div>
+    <figure class="next-fig"><image-slot id="next-ec" shape="rect" placeholder="Edge design systems"></image-slot></figure>
+  </a>
+
+</div>
+<div class="wrap"><footer class="credits">
+  <p class="cred-name">Elizabeth Lin</p>
+  <div class="cred-links"><a href="mailto:lizlin.lin@gmail.com">lizlin.lin@gmail.com</a><a href="https://www.linkedin.com/in/e34lin/" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+  <p class="cred-year">© 2026</p>
+</footer></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;codeNames&quot;: {&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},
+  &quot;chapterStyle&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;number&quot;,&quot;options&quot;:[&quot;band&quot;,&quot;tint&quot;,&quot;rule&quot;,&quot;large&quot;,&quot;eyebrow&quot;,&quot;number&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Section breaks&quot;},
+  &quot;titleStyle&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;ticked&quot;,&quot;options&quot;:[&quot;plain&quot;,&quot;caps&quot;,&quot;accent&quot;,&quot;ticked&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Section breaks&quot;},
+  &quot;dividerStyle&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;hairline&quot;,&quot;options&quot;:[&quot;hairline&quot;,&quot;none&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Section breaks&quot;}
+}">
+class Component extends DCLogic {
+  state = { demoTheme: 'ph' };
+  renderVals() {
+    return {
+      demoTheme: this.state.demoTheme,
+      phPressed: this.state.demoTheme === 'ph',
+      maiPressed: this.state.demoTheme === 'mai',
+      showPhoenix: () => this.setState({ demoTheme: 'ph' }),
+      showMai: () => this.setState({ demoTheme: 'mai' }),
+      chapterStyle: this.props.chapterStyle ?? 'number',
+      titleStyle: this.props.titleStyle ?? 'ticked',
+      dividerStyle: this.props.dividerStyle ?? 'hairline',
+      codeNames: (this.props.codeNames ?? false) ? 'on' : 'off',
+    };
+  }
+  componentDidMount() {
+    const io = window.IntersectionObserver && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: 0.06 })
+      : null;
+    this.revealTargets = [...document.querySelectorAll('.panel, .chapter, .next, .hero-figure')];
+    if (io) { this.revealTargets.forEach(el => { el.classList.add('reveal'); io.observe(el); }); }
+    this.io = io;
+    this.revealFailsafe = setTimeout(() => { this.revealTargets.forEach(el => el.classList.add('is-in')); }, 2000);
+    const bar = document.querySelector('.progress span');
+    if (bar) {
+      this.onProg = () => {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (h > 0 ? Math.min(100, Math.max(0, (window.scrollY / h) * 100)) : 0) + '%';
+      };
+      window.addEventListener('scroll', this.onProg, { passive: true });
+      window.addEventListener('resize', this.onProg);
+      this.onProg();
+    }
+
+    const links = [...document.querySelectorAll('.rail a')];
+    const targets = [...document.querySelectorAll('[data-rail-target]')];
+    if (!links.length || !targets.length) return;
+    const mark = () => {
+      let best = null, bestTop = -Infinity;
+      for (const t of targets) {
+        const top = t.getBoundingClientRect().top - 100;
+        if (top <= 0 && top > bestTop) { bestTop = top; best = t; }
+      }
+      if (!best) best = targets[0];
+      for (const a of links) {
+        if (a.getAttribute('href') === '#' + best.id) a.setAttribute('data-active', '');
+        else a.removeAttribute('data-active');
+      }
+    };
+    let queued = false;
+    this.onScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => { queued = false; mark(); });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onScroll);
+    mark();
+  }
+  componentWillUnmount() {
+    if (this.revealFailsafe) clearTimeout(this.revealFailsafe);
+    if (this.io) this.io.disconnect();
+    if (this.onProg) { window.removeEventListener('scroll', this.onProg); window.removeEventListener('resize', this.onProg); }
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onScroll);
+  }
+}
+</script>
+</body>
+</html>

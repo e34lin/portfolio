@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="../_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/styles.css">
+<script src="../_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<title>Edge component layer — Elizabeth Lin</title>
+<style>
+:root { --display: "Instrument Serif", Georgia, serif; --leading: 26px; --edge: clamp(20px, 5vw, 72px); --measure: 58ch; --label-ink: color-mix(in srgb, var(--color-text) 70%, transparent); }
+body { margin: 0; text-wrap: pretty; }
+a { color: var(--color-accent-700); }
+a:hover { color: var(--color-accent); }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 var(--edge); }
+.nav { padding-inline: max(var(--edge), calc((100% - 1160px) / 2 + var(--edge))); position: sticky; top: 0; z-index: 10; }
+.nav a.nav-brand { font-size: 18px; font-family: var(--font-heading); font-weight: var(--font-heading-weight); color: var(--color-text); }
+.nav a.nav-brand:hover { color: var(--color-accent); }
+.backlink { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; letter-spacing: 0.01em; text-decoration: none; color: color-mix(in srgb, var(--color-text) 76%, transparent); padding: calc(1.1 * var(--leading)) 0 0; }
+.backlink:hover { color: var(--color-accent); }
+.backlink + .header { padding-top: calc(1.1 * var(--leading)); }
+.backlink span { font-size: 15px; line-height: 1; }
+.kicker { display: block; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 var(--space-3); }
+.header { padding: calc(2.4 * var(--leading)) 0 calc(1.8 * var(--leading)); }
+.display { font-family: var(--display); font-weight: 400; font-size: clamp(32px, 4.6vw, 52px); line-height: 1.04; letter-spacing: -0.015em; margin: 0; max-width: 20ch; }
+.hero-q { font-size: 18px; line-height: 1.55; max-width: 54ch; margin: var(--space-4) 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.meta-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); row-gap: var(--space-4); column-gap: var(--space-6); margin-top: var(--space-6); align-items: start; }
+.meta-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--label-ink); margin: 0 0 4px; }
+.meta-value { font-size: 15px; margin: 0; font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+.hero-figure { margin: 0 0 calc(0.6 * var(--leading)); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
+.hero-figure image-slot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+
+[data-div="none"] .panel { border-top-color: transparent; }
+.panel { display: grid; grid-template-columns: minmax(0,190px) minmax(0,1fr); gap: var(--space-3) clamp(24px,4vw,64px); align-items: start; padding: calc(1.7 * var(--leading)) 0; border-top: 1px solid var(--color-divider); }
+.panel > .section-title { grid-column: 1; grid-row: 1; }
+.panel > :not(.section-title) { grid-column: 2; }
+.section-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 17.5px; line-height: 1.3; letter-spacing: -0.005em; margin: 0; color: var(--color-text); }
+[data-st="caps"] .section-title { font-size: 12.5px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--label-ink); }
+[data-st="accent"] .section-title { color: var(--color-accent-700); }
+[data-st="ticked"] .section-title { position: relative; padding-left: 16px; }
+[data-st="ticked"] .section-title::before { content: ""; position: absolute; left: 0; top: 0.42em; width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); }
+.section-body { font-size: 16px; line-height: 1.6; max-width: var(--measure); margin: 0; color: color-mix(in srgb, var(--color-text) 82%, transparent); }
+.section-body + .section-body { margin-top: var(--space-3); }
+.lede { font-size: 17.5px; line-height: 1.55; color: var(--color-text); }
+
+.chapter { display: flex; align-items: center; gap: clamp(14px,2vw,22px); margin: calc(2.6 * var(--leading)) 0 0; }
+.chapter[data-ch="band"] { padding: 15px clamp(20px,2.4vw,28px); border-radius: var(--radius-md); background: var(--color-accent); color: var(--color-bg); box-shadow: var(--shadow-sm); }
+.chapter[data-ch="tint"] { padding: 15px clamp(20px,2.4vw,28px); border-radius: var(--radius-md); background: var(--color-accent-100); border: 1px solid var(--color-accent-300); color: var(--color-accent-700); }
+.chapter[data-ch="rule"] { display: block; padding-top: calc(1.1 * var(--leading)); border-top: 1px solid var(--color-accent); color: var(--color-accent-700); }
+.chapter[data-ch="eyebrow"] { display: block; padding-top: calc(1.1 * var(--leading)); border-top: 1px solid var(--color-divider); }
+.chapter[data-ch="eyebrow"] .chapter-t { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent); }
+.chapter[data-ch="number"] { padding-top: calc(1.1 * var(--leading)); border-top: 1px solid var(--color-divider); display: block; }
+.chapter[data-ch="large"] { display: block; padding-top: calc(1.4 * var(--leading)); }
+.chapter[data-ch="large"] .chapter-t { font-size: clamp(38px,5vw,60px); line-height: 1; letter-spacing: -0.03em; }
+.chapter[data-ch="rule"] .chapter-t, .chapter[data-ch="number"] .chapter-t { font-size: clamp(28px,3.4vw,40px); line-height: 1.05; letter-spacing: -0.025em; }
+.chapter-t { font-family: var(--display); font-weight: 400; font-size: clamp(19px,2.1vw,24px); line-height: 1.2; letter-spacing: -0.01em; margin: 0; }
+.chapter + .panel { border-top: 0; padding-top: calc(1.5 * var(--leading)); }
+[data-rail-target] { scroll-margin-top: 90px; }
+
+.list { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-3); max-width: 68ch; }
+.list li { font-size: 16px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 82%, transparent); padding-left: 18px; position: relative; }
+.list li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); }
+.list li strong { color: var(--color-text); font-weight: 600; }
+
+.cards3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: clamp(20px,2.6vw,32px); margin-top: var(--space-4); }
+.tcard { padding: 18px 20px; border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); }
+.tcard-k { font-size: 10.5px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--color-accent); margin: 0 0 8px; font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+.tcard-n { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 15px; margin: 0 0 6px; }
+.tcard-b { font-size: 14.5px; line-height: 1.55; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+
+.pull { margin: var(--space-4) 0 0; padding: 20px 24px; border-radius: var(--radius-md); background: var(--color-accent-100); border: 1px solid var(--color-accent-300); font-size: 16.5px; line-height: 1.55; color: var(--color-accent-700); max-width: 62ch; }
+
+
+/* diagrams */
+.dg { margin: var(--space-4) 0 0; padding: clamp(18px,2.2vw,26px); border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); }
+.dg-h { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label-ink); margin: 0 0 16px; }
+.dg-note { font-size: 12.5px; line-height: 1.5; color: var(--label-ink); margin: 16px 0 0; }
+.cov { display: grid; gap: 10px; }
+.cov-row { padding: 14px 16px; border-radius: var(--radius-md); border: 1px solid var(--color-divider); background: color-mix(in srgb, var(--color-text) 3%, transparent); }
+.cov-row[data-mine] { border-color: var(--color-accent-300); background: var(--color-accent-100); }
+.cov-t { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin: 0 0 10px; }
+.cov-n { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 13.5px; margin: 0; }
+.cov-s { font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--label-ink); margin: 0; }
+.cov-items { display: flex; flex-wrap: wrap; gap: 6px; }
+.cov-i { font-size: 12.5px; line-height: 1; padding: 7px 10px; border-radius: var(--radius-sm); background: var(--color-bg); border: 1px solid var(--color-divider); color: color-mix(in srgb, var(--color-text) 80%, transparent); }
+.cov-row[data-mine] .cov-i { border-color: var(--color-accent-300); color: var(--color-accent-700); }
+.anat { display: grid; grid-template-columns: 1fr 18px 1fr 18px 1fr; gap: 12px; align-items: stretch; }
+.anat-c { padding: 16px 16px 18px; border-radius: var(--radius-md); border: 1px solid var(--color-divider); background: color-mix(in srgb, var(--color-text) 3%, transparent); }
+.anat-c[data-out] { border-color: var(--color-accent-300); background: var(--color-accent-100); }
+.anat-k { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label-ink); margin: 0 0 8px; }
+.anat-c[data-out] .anat-k { color: var(--color-accent-700); }
+.anat-n { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 14px; line-height: 1.2; margin: 0 0 8px; }
+.anat-b { font-size: 13px; line-height: 1.5; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.anat-op { align-self: center; justify-self: center; font-family: var(--display); font-size: 20px; line-height: 1; color: var(--color-accent-700); }
+.anat-cost { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--color-divider); }
+.anat-cost p { font-size: 12.5px; line-height: 1.4; margin: 0; color: var(--label-ink); }
+.anat-cost b { color: var(--color-text); font-weight: 600; }
+@media (max-width: 760px) { .anat { grid-template-columns: 1fr; } .anat-op { transform: rotate(90deg); } }
+
+/* component inventory */
+.inv { margin: var(--space-4) 0 0; padding: clamp(18px,2.2vw,26px); border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); }
+.inv-h { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label-ink); margin: 0 0 12px; }
+.pills + .inv-h { margin-top: 22px; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { font-size: 13px; line-height: 1; padding: 8px 12px; border-radius: var(--radius-sm); background: var(--color-accent-100); border: 1px solid var(--color-accent-300); color: var(--color-accent-700); }
+.pill[data-mine="no"] { background: transparent; border-color: var(--color-divider); color: var(--label-ink); }
+.inv-note { font-size: 12.5px; line-height: 1.5; color: var(--label-ink); margin: 16px 0 0; }
+
+.case { margin: var(--space-4) 0 0; padding: clamp(20px,2.4vw,28px); border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); }
+.case-k { font-size: 10.5px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--color-accent); margin: 0 0 10px; font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+.case p.section-body { max-width: 64ch; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); grid-template-rows: auto auto; gap: clamp(16px,2vw,28px); margin: var(--space-4) 0; padding: var(--space-4) 0; border-top: 1px solid var(--color-divider); border-bottom: 1px solid var(--color-divider); }
+.stats > div { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 6px; align-content: start; }
+.stat-n { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(26px,3vw,34px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; color: var(--color-accent-700); align-self: end; }
+.stat-b { font-size: 13.5px; line-height: 1.5; margin: 0; color: var(--label-ink); }
+.inline-fig { margin: var(--space-4) 0 0; }
+.inline-fig { overflow: hidden; border-radius: var(--radius-md); }
+.inline-fig image-slot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; transition: transform 420ms cubic-bezier(.2,.6,.2,1); }
+.inline-fig:hover image-slot { transform: scale(1.02); }
+.inline-fig figcaption { font-size: 13px; line-height: 1.45; margin-top: 10px; color: var(--label-ink); }
+.panel > .inv, .panel > .cards3, .panel > .case, .panel > .dg { grid-column: 2; }
+
+[data-fn="on"] .fn-off, [data-fn="off"] .fn-on { display: none; }
+
+.rail { display: none; }
+@media (min-width: 1560px) {
+  .rail { display: block; position: fixed; top: 50%; transform: translateY(-50%); left: calc((100vw - 1160px) / 2 - 188px); width: 164px; z-index: 5; }
+  .rail-grp { margin: 0 0 18px; }
+  .rail-grp:last-child { margin-bottom: 0; }
+  .rail-h { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 7px; font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+  .rail a { display: block; font-size: 12px; line-height: 1.45; padding: 3px 0 3px 14px; text-decoration: none; color: var(--label-ink); border-left: 1px solid var(--color-divider); transition: color 120ms ease, border-color 120ms ease; }
+  .rail a:hover { color: var(--color-text); border-left-color: var(--color-accent-300); }
+  .rail a[data-active] { color: var(--color-text); border-left-color: var(--color-accent); }
+}
+
+.next { margin: 0 0 calc(2 * var(--leading)); padding: clamp(28px,3vw,44px); border-radius: var(--radius-lg); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3) clamp(24px,3vw,40px); text-decoration: none; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); box-shadow: var(--shadow-sm); color: var(--color-text); transition: box-shadow 200ms ease, transform 200ms ease; }
+.next:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.next-body { max-width: 46ch; }
+.next-desc { font-size: 15px; line-height: 1.55; margin: 0 0 10px; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.next-go { font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); }
+.next-fig { margin: 0; width: clamp(140px, 22%, 220px); flex: none; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+.next-fig image-slot { display: block; width: 100%; aspect-ratio: 4/3; }
+.craft-thumb { position: relative; overflow: hidden; width: 100%; }
+.craft-thumb img { position: absolute; width: 270%; max-width: none; left: -18.8%; top: 0; transform: translateY(-8.85%); }
+.next-fig .craft-thumb { aspect-ratio: 4/3; }
+@media (max-width: 700px) { .next-fig { display: none; } }
+.next { transition: box-shadow 200ms ease, transform 200ms ease; }
+.next:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.next-label { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 6px; opacity: 0.85; }
+.next-title { font-family: var(--display); font-weight: 400; font-size: clamp(24px,3vw,34px); margin: 0; letter-spacing: -0.01em; }
+footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-3) var(--space-6); padding: calc(1.2 * var(--leading)) 0 calc(2 * var(--leading)); margin-top: calc(0.6 * var(--leading)); border-top: 1px solid var(--color-divider); font-size: 13px; color: var(--label-ink); }.cred-name { font-family: var(--display); font-weight: 400; font-size: 19px; line-height: 1; color: var(--color-text); margin: 0; }
+.cred-links { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.cred-links a { color: var(--label-ink); text-decoration: none; border-bottom: 1px solid var(--color-divider); padding-bottom: 2px; }
+.cred-links a:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+.cred-year { margin: 0; }
+
+@media (max-width: 800px) {
+  .panel { grid-template-columns: 1fr; }
+  .panel > .section-title, .panel > :not(.section-title) { grid-column: 1; }
+  .meta-row { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+.reveal { opacity: 0; transform: translateY(8px); transition: opacity 300ms ease, transform 300ms cubic-bezier(.2,.6,.2,1); }
+.reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal, .reveal.is-in { opacity: 1; transform: none; transition: none; } }
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 20; pointer-events: none; }
+.progress span { display: block; height: 100%; width: 0%; background: var(--color-accent); transition: width 90ms linear; }
+</style>
+</helmet>
+<div data-st="{{ titleStyle }}" data-div="{{ dividerStyle }}" data-fn="{{ featureNames }}">
+<div class="progress"><span></span></div>
+<nav class="nav">
+  <a href="../index.dc.html" class="nav-brand" style="text-decoration:none;">Elizabeth Lin</a>
+  <a href="../index.dc.html#work">Work</a>
+  <a href="../about.dc.html">About</a>
+  <a href="mailto:lizlin.lin@gmail.com"><button type="button" class="btn btn-primary">Get in touch</button></a>
+</nav>
+<nav class="rail" aria-label="Sections">
+  <div class="rail-grp">
+    <p class="rail-h">Overview</p>
+    <a href="#thread">The thread</a>
+    <a href="#inventory">What Edge must own</a>
+  </div>
+  <div class="rail-grp">
+    <p class="rail-h">Owning it well</p>
+    <a href="#rebuild">Rebuilding from the product</a>
+    <a href="#maintaining">Maintaining a live layer</a>
+  </div>
+  <div class="rail-grp">
+    <p class="rail-h">Owning less</p>
+    <a href="#upstream">What Edge stopped owning</a>
+  </div>
+  <div class="rail-grp">
+    <p class="rail-h">Spreading it</p>
+    <a href="#illustration">What nobody owned</a>
+  </div>
+  <div class="rail-grp">
+    <p class="rail-h">Outcome</p>
+    <a href="#reflection">Reflection</a>
+  </div>
+</nav>
+<div class="wrap">
+
+  <a class="backlink" href="../index.dc.html#work"><span>←</span>All work</a>
+
+  <header class="header">
+    <span class="kicker">Microsoft Edge</span>
+    <h1 class="display">Deciding what a browser should carry</h1>
+    <p class="hero-q">Design system work on Edge, joined by one question: which parts of this interface should be ours to maintain, and which shouldn't?</p>
+    <div class="meta-row">
+      <div><p class="meta-label">Role</p><p class="meta-value">Product Designer, design systems</p></div>
+      <div><p class="meta-label">Duration</p><p class="meta-value">2024 – present</p></div>
+      <div><p class="meta-label">Team</p><p class="meta-value">5 designers</p></div>
+      <div><p class="meta-label">Layer</p><p class="meta-value">20–25 components</p></div>
+    </div>
+  </header>
+
+  <figure class="hero-figure">
+    <image-slot id="ec-hero" shape="rect" placeholder="Drop the component library — an overview of the Edge component set"></image-slot>
+  </figure>
+
+  <section class="panel" id="thread" data-rail-target>
+    <p class="section-title">The thread</p>
+    <p class="section-body lede">Edge is built on Chromium and sits on a shared Microsoft design system, so most of its interface is inherited. The design work that matters is deciding which parts shouldn't be.</p>
+    <p class="section-body">Three pieces of work, one question underneath all of them. Some components Edge has no choice but to own, because nothing upstream will ever build them. Others Edge had been carrying for years without needing to, at a cost that renewed every release. And illustration was carried by one person, which is its own kind of ownership problem.</p>
+    <p class="section-body">Everything below is a version of the same judgment: what should this team be responsible for, and what should it stop being responsible for.</p>
+  </section>
+
+  <section class="panel" id="inventory" data-rail-target>
+    <p class="section-title">What Edge must own</p>
+    <p class="section-body">A shared design system is general by definition. It carries what every product has in common — buttons, inputs, menus — and stops there. For a browser, what's left over is most of the interface: the address bar, the profile control, the side panel, the surfaces a browser puts around a page. None of them exist in a general system and none of them ever will.</p>
+    <p class="section-body">So Edge keeps its own component layer on top of the shared one — twenty to twenty-five components, each with its own sub-components, states, sizes and per-feature variants. A team of five designers owns it. I built and maintain five to ten.</p>
+    <div class="dg">
+      <p class="dg-h">Who covers what</p>
+      <div class="cov">
+        <div class="cov-row" data-mine>
+          <div class="cov-t"><p class="cov-n">Edge's own layer</p><p class="cov-s">20–25 components · ours to maintain</p></div>
+          <div class="cov-items"><span class="cov-i"><span class="fn-on">Omnibox</span><span class="fn-off">Address bar</span></span><span class="cov-i"><span class="fn-on">Hubs</span><span class="fn-off">Side surfaces</span></span><span class="cov-i"><span class="fn-on">Favorites</span><span class="fn-off">Saved sites</span></span><span class="cov-i"><span class="fn-on">Identity control</span><span class="fn-off">Profile control</span></span><span class="cov-i">Tabs</span><span class="cov-i">Card</span><span class="cov-i">…</span></div>
+        </div>
+        <div class="cov-row">
+          <div class="cov-t"><p class="cov-n">The shared Microsoft system</p><p class="cov-s">general · maintained elsewhere</p></div>
+          <div class="cov-items"><span class="cov-i">Button</span><span class="cov-i">Input</span><span class="cov-i">Menu</span><span class="cov-i">Checkbox</span><span class="cov-i">Dialog</span><span class="cov-i">Tooltip</span><span class="cov-i">…</span></div>
+        </div>
+      </div>
+      <p class="dg-note">A shared system carries what every product has in common. What's left over for a browser is most of the interface — and none of it is coming from anywhere else.</p>
+    </div>
+
+    <div class="inv">
+      <p class="inv-h">Components I built and maintain</p>
+      <div class="pills">
+        <span class="pill"><span class="fn-on">Omnibox</span><span class="fn-off">Address bar</span></span>
+        <span class="pill"><span class="fn-on">Favorites</span><span class="fn-off">Saved sites</span></span>
+        <span class="pill"><span class="fn-on">Identity control</span><span class="fn-off">Profile control</span></span>
+        <span class="pill">Card</span>
+        <span class="pill"><span class="fn-on">Fullscreen tip</span><span class="fn-off">Fullscreen prompt</span></span>
+        <span class="pill"><span class="fn-on">Hubs</span><span class="fn-off">Side surfaces</span> (part)</span>
+      </div>
+      <p class="inv-h">Owned across the team</p>
+      <div class="pills">
+        <span class="pill" data-mine="no">The remaining 20-odd components and their sub-components</span>
+      </div>
+      <p class="inv-note">Each of these is a family rather than a single object: an address bar is a text field, a dropdown, a security signal and a set of in-field controls, and it has to hold together at every window width.</p>
+    </div>
+  </section>
+
+  <div class="chapter" data-ch="{{ chapterStyle }}" data-n="01"><h2 class="chapter-t">Owning it well</h2></div>
+
+  <section class="panel" id="rebuild" data-rail-target>
+    <p class="section-title">Rebuilding from the product</p>
+    <p class="section-body">The components were not designed from a blank canvas. Each one was recreated from what the product was actually rendering at the time, then rebuilt on semantic tokens.</p>
+    <p class="section-body">That order matters. A component library that describes an improved version of the product is a proposal, not a system — engineering cannot adopt it without also shipping a redesign. Rebuilding from what shipped meant the layer could be adopted immediately, and improvements could then be made against it deliberately, one at a time, with everyone able to see exactly what changed.</p>
+    <div class="pull">Describe the product as it is before describing the product as it should be. Otherwise the library and the browser drift apart on day one.</div>
+    <p class="section-body" style="margin-top: var(--space-4)">Working this way turns up how much of an interface was never actually decided. A component in code has whatever states someone needed at the time; a component in a library has to declare all of them. The distance between those two is where most of the inconsistency in a mature product lives.</p>
+    <p class="section-body">So a large part of rebuilding each component was enumeration rather than design: listing every state, size and variant the component owed, then finding which of them existed, which existed inconsistently across surfaces, and which had never been drawn at all and were simply whatever the code happened to produce.</p>
+    <p class="section-body">The undrawn ones were the point. Nobody had chosen them, so nobody could be said to be following them, and no two surfaces were obliged to agree. Specifying them didn't change how the browser looked in the common case — it changed how many ways the uncommon cases could go.</p>
+  </section>
+
+  <section class="panel" id="maintaining" data-rail-target>
+    <p class="section-title">Maintaining a live layer</p>
+    <p class="section-body">The layer is not a project with an end. The browser keeps shipping, and the shared system underneath keeps moving, so the work is continuous.</p>
+    <ul class="list" style="margin-top: var(--space-4)">
+      <li><strong>New variants as features ship.</strong> Every new feature wants something the component doesn't do yet. Deciding whether that's a variant, a new component, or a request the feature should drop is the recurring judgment.</li>
+      <li><strong>Keeping step with the system underneath.</strong> The shared system changes its own tokens and components; the Edge layer has to absorb that without breaking what's built on it.</li>
+      <li><strong>Reviewing how other designers use it.</strong> Components get used in ways they weren't designed for. Catching that early is cheaper than the pattern spreading.</li>
+      <li><strong>Deprecating and consolidating.</strong> Old patterns accumulate. Removing one means finding every use of it and giving each a replacement.</li>
+      <li><strong>Behaviour at every window width.</strong> A browser gets resized constantly, so components have to be specified across the full range, not at one canvas size.</li>
+    </ul>
+  </section>
+
+  <div class="chapter" data-ch="{{ chapterStyle }}" data-n="02"><h2 class="chapter-t">Owning less</h2></div>
+
+  <section class="panel" id="upstream" data-rail-target>
+    <p class="section-title">What Edge stopped owning</p>
+    <p class="section-body">The other half of the question. Edge had diverged from Chromium in a lot of small places over the years — features where Edge's version looked or behaved differently for no reason that survived scrutiny. Each of those differences is a patch the team carries forever: re-applied, re-tested, and occasionally re-fixed every time upstream moves. The cost does not end when the feature ships.</p>
+    <p class="section-body">Reducing that divergence is a standing direction from leadership: every patch retired is engineering time returned to the team, and that time gets spent on features instead of on maintenance. The work lands on me as a feature at a time — <span class="fn-on">energy saver, the performance detector, picture-in-picture, media controls, toast notifications</span><span class="fn-off">energy and performance surfaces, media and notification controls among them</span>.</p>
+    <p class="section-body">Alignment does not mean becoming Chromium. Edge can't ship upstream's interface literally — it has its own components, its own tokens and its own brand — so each one has to be <em>edgeified</em>: adopt upstream's structure and behaviour, then rebuild the surface out of Edge's own system. Same shape underneath, so the patch is thin and cheap to carry; Edge's own appearance on top, so nothing about it reads as borrowed.</p>
+    <p class="section-body">In practice that means digging into what upstream actually does, working through with the PM which parts of Edge's version were load-bearing and which were habit, resolving the difference into Edge's components, and handing the result to engineering. The judgment is in the middle step. Most of what looked like a deliberate Edge decision turned out to be an accident nobody had revisited.</p>
+    <div class="dg">
+      <p class="dg-h">What "edgeify" means</p>
+      <div class="anat">
+        <div class="anat-c">
+          <p class="anat-k">Take</p>
+          <p class="anat-n">Upstream's structure</p>
+          <p class="anat-b">The behaviour, the states, the anatomy of the feature as Chromium already ships it.</p>
+        </div>
+        <p class="anat-op">+</p>
+        <div class="anat-c">
+          <p class="anat-k">Rebuild in</p>
+          <p class="anat-n">Edge's components</p>
+          <p class="anat-b">The surface drawn from our own components and tokens, so it reads as Edge rather than as Chromium.</p>
+        </div>
+        <p class="anat-op">=</p>
+        <div class="anat-c" data-out>
+          <p class="anat-k">Result</p>
+          <p class="anat-n">A thin patch</p>
+          <p class="anat-b">Same shape underneath, our appearance on top. The difference rides on theming instead of forked behaviour.</p>
+        </div>
+      </div>
+      <div class="anat-cost">
+        <p><b>Diverged behaviour</b> — re-applied and re-tested every release, forever</p>
+        <p><b>Diverged surface</b> — carried by the token layer, at no ongoing cost</p>
+      </div>
+    </div>
+
+    <div class="cards3">
+      <div class="tcard">
+        <p class="tcard-k">Align</p>
+        <p class="tcard-n">Nothing is at stake</p>
+        <p class="tcard-b">Take upstream's behaviour as it comes. No patch, no ongoing maintenance, and behaviour consistent with every other Chromium browser.</p>
+      </div>
+      <div class="tcard">
+        <p class="tcard-k">Edgeify</p>
+        <p class="tcard-n">Upstream's structure, Edge's surface</p>
+        <p class="tcard-b">The usual answer. Keep upstream's shape and rebuild the surface from Edge's components and tokens, so the difference rides on theming rather than on forked behaviour.</p>
+      </div>
+      <div class="tcard">
+        <p class="tcard-k">Diverge</p>
+        <p class="tcard-n">The difference is the point</p>
+        <p class="tcard-b">Keep the divergence, knowingly, and only where the Edge behaviour is something a user would notice and choose Edge for. Rare, and it has to be argued for.</p>
+      </div>
+    </div>
+    <div class="case">
+      <p class="case-k">One case in detail</p>
+      <p class="section-body"><span class="fn-on">Edge's performance detector</span><span class="fn-off">One of Edge's performance surfaces</span> watches for conditions that might be slowing the browser down and badges the toolbar to recommend an action. It arrived as part of a wider Edge-only hub gathering the performance and safety features in one place; that hub underperformed and was later folded down into a single performance surface.</p>
+      <div class="stats">
+        <div>
+          <p class="stat-n">&lt;1%</p>
+          <p class="stat-b">Clickthrough among monthly active users — effectively nobody was acting on it.</p>
+        </div>
+        <div>
+          <p class="stat-n">Badges ≫ actions</p>
+          <p class="stat-b">A large gap between how often the badge appeared and how often anyone did anything about it.</p>
+        </div>
+      </div>
+      <p class="section-body">That gap says something more specific than "low usage." Two things were wrong at once. The interface wasn't persuading anyone, and the heuristic behind it was firing when there was nothing worth acting on. A badge that is usually wrong teaches people to ignore it — after which it fails even in the cases where it's right.</p>
+      <p class="section-body">Which made the decision straightforward. Redesigning the badge would have made an untrusted signal more prominent, not more useful, and Edge would have kept paying to maintain its own version of it either way. Aligning to upstream removed the patch, put the feature on a pattern maintained by everyone, and left the underlying heuristic as the problem it actually was.</p>
+    </div>
+    <p class="section-body" style="margin-top: var(--space-4)">Designers are not usually the ones raising maintenance cost in a review. Being able to say what a difference costs the team every release, rather than only what it looks like, is what made these conversations short.</p>
+  </section>
+
+  <div class="chapter" data-ch="{{ chapterStyle }}" data-n="03"><h2 class="chapter-t">Spreading ownership</h2></div>
+
+  <section class="panel" id="illustration" data-rail-target>
+    <p class="section-title">What nobody owned</p>
+    <p class="section-body">Illustrations were the one part of the interface with no system at all. Every one was a one-off, and the creative director drew all of them — ownership concentrated in a single person rather than spread across a system.</p>
+    <p class="section-body">That produced two problems at once. The set was inconsistent, because nothing defined the frame or the style, and the creative director was a bottleneck on every feature that needed an image.</p>
+    <p class="section-body">I wrote a guideline that gives designers a shared frame and style to work in, so they can produce a usable baseline themselves and hand it to the creative director to refine rather than originate. It changed the shape of the request: designers now bring a draft and ask for an opinion rather than asking for an illustration. That moved the creative director from producing every one to editing them, and it gave the set a common foundation for the first time. Edge's product designers use it, and so do the marketing teams — it has since been used as the basis for marketing video work as well as in-product illustration.</p>
+    <figure class="inline-fig">
+      <image-slot id="ec-illo" shape="rect" placeholder="Drop the illustration guideline — the frame and style spec"></image-slot>
+      <figcaption>The guideline: a shared frame and style, so a baseline can come from any designer.</figcaption>
+    </figure>
+  </section>
+
+  <div class="chapter" data-ch="{{ chapterStyle }}" data-n="04"><h2 class="chapter-t">Outcome</h2></div>
+
+  <section class="panel" id="reflection" data-rail-target>
+    <p class="section-title">Reflection</p>
+    <p class="section-body">The useful contribution was rarely the drawing. It was deciding what should be a component and what shouldn't, which differences from upstream were worth their permanent cost, and what other people should be able to make without me.</p>
+    <p class="section-body">The argument that carried the alignment work was never a visual one. A difference that nobody could justify is engineering time spent every release on keeping it alive — time that buys nothing and could be buying features instead. Framing it that way is what made a design proposal legible to the people who fund the work.</p>
+    <p class="section-body">Design systems work is usually described as adding — more components, more coverage, more documentation. Most of what was valuable here was the opposite: removing a difference that nobody could justify, retiring a pattern, taking work off one person's desk. A smaller thing to maintain is worth more than a bigger thing to admire.</p>
+  </section>
+
+  <a class="next" href="./crafting-inc.dc.html">
+    <div class="next-body">
+      <p class="next-label">Next project</p>
+      <h2 class="next-title">Crafting Sandbox</h2>
+      <p class="next-desc">A single-machine interface for cloud dev environments, without disrupting existing multi-service users.</p>
+      <span class="next-go">Read it →</span>
+    </div>
+    <figure class="next-fig"><div class="craft-thumb"><img src="../assets/craft-laptop.png" alt="The Crafting Sandbox dashboard"></div></figure>
+  </a>
+
+</div>
+<div class="wrap"><footer class="credits">
+  <p class="cred-name">Elizabeth Lin</p>
+  <div class="cred-links"><a href="mailto:lizlin.lin@gmail.com">lizlin.lin@gmail.com</a><a href="https://www.linkedin.com/in/e34lin/" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+  <p class="cred-year">© 2026</p>
+</footer></div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;featureNames&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;chapterStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;number&quot;,&quot;options&quot;:[&quot;band&quot;,&quot;tint&quot;,&quot;rule&quot;,&quot;large&quot;,&quot;eyebrow&quot;,&quot;number&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Section breaks&quot;},&quot;titleStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;ticked&quot;,&quot;options&quot;:[&quot;plain&quot;,&quot;caps&quot;,&quot;accent&quot;,&quot;ticked&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Section breaks&quot;},&quot;dividerStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;hairline&quot;,&quot;options&quot;:[&quot;hairline&quot;,&quot;none&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Section breaks&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      chapterStyle: this.props.chapterStyle ?? 'number',
+      titleStyle: this.props.titleStyle ?? 'ticked',
+      dividerStyle: this.props.dividerStyle ?? 'hairline',
+      featureNames: (this.props.featureNames ?? false) ? 'on' : 'off',
+    };
+  }
+  componentDidMount() {
+    const io = window.IntersectionObserver && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: 0.06 })
+      : null;
+    this.revealTargets = [...document.querySelectorAll('.panel, .chapter, .next, .hero-figure')];
+    if (io) { this.revealTargets.forEach(el => { el.classList.add('reveal'); io.observe(el); }); }
+    this.io = io;
+    this.revealFailsafe = setTimeout(() => { this.revealTargets.forEach(el => el.classList.add('is-in')); }, 2000);
+    const bar = document.querySelector('.progress span');
+    if (bar) {
+      this.onProg = () => {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (h > 0 ? Math.min(100, Math.max(0, (window.scrollY / h) * 100)) : 0) + '%';
+      };
+      window.addEventListener('scroll', this.onProg, { passive: true });
+      window.addEventListener('resize', this.onProg);
+      this.onProg();
+    }
+
+    const links = [...document.querySelectorAll('.rail a')];
+    const targets = [...document.querySelectorAll('[data-rail-target]')];
+    if (!links.length || !targets.length) return;
+    const mark = () => {
+      let best = null, bestTop = -Infinity;
+      for (const t of targets) {
+        const top = t.getBoundingClientRect().top - 100;
+        if (top <= 0 && top > bestTop) { bestTop = top; best = t; }
+      }
+      if (!best) best = targets[0];
+      for (const a of links) {
+        if (a.getAttribute('href') === '#' + best.id) a.setAttribute('data-active', '');
+        else a.removeAttribute('data-active');
+      }
+    };
+    let queued = false;
+    this.onScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => { queued = false; mark(); });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onScroll);
+    mark();
+  }
+  componentWillUnmount() {
+    if (this.revealFailsafe) clearTimeout(this.revealFailsafe);
+    if (this.io) this.io.disconnect();
+    if (this.onProg) { window.removeEventListener('scroll', this.onProg); window.removeEventListener('resize', this.onProg); }
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onScroll);
+  }
+}
+
+</script>
+</body>
+</html>

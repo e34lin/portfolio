@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="../_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/styles.css">
+<script src="../_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<title>Crafting Sandbox — Elizabeth Lin</title>
+<style>
+/* journey phase colours — as drawn in Figma */
+[data-jc="original"] { --j1: rgb(33,150,83); --j2: rgb(242,153,74); --j3: rgb(235,87,87); --j4: rgb(47,128,237); --j5: rgb(33,150,83); --j5a: rgb(33,150,83); --j5b: rgb(33,150,83);
+  --t1: rgb(20,94,52); --t2: rgb(140,78,18); --t3: rgb(172,42,42); --t4: rgb(28,84,164); --t5: rgb(20,94,52); }
+/* mono — the design system's single accent, stepped through its ramp */
+[data-jc="mono"] { --j1: var(--color-accent-200); --j2: var(--color-accent-300); --j3: var(--color-accent-400); --j4: var(--color-accent); --j5: var(--color-accent-700); --j5a: var(--color-accent); --j5b: var(--color-accent-700);
+  --t1: var(--color-accent-700); --t2: var(--color-accent-700); --t3: var(--color-accent-700); --t4: var(--color-accent-700); --t5: var(--color-accent-700); }
+/* focus — the shared path recedes, the decision and its two outcomes carry the accent */
+[data-jc="focus"] { --j1: var(--color-neutral-400); --j2: var(--color-neutral-400); --j3: var(--color-neutral-400); --j4: var(--color-accent); --j5: var(--color-accent-700); --j5a: var(--color-accent); --j5b: var(--color-accent-700);
+  --t1: var(--color-neutral-800); --t2: var(--color-neutral-800); --t3: var(--color-neutral-800); --t4: var(--color-accent-700); --t5: var(--color-accent-700); }
+:root { --display: "Instrument Serif", Georgia, serif; --leading: 26px; --edge: clamp(20px, 5vw, 72px); --measure: 58ch; --label-ink: color-mix(in srgb, var(--color-text) 70%, transparent); }
+body { margin: 0; text-wrap: pretty; }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 var(--edge); }
+.nav { padding-inline: max(var(--edge), calc((100% - 1160px) / 2 + var(--edge))); position: sticky; top: 0; z-index: 10; }
+.nav a.nav-brand { font-size: 18px; font-family: var(--font-heading); font-weight: var(--font-heading-weight); color: var(--color-text); }
+.nav a.nav-brand:hover { color: var(--color-accent); }
+.backlink { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; letter-spacing: 0.01em; text-decoration: none; color: color-mix(in srgb, var(--color-text) 76%, transparent); padding: calc(1.1 * var(--leading)) 0 0; }
+.backlink:hover { color: var(--color-accent); }
+.backlink + .header { padding-top: calc(1.1 * var(--leading)); }
+.backlink span { font-size: 15px; line-height: 1; }
+.kicker { display: block; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 var(--space-3); }
+.header { padding: calc(2.4 * var(--leading)) 0 calc(1.8 * var(--leading)); }
+.display { font-family: var(--display); font-weight: 400; font-size: clamp(32px, 4.6vw, 52px); line-height: 1.04; letter-spacing: -0.015em; margin: 0; max-width: 20ch; }
+.hero-q { font-size: 18px; line-height: 1.55; max-width: 54ch; margin: var(--space-4) 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.meta-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); row-gap: var(--space-4); column-gap: var(--space-6); margin-top: var(--space-6); align-items: start; }
+.meta-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--label-ink); margin: 0 0 4px; }
+.meta-value { font-size: 15px; margin: 0; font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+.hero-figure { margin: 0 0 calc(0.6 * var(--leading)); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
+.hero-figure image-slot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+
+.laptop { margin: 0 0 calc(0.6 * var(--leading)); padding: 0 6% 24px; display: flex; flex-direction: column; align-items: center; }
+.laptop-lid { width: 100%; background: linear-gradient(180deg, #26272d 0%, #1d1e23 100%); border-radius: clamp(14px, 1.9vw, 26px); padding: 1.7%; box-shadow: var(--shadow-lg); position: relative; }
+.laptop-screen { border-radius: clamp(6px, 0.75vw, 12px); overflow: hidden; background: #f9f9fc; display: flex; flex-direction: column; }
+.laptop-chrome { flex: none; width: 100%; aspect-ratio: 1104 / 36; background: #eceef1; border-bottom: 1px solid #dcdee3; display: flex; align-items: center; gap: clamp(4px, 0.55vw, 9px); padding: 0 clamp(7px, 0.95vw, 15px); box-sizing: border-box; }
+.laptop-chrome span { width: clamp(6px, 0.8vw, 13px); aspect-ratio: 1; border-radius: 50%; }
+.laptop-screen img { display: block; width: 100%; height: auto; flex: none; aspect-ratio: 1038 / 721; object-fit: contain; }
+.laptop-cap { font-size: 13px; line-height: 1.45; margin-top: 14px; color: var(--label-ink); text-align: center; }
+
+.win { background: linear-gradient(180deg, #26272d 0%, #1d1e23 100%); border-radius: 12px; padding: 6px; }
+.win-screen { border-radius: 6px; overflow: hidden; background: #f9f9fc; display: flex; flex-direction: column; }
+.win-chrome { flex: none; width: 100%; aspect-ratio: 1104 / 36; background: #eceef1; border-bottom: 1px solid #dcdee3; display: flex; align-items: center; gap: 3px; padding: 0 6px; box-sizing: border-box; }
+.win-chrome span { width: 5px; aspect-ratio: 1; border-radius: 50%; }
+.win img { display: block; width: 100%; height: auto; flex: none; aspect-ratio: 972 / 596; object-fit: contain; }
+.inline-fig .win { border-radius: 20px; padding: 11px; }
+.inline-fig .win-screen { border-radius: 10px; }
+.inline-fig .win-chrome { gap: 6px; padding: 0 11px; }
+.inline-fig .win-chrome span { width: 9px; }
+@media (max-width: 640px) { .laptop { padding: 0 0 16px; } }
+
+[data-div="none"] .panel { border-top-color: transparent; }
+.panel { display: grid; grid-template-columns: minmax(0,190px) minmax(0,1fr); gap: var(--space-3) clamp(24px,4vw,64px); align-items: start; padding: calc(1.7 * var(--leading)) 0; border-top: 1px solid var(--color-divider); }
+.panel > .section-title { grid-column: 1; grid-row: 1; }
+.panel > :not(.section-title) { grid-column: 2; }
+.panel.breathe { padding-top: calc(2.4 * var(--leading)); padding-bottom: calc(2.4 * var(--leading)); }
+.section-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 17.5px; line-height: 1.3; letter-spacing: -0.005em; margin: 0; color: var(--color-text); }
+[data-st="caps"] .section-title { font-size: 12.5px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--label-ink); }
+[data-st="accent"] .section-title { color: var(--color-accent-700); }
+[data-st="ticked"] .section-title { position: relative; padding-left: 16px; }
+[data-st="ticked"] .section-title::before { content: ""; position: absolute; left: 0; top: 0.42em; width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); }
+.section-body { font-size: 16px; line-height: 1.6; max-width: var(--measure); margin: 0; color: color-mix(in srgb, var(--color-text) 82%, transparent); }
+.section-body + .section-body { margin-top: var(--space-3); }
+.chapter { display: flex; align-items: center; gap: clamp(14px,2vw,22px); margin: calc(2.6 * var(--leading)) 0 0; }
+/* band — solid accent fill */
+.chapter[data-ch="band"] { padding: 15px clamp(20px,2.4vw,28px); border-radius: var(--radius-md); background: var(--color-accent); color: var(--color-bg); box-shadow: var(--shadow-sm); }
+/* tint — pale accent panel, dark text */
+.chapter[data-ch="tint"] { padding: 15px clamp(20px,2.4vw,28px); border-radius: var(--radius-md); background: var(--color-accent-100); border: 1px solid var(--color-accent-300); color: var(--color-accent-700); }
+/* rule — accent hairline above, heading below */
+.chapter[data-ch="rule"] { display: block; padding-top: calc(1.1 * var(--leading)); border-top: 1px solid var(--color-accent); color: var(--color-accent-700); }
+/* eyebrow — small uppercase marker, no competing heading */
+.chapter[data-ch="eyebrow"] { display: block; padding-top: calc(1.1 * var(--leading)); border-top: 1px solid var(--color-divider); }
+.chapter[data-ch="eyebrow"] .chapter-t { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent); }
+/* number — big outlined step count beside the name */
+.chapter[data-ch="number"] { padding-top: calc(1.1 * var(--leading)); border-top: 1px solid var(--color-divider); }
+/* large — type only, no rule and no fill */
+.chapter[data-ch="large"] { display: block; padding-top: calc(1.4 * var(--leading)); }
+.chapter[data-ch="large"] .chapter-t { font-size: clamp(38px,5vw,60px); line-height: 1; letter-spacing: -0.03em; }
+
+/* panel-less variants get no separation from a fill, so the type must carry it */
+.chapter[data-ch="rule"] .chapter-t, .chapter[data-ch="number"] .chapter-t { font-size: clamp(28px,3.4vw,40px); line-height: 1.05; letter-spacing: -0.025em; }
+.chapter[data-ch="number"] { display: block; }
+.chapter-t { font-family: var(--display); font-weight: 400; font-size: clamp(19px,2.1vw,24px); line-height: 1.2; letter-spacing: -0.01em; margin: 0; }
+.chapter + .panel { border-top: 0; padding-top: calc(1.5 * var(--leading)); }
+[data-rail-target] { scroll-margin-top: 90px; }
+
+.list { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-3); max-width: 68ch; }
+.list li { font-size: 16px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 82%, transparent); padding-left: 18px; position: relative; }
+.list li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); }
+.list li strong { color: var(--color-text); font-weight: 600; }
+
+.cards2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--space-4) clamp(20px,3vw,32px); margin-top: var(--space-4); }
+.cards3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: clamp(20px,2.6vw,32px); margin-top: var(--space-4); }
+.tcard { padding: 18px 20px; border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); }
+.tcard-n { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 15px; margin: 0 0 6px; }
+.tcard-b { font-size: 14.5px; line-height: 1.55; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.plain-h { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 15px; margin: 0 0 8px; }
+.plain-b { font-size: 14.5px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-text) 80%, transparent); }
+
+.solution { margin-top: var(--space-4); padding: 22px 24px; border-radius: var(--radius-md); background: var(--color-accent); color: var(--color-bg); }
+.solution-h { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 8px; opacity: 0.85; }
+.solution-t { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 19px; line-height: 1.25; margin: 0 0 8px; }
+.solution-b { font-size: 15.5px; line-height: 1.5; margin: 0; opacity: 0.92; }
+.procon { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px,2.4vw,32px); margin-top: var(--space-4); }
+.procon dt { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 6px; }
+.procon dd { margin: 0; font-size: 15px; line-height: 1.55; color: color-mix(in srgb, var(--color-text) 80%, transparent); }
+.procon .pro dt { color: var(--color-accent-700); }
+.procon .con dt { color: var(--label-ink); }
+
+.jscroll { margin-top: calc(1.2 * var(--leading)); overflow-x: auto; overflow-y: hidden; }
+.panel > .jscroll { grid-column: 1 / -1; }
+.jmap { position: relative; width: 100%; min-width: 880px; aspect-ratio: 1200 / 400; }
+.jmap svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.jlabel { position: absolute; transform: translateX(-50%); font-family: var(--font-heading); font-weight: 600; font-size: 13px; line-height: 1.3; letter-spacing: -0.01em; margin: 0; color: color-mix(in srgb, var(--color-text) 88%, transparent); width: max-content; max-width: 116px; text-align: center; }
+.jphase { position: absolute; transform: translateX(-50%); font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 11.5px; letter-spacing: 0.09em; text-transform: uppercase; margin: 0; width: max-content; }
+
+.wfcap { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--color-accent); margin: calc(1.4 * var(--leading)) 0 0; }
+.wfcap-sub { font-size: 14px; line-height: 1.55; margin: 6px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent); max-width: 60ch; }
+.panel > .wfcap, .panel > .wfcap-sub, .panel > .ftree { grid-column: 1 / -1; }
+.sbscroll { margin-top: var(--space-4); overflow-x: auto; overflow-y: hidden; }
+.panel > .sbscroll { grid-column: 1 / -1; }
+.sbmap { position: relative; width: 1400px; height: 560px; }
+.sbmap svg { position: absolute; inset: 0; }
+.sbn { position: absolute; height: 52px; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; text-align: center; box-sizing: border-box; padding: 6px 12px; margin: 0; border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 13px; line-height: 1.25; }
+.sbl-parent { font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+.sbn-root { background: var(--color-accent); border-color: transparent; color: var(--color-bg); font-size: 14.5px; }
+.sbn-path { background: var(--color-accent-100); border-color: var(--color-accent-300); color: var(--color-accent-700); }
+/* style encodes level: L0 accent · L1 tint · L2 glass · L3+ outline.
+   a branching leaf differs only in label weight, so its row stays uniform. */
+.sbl { position: absolute; height: 52px; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; text-align: center; box-sizing: border-box; padding: 6px 10px; margin: 0; border-radius: var(--radius-sm); background: transparent; border: 1px solid var(--color-divider); font-size: 12.5px; line-height: 1.25; color: color-mix(in srgb, var(--color-text) 82%, transparent); }
+.wf { --wg: clamp(12px,1.6vw,24px); margin-top: calc(1.2 * var(--leading)); display: flex; flex-direction: column; align-items: center; width: 100%; }
+.panel > .wf { grid-column: 1 / -1; }
+.wfn { position: relative; margin: 0; padding: 12px 18px; border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 14px; line-height: 1.3; text-align: center; }
+.wfn small { display: block; font-family: var(--font-body); font-weight: 400; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 5px; }
+.wfn-root { background: var(--color-accent); border-color: transparent; color: var(--color-bg); padding: 14px 26px; font-size: 15px; }
+.wfline { width: 1px; height: 26px; background: var(--color-divider); flex-shrink: 0; }
+.wfrow { position: relative; display: grid; gap: var(--wg); width: 100%; padding-top: 28px; }
+.wfrow::before { content: ""; position: absolute; top: 0; height: 1px; background: var(--color-divider); }
+.wfrow-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.wfrow-3::before { left: calc((100% - 2 * var(--wg)) / 6); right: calc((100% - 2 * var(--wg)) / 6); }
+.wfrow-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.wfrow-2::before { left: calc((100% - var(--wg)) / 4); right: calc((100% - var(--wg)) / 4); }
+.wfb { position: relative; display: flex; flex-direction: column; align-items: center; }
+.wfb::before { content: ""; position: absolute; top: -28px; left: 50%; width: 1px; height: 28px; background: var(--color-divider); }
+.wfb > .wfn { align-self: stretch; }
+@media (max-width: 640px) {
+  .wfrow-3 { grid-template-columns: 1fr; }
+  .wfrow-3::before { display: none; }
+  .wfrow-3 > .wfb::before { display: none; }
+  .wfrow-3 { row-gap: 14px; padding-top: 14px; }
+}
+.comp-wide { grid-column: auto; order: 1; }
+.comps { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: clamp(18px,2.4vw,28px); margin-top: var(--space-4); }
+.panel > .comps { grid-column: 1 / -1; }
+.inline-fig { margin: var(--space-4) 0 0; }
+.inline-fig { overflow: hidden; border-radius: var(--radius-md); }
+.inline-fig image-slot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; transition: transform 420ms cubic-bezier(.2,.6,.2,1); }
+.inline-fig:hover image-slot { transform: scale(1.02); }
+.inline-fig figcaption { font-size: 13px; line-height: 1.45; margin-top: 10px; color: var(--label-ink); }
+.comp figure { margin: 0 0 12px; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+.comp figure:has(.win), .comp figure.states { background: var(--glass-bg, rgba(255,255,255,0.55)); backdrop-filter: var(--glass-blur); border: 1px solid color-mix(in srgb, var(--glass-border, #fff) 55%, transparent); border-radius: var(--radius-md); padding: clamp(20px, 2.6vw, 32px); overflow: visible; box-shadow: var(--shadow-sm); aspect-ratio: 385 / 263; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; }
+.comp .win { box-sizing: border-box; box-shadow: var(--shadow-md); }
+.comp .win-screen { }
+.comp image-slot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; }
+.states { align-items: center; gap: 10px; }
+.states img.state { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--shadow-md); background: #fff; }
+.state-cap { font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--label-ink); margin: 0 0 8px; }
+.pivot { position: relative; width: 100%; aspect-ratio: 689 / 372; }
+.pivot img { position: absolute; inset: 0 0 auto; transition: opacity 620ms ease; }
+.pivot img.off { opacity: 0; }
+.pivot-bar { display: flex; align-items: center; gap: 10px; width: 100%; }
+.pivot-key { font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--label-ink); transition: color 300ms ease, opacity 300ms ease; margin: 0; }
+.pivot-key.on { opacity: 1; color: var(--color-accent-700); }
+.pivot-arrow { width: 26px; height: 1px; background: currentColor; opacity: 0.3; }
+.comp-n { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 5px; }
+.comp-b { font-size: 14.5px; line-height: 1.55; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+
+.cba { margin: 0; display: grid; gap: var(--space-4); }
+.panel > .cba { grid-column: 1 / -1; }
+.cba-tabs { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.cba-tab { background: none; border: 0; border-bottom: 2px solid transparent; padding: 0 0 7px; cursor: pointer; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 15px; color: var(--color-text); transition: opacity 220ms ease; }
+.cba-tab:hover { opacity: 1 !important; }
+.cba-tab:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.cba-stage { position: relative; user-select: none; }
+.cba-stage .win { box-sizing: border-box; box-shadow: var(--shadow-md); border-radius: 20px; padding: 11px; }
+.cba-stage .win-screen { border-radius: 10px; }
+.cba-stage .win-chrome { gap: 6px; padding: 0 11px; }
+.cba-stage .win-chrome span { width: 9px; }
+.cba-view { position: relative; width: 100%; aspect-ratio: 1600 / 978; overflow: hidden; background: #f9f9fc; }
+.cba-view img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.cba-line { position: absolute; top: 0; bottom: 0; z-index: 2; width: 2px; background: var(--color-accent); transform: translateX(-1px); pointer-events: none; }
+.cba-knob { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 36px; height: 36px; border-radius: 50%; background: var(--color-accent); color: #fff; display: grid; place-items: center; box-shadow: var(--shadow-md); }
+.cba-range { position: absolute; inset: 0; z-index: 5; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; touch-action: none; }
+.cba-range:focus-visible ~ .cba-line .cba-knob { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.cba-tags { position: absolute; bottom: 12px; left: 12px; right: 12px; z-index: 4; display: flex; justify-content: space-between; pointer-events: none; }
+.cba-tag { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; padding: 4px 8px; border-radius: var(--radius-sm); background: color-mix(in srgb, var(--color-text) 80%, transparent); color: #fff; }
+.cba-note { font-size: 14.5px; line-height: 1.55; margin: 0; max-width: var(--measure); color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.cwt { margin: var(--space-5) 0 0; display: grid; gap: var(--space-4); }
+.panel > .cwt { grid-column: 1 / -1; }
+.cwt-stage { position: relative; user-select: none; }
+.cwt-stage .win { box-sizing: border-box; box-shadow: var(--shadow-md); border-radius: 20px; padding: 11px; }
+.cwt-stage .win-screen { border-radius: 10px; }
+.cwt-stage .win-chrome { gap: 6px; padding: 0 11px; }
+.cwt-stage .win-chrome span { width: 9px; }
+.cwt-view { position: relative; width: 100%; aspect-ratio: 1440 / 810; overflow: hidden; background: #f9f9fc; }
+.cwt-view .cwt-page { position: absolute; left: 0; width: 100%; height: auto; aspect-ratio: auto; object-fit: unset; display: block; transition: top 1500ms cubic-bezier(.3,.6,.2,1), opacity 260ms ease; }
+.cwt-dim { position: absolute; inset: 0; background: rgba(20,22,28,0.38); z-index: 2; transition: opacity 240ms ease; pointer-events: none; }
+.cwt-view .cwt-dlg { position: absolute; left: 50%; height: auto; aspect-ratio: auto; object-fit: unset; display: block; z-index: 3; transition: opacity 240ms ease; }
+.cwt-cursor { position: absolute; z-index: 6; width: 2.2%; transform: translate(-18%,-10%) scale(var(--tap, 1)); transition: left 640ms cubic-bezier(.3,.7,.2,1), top 640ms cubic-bezier(.3,.7,.2,1), transform 140ms ease, opacity 300ms ease; pointer-events: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.35)); }
+.cwt-progress { width: 100%; height: 3px; border-radius: 2px; background: color-mix(in srgb, var(--color-text) 10%, transparent); overflow: hidden; margin-top: -8px; }
+.cwt-progress span { display: block; height: 100%; background: var(--color-accent); transition: width 240ms linear; }
+.cwt-steps { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 2px 24px; }
+.cwt-step { display: grid; grid-template-columns: 30px minmax(0,1fr); gap: 1px 12px; text-align: left; background: none; border: 0; border-left: 1px solid var(--color-divider); padding: 10px 0 12px 14px; cursor: pointer; transition: opacity 240ms ease; font: inherit; color: inherit; }
+.cwt-step:hover { opacity: 1 !important; }
+.cwt-step:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.cwt-n { font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.06em; color: var(--color-accent); grid-row: 1; }
+.cwt-l { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 15px; grid-row: 1; }
+.cwt-d { grid-column: 2; font-size: 13.5px; line-height: 1.5; color: var(--label-ink); }
+.cwt-ctl { display: flex; align-items: center; gap: 12px; }
+.cwt-play { font: inherit; font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: var(--radius-md); border: 1px solid color-mix(in srgb, var(--glass-border) 60%, transparent); background: var(--glass-bg); color: var(--color-text); cursor: pointer; }
+.cwt-play:hover { background: var(--color-accent-100); }
+.cwt-play:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.cwt-note { font-size: 13px; line-height: 1.5; margin: 0; color: var(--label-ink); }
+@media (max-width: 700px) { .cwt-steps { grid-template-columns: 1fr; } }
+.finals { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(16px,2vw,24px); margin: 0; }
+.panel > .finals { grid-column: 1 / -1; }
+.finals figure { margin: 0; display: flex; flex-direction: column; }
+.finals image-slot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; }
+.finals figcaption { font-size: 13px; line-height: 1.45; margin-top: 10px; color: var(--label-ink); }
+
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px,3vw,40px); margin-top: var(--space-4); }
+.stat-fig { display: flex; align-items: baseline; gap: 10px; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(34px,4vw,50px); line-height: 1; letter-spacing: -0.025em; color: var(--color-accent); margin: 0 0 10px; }
+.stat-arrow { font-size: 0.44em; letter-spacing: 0; }
+.stat-n { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 15px; margin: 0 0 6px; }
+.stat-b { font-size: 14.5px; line-height: 1.55; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.quotes { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px,2.2vw,28px); margin-top: calc(1.4 * var(--leading)); padding-top: calc(1.2 * var(--leading)); border-top: 1px solid var(--color-divider); }
+.quote-bubble { position: relative; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); box-shadow: var(--shadow-sm); border-radius: var(--radius-lg); border-bottom-left-radius: var(--radius-sm); padding: 22px 24px; font-size: 15px; line-height: 1.55; color: var(--color-text); margin: 0; }
+.quote-bubble::after { content: ""; position: absolute; left: 20px; bottom: -7px; width: 13px; height: 13px; background: color-mix(in srgb, #ffffff 58%, var(--color-bg)); border-right: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent); box-shadow: 2px 2px 6px -1px color-mix(in srgb, #2d2b2b 10%, transparent); transform: rotate(45deg); border-bottom-right-radius: 2px; }
+.quote-mark { display: block; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 26px; line-height: 1; color: var(--color-accent); margin: 0 0 8px; }
+
+.rail { display: none; }
+@media (min-width: 1560px) {
+  .rail { display: block; position: fixed; top: 50%; transform: translateY(-50%); left: calc((100vw - 1160px) / 2 - 188px); width: 164px; z-index: 5; }
+  .rail-grp { margin: 0 0 18px; }
+  .rail-grp:last-child { margin-bottom: 0; }
+  .rail-h { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 7px; font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+  .rail a { display: block; font-size: 12px; line-height: 1.45; padding: 3px 0 3px 14px; text-decoration: none; color: var(--label-ink); border-left: 1px solid var(--color-divider); transition: color 120ms ease, border-color 120ms ease; }
+  .rail a:hover { color: var(--color-text); border-left-color: var(--color-accent-300); }
+  .rail a[data-active] { color: var(--color-text); border-left-color: var(--color-accent); }
+}
+
+.next { margin: 0 0 calc(2 * var(--leading)); padding: clamp(28px,3vw,44px); border-radius: var(--radius-lg); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3) clamp(24px,3vw,40px); text-decoration: none; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); box-shadow: var(--shadow-sm); color: var(--color-text); transition: box-shadow 200ms ease, transform 200ms ease; }
+.next:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.next-body { max-width: 46ch; }
+.next-desc { font-size: 15px; line-height: 1.55; margin: 0 0 10px; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.next-go { font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); }
+.next-fig { margin: 0; width: clamp(140px, 22%, 220px); flex: none; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+.next-fig image-slot { display: block; width: 100%; aspect-ratio: 4/3; }
+.nasym-thumb { position: relative; overflow: hidden; width: 100%; background-image: radial-gradient(circle at 50% 42%, rgba(74,95,214,0.10), rgba(74,95,214,0) 62%); aspect-ratio: 4/3; background: #f6f6f9; }
+.nasym-thumb-phone { position: absolute; height: 150%; width: auto; aspect-ratio: 440 / 916; left: 50%; top: 7%; transform: translateX(-50%); filter: drop-shadow(0 3px 8px rgba(20,22,28,0.10)) drop-shadow(0 18px 34px rgba(20,22,28,0.22)); }
+@media (max-width: 700px) { .next-fig { display: none; } }
+.next { transition: box-shadow 200ms ease, transform 200ms ease; }
+.next:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.next-label { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 6px; opacity: 0.85; }
+.next-title { font-family: var(--display); font-weight: 400; font-size: clamp(24px,3vw,34px); margin: 0; letter-spacing: -0.01em; }
+footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-3) var(--space-6); padding: calc(1.2 * var(--leading)) 0 calc(2 * var(--leading)); margin-top: calc(0.6 * var(--leading)); border-top: 1px solid var(--color-divider); font-size: 13px; color: var(--label-ink); }.cred-name { font-family: var(--display); font-weight: 400; font-size: 19px; line-height: 1; color: var(--color-text); margin: 0; }
+.cred-links { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.cred-links a { color: var(--label-ink); text-decoration: none; border-bottom: 1px solid var(--color-divider); padding-bottom: 2px; }
+.cred-links a:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+.cred-year { margin: 0; }
+
+@media (max-width: 800px) {
+  .meta-row { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .cards2, .procon, .comps, .finals, .stats, .quotes { grid-template-columns: 1fr; }
+  .journey { grid-template-columns: 1fr 1fr; row-gap: 16px; }
+}
+.reveal { opacity: 0; transform: translateY(8px); transition: opacity 300ms ease, transform 300ms cubic-bezier(.2,.6,.2,1); }
+.reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal, .reveal.is-in { opacity: 1; transform: none; transition: none; } }
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 20; pointer-events: none; }
+.progress span { display: block; height: 100%; width: 0%; background: var(--color-accent); transition: width 90ms linear; }
+</style>
+</helmet>
+<div data-st="{{ titleStyle }}" data-div="{{ dividerStyle }}" data-jc="{{ journeyColor }}">
+<div class="progress"><span></span></div>
+<nav class="nav">
+  <a href="../index.dc.html" class="nav-brand" style="text-decoration:none;">Elizabeth Lin</a>
+  <a href="../index.dc.html#work">Work</a>
+  <a href="../about.dc.html">About</a>
+  <a href="mailto:lizlin.lin@gmail.com"><button type="button" class="btn btn-primary">Get in touch</button></a>
+</nav>
+<nav class="rail" aria-label="Sections">
+  <div class="rail-grp">
+    <p class="rail-h">Overview</p>
+    <a href="#background">Background</a>
+  </div>
+  <div class="rail-grp">
+    <p class="rail-h">Research</p>
+    <a href="#problem">The problem</a>
+    <a href="#discovery">Problem discovery</a>
+    <a href="#interviews">User interviews</a>
+  </div>
+  <div class="rail-grp">
+    <p class="rail-h">Design</p>
+    <a href="#tradeoffs">Trade-offs</a>
+    <a href="#solution">Proposed solution</a>
+    <a href="#principles">Design principles</a>
+    <a href="#journey">User journey</a>
+    <a href="#workspaceflow">New workspace flow</a>
+    <a href="#components">Components to change</a>
+  </div>
+  <div class="rail-grp">
+    <p class="rail-h">Outcome</p>
+    <a href="#final">Final design</a>
+    <a href="#results">Results</a>
+  </div>
+</nav>
+<div class="wrap">
+
+  <a class="backlink" href="../index.dc.html#work"><span>←</span>All work</a>
+
+  <header class="header">
+    <span class="kicker">Crafting Sandbox</span>
+    <h1 class="display">A single-machine interface for cloud dev environments</h1>
+    <p class="hero-q">How can we develop a solution for single machine developers without disrupting our current multi-service customer base?</p>
+    <div class="meta-row">
+      <div><p class="meta-label">Role</p><p class="meta-value">Product Designer</p></div>
+      <div><p class="meta-label">Company</p><p class="meta-value">Crafting Inc.</p></div>
+      <div><p class="meta-label">Timeline</p><p class="meta-value">1–2 months, shipped 2024</p></div>
+      <div><p class="meta-label">Surface</p><p class="meta-value">Web app</p></div>
+    </div>
+  </header>
+
+  <figure class="laptop">
+    <div class="laptop-lid">
+      <div class="laptop-screen">
+        <div class="laptop-chrome">
+          <span style="background: #ff5f57;"></span>
+          <span style="background: #febc2e;"></span>
+          <span style="background: #28c840;"></span>
+        </div>
+        <img src="../assets/crafting-sandbox.svg" alt="The Crafting Sandbox single-workspace interface">
+      </div>
+    </div>
+  </figure>
+
+  <section class="panel" id="background" data-rail-target>
+    <p class="section-title">Background</p>
+    <p class="section-body">Crafting Sandbox provides developers with a full-fledged development environment on the cloud for their multi-service apps. This project was completed in about 1–2 months.</p>
+  </section>
+
+  <div class="chapter" data-ch="{{ chapterStyle }}" data-n="01"><h2 class="chapter-t">Research</h2></div>
+
+  <section class="panel" id="problem" data-rail-target>
+    <p class="section-title">The problem</p>
+    <p class="section-body">The existing sandbox UI/UX fails to accommodate engineers accustomed to single-machine development, resulting in confusion and inefficiency.</p>
+    <figure class="inline-fig">
+      <div class="win">
+        <div class="win-screen">
+          <div class="win-chrome">
+            <span style="background: #ff5f57;"></span>
+            <span style="background: #febc2e;"></span>
+            <span style="background: #28c840;"></span>
+          </div>
+          <img src="../assets/crafting-sandbox.svg" alt="The multi-service sandbox UI">
+        </div>
+      </div>
+      <figcaption>The multi-service sandbox UI as it stood, built around concepts single-machine users didn't share.</figcaption>
+    </figure>
+  </section>
+
+  <section class="panel" id="discovery" data-rail-target>
+    <p class="section-title">Initial problem discovery</p>
+    <ul class="list">
+      <li><strong>Transition challenges.</strong> Engineers moving from single-machine development to sandbox environments face confusion.</li>
+      <li><strong>Conceptual confusion.</strong> Sandbox vs. workspace concepts are not clearly understood.</li>
+      <li><strong>VM-based solutions.</strong> Many companies rely on VM-based solutions, adding complexity to the transition.</li>
+      <li><strong>Counterintuitive UI/UX.</strong> Existing sandbox UI/UX is perceived as counterintuitive for single-machine users.</li>
+    </ul>
+  </section>
+
+  <section class="panel" id="interviews" data-rail-target>
+    <p class="section-title">Key insights from user interviews</p>
+    <div class="cards3">
+      <div>
+        <p class="plain-h">Single-machine users</p>
+        <p class="plain-b">Prefer a more streamlined interface with fewer complexities.</p>
+      </div>
+      <div>
+        <p class="plain-h">Multi-service users</p>
+        <p class="plain-b">Require advanced configuration options and robust multi-tasking capabilities.</p>
+      </div>
+      <div>
+        <p class="plain-h">The overlap</p>
+        <p class="plain-b">There is an overlap where improvements in usability can benefit both user types without compromise.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="chapter" data-ch="{{ chapterStyle }}" data-n="02"><h2 class="chapter-t">Design</h2></div>
+
+  <section class="panel" id="tradeoffs" data-rail-target>
+    <p class="section-title">Trade-offs discussed</p>
+    <div class="cards3">
+      <div class="tcard">
+        <p class="tcard-n">Customization vs. Standardization</p>
+        <p class="tcard-b">Deciding how much to allow personalization without affecting the uniformity and predictability of the platform.</p>
+      </div>
+      <div class="tcard">
+        <p class="tcard-n">Simplicity vs. Functionality</p>
+        <p class="tcard-b">Balancing the intuitive simplicity desired by single-machine users with the complex functionality needed by multi-service users.</p>
+      </div>
+      <div class="tcard">
+        <p class="tcard-n">Speed vs. Comprehensive Features</p>
+        <p class="tcard-b">Striking the right balance between a fast, lightweight experience and the comprehensive features needed by advanced users.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="solution" data-rail-target>
+    <p class="section-title">Proposed solution</p>
+    <div class="solution">
+      <p class="solution-h">Direction chosen</p>
+      <p class="solution-t">Configurable Interface Design</p>
+      <p class="solution-b">Seamlessly switching between single machine and multi-service environments.</p>
+    </div>
+    <dl class="procon">
+      <div class="pro"><dt>Pro</dt><dd>Allows users to tailor their workspace without impacting existing multi-service functionalities, enabling a seamless introduction of single-machine capabilities that enhance productivity and user satisfaction.</dd></div>
+      <div class="con"><dt>Con</dt><dd>Users may face challenges in learning how to switch between interfaces, resulting in a steeper learning curve and the need to familiarize themselves with an additional UI, which could delay proficiency and adoption.</dd></div>
+    </dl>
+  </section>
+
+  <section class="panel" id="principles" data-rail-target>
+    <p class="section-title">Design principles</p>
+    <div class="cards3">
+      <div>
+        <p class="plain-h">Simplicity in Design</p>
+        <p class="plain-b">Ensure that both interfaces are intuitive and easy to navigate, minimizing the complexity of switching between them. This involves clear labeling, consistent visual elements, and straightforward toggling actions that reduce the cognitive load on users.</p>
+      </div>
+      <div>
+        <p class="plain-h">User-Centric Adaptability</p>
+        <p class="plain-b">Design the interface to be flexible and adaptable to different user needs and technical proficiencies. This includes providing customizable settings that allow users to personalize their environment according to their workflow preferences, and incorporating user feedback mechanisms to continually refine usability.</p>
+      </div>
+      <div>
+        <p class="plain-h">Consistency Across Environments</p>
+        <p class="plain-b">Maintain a consistent set of design elements and interaction paradigms across both the single machine and multi-service interfaces. This ensures that core concepts and functionality remain familiar to users, reducing the effort needed to switch between modes and enhancing the overall user experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel breathe" id="journey" data-rail-target>
+    <p class="section-title">User journey</p>
+    <p class="section-body">Throughout this user journey, our aim is to raise awareness about the two distinct interface options available for creating development environments — each tailored to fit different engineering needs and objectives.</p>
+    <p class="section-body">Our strategic approach focuses on educating users about the benefits and features of both the Single Workspace UI and the Full Web UI. We guide users through an intuitive decision-making process, helping them determine which interface best aligns with their project requirements and workflow preferences.</p>
+    <div class="jscroll">
+      <div class="jmap">
+        <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid meet" aria-label="User journey: five phases from education through feedback, branching at the decision point into the Single Workspace UI and the Full Web UI">
+          <g fill="none" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke">
+            <path d="M 50 170 H 1170" stroke="var(--color-divider)" stroke-width="1.5" stroke-dasharray="6 6" />
+            <path d="M 90 170 H 250" stroke="var(--j1)" />
+            <path d="M 250 170 H 470" stroke="var(--j2)" />
+            <path d="M 470 170 H 680" stroke="var(--j3)" />
+            <path d="M 680 170 L 830 80" stroke="var(--j4)" />
+            <path d="M 680 170 L 830 260" stroke="var(--j4)" />
+            <path d="M 830 80 L 1000 170" stroke="var(--j5a)" />
+            <path d="M 830 260 L 1000 170" stroke="var(--j5b)" />
+            <path d="M 1000 170 H 1132" stroke="var(--j5)" />
+            <path d="M 1130 158 L 1158 170 L 1130 182 Z" fill="var(--j5)" stroke="none" />
+          </g>
+          <g stroke="var(--color-divider)" stroke-width="1.2" stroke-dasharray="4 4">
+            <path d="M 90 178 V 206" />
+            <path d="M 250 178 V 206" />
+            <path d="M 470 178 V 206" />
+            <path d="M 680 178 V 206" />
+            <path d="M 1000 178 V 206" />
+            <path d="M 830 72 V 44" />
+            <path d="M 830 268 V 296" />
+          </g>
+          <g stroke="none">
+            <circle cx="90" cy="170" r="11" fill="var(--j1)" />
+            <circle cx="250" cy="170" r="11" fill="var(--j2)" />
+            <circle cx="470" cy="170" r="11" fill="var(--j3)" />
+            <circle cx="680" cy="170" r="11" fill="var(--j4)" />
+            <circle cx="830" cy="80" r="11" fill="var(--j5a)" />
+            <circle cx="830" cy="260" r="11" fill="var(--j5b)" />
+            <circle cx="1000" cy="170" r="11" fill="var(--j5)" />
+          </g>
+        </svg>
+        <p class="jlabel" style="left: 7.5%; top: 53%">Login / Sign Up</p>
+        <p class="jlabel" style="left: 20.83%; top: 53%">Completes Tutorial</p>
+        <p class="jlabel" style="left: 39.17%; top: 53%">Need for Dev Environment</p>
+        <p class="jlabel" style="left: 56.67%; top: 53%">Environment Creation</p>
+        <p class="jlabel" style="left: 83.33%; top: 53%">Continued Use</p>
+        <p class="jlabel" style="left: 69.17%; top: 4%">Single Workspace UI</p>
+        <p class="jlabel" style="left: 69.17%; top: 75.5%">Full Web UI</p>
+        <p class="jphase" style="left: 7.5%; top: 90%; color: var(--t1)">Education</p>
+        <p class="jphase" style="left: 20.83%; top: 90%; color: var(--t2)">Awareness</p>
+        <p class="jphase" style="left: 39.17%; top: 90%; color: var(--t3)">Action</p>
+        <p class="jphase" style="left: 56.67%; top: 90%; color: var(--t4)">Decision</p>
+        <p class="jphase" style="left: 69.17%; top: 90%; color: var(--t5)">Feedback</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel breathe" id="workspaceflow" data-rail-target>
+    <p class="section-title">New workspace flow</p>
+    <p class="section-body">Introduce a two-step guide where one has a high level choice with a detailed customization. High level choices are focused on the machine, where customizations include name, flavor, and so on.</p>
+    <p class="wfcap">Creating a sandbox — multi-service</p>
+    <p class="wfcap-sub">The existing path: two ways in, and customization nested five levels deep. The six types under "Configurations for each service" are Workspace, Endpoint, Dependency, Volume, Resource and Container customization.</p>
+    <div class="sbscroll">
+      <div class="sbmap">
+        <svg viewBox="0 0 1400 560" width="1400" height="560" aria-hidden="true">
+          <g stroke="var(--color-divider)" stroke-width="1" fill="none" shape-rendering="crispEdges">
+            <path d="M700 72 V91 M350 91 H1050 M350 91 V110 M1050 91 V110" />
+            <path d="M350 162 V200" />
+            <path d="M350 252 V271 M90 271 H570 M90 271 V290 M250 271 V290 M410 271 V290 M570 271 V290" />
+            <path d="M570 342 V361 M480 361 H680 M480 361 V380 M680 361 V380" />
+            <path d="M680 432 V451 M380 451 H980 M380 451 V470 M500 451 V470 M620 451 V470 M740 451 V470 M860 451 V470 M980 451 V470" />
+            <path d="M1050 162 V181 M900 181 H1210 M900 181 V200 M1050 181 V200 M1210 181 V200" />
+            <path d="M1210 252 V271 M1080 271 H1340 M1080 271 V290 M1210 271 V290 M1340 271 V290" />
+          </g>
+        </svg>
+        <p class="sbn sbn-root" style="left: 700px; top: 20px; width: 210px">Creating a Sandbox</p>
+
+        <p class="sbn sbn-path" style="left: 350px; top: 110px; width: 190px">Select a Template</p>
+        <p class="sbn" style="left: 350px; top: 200px; width: 190px">Customize the Sandbox</p>
+        <p class="sbl" style="left: 90px; top: 290px; width: 140px">Name Sandbox</p>
+        <p class="sbl" style="left: 250px; top: 290px; width: 140px">Workspace Location (Folder)</p>
+        <p class="sbl" style="left: 410px; top: 290px; width: 140px">Enabling Endpoints</p>
+        <p class="sbl sbl-parent" style="left: 570px; top: 290px; width: 150px">Customizations</p>
+        <p class="sbl" style="left: 480px; top: 380px; width: 150px">Environment Variables</p>
+        <p class="sbl sbl-parent" style="left: 680px; top: 380px; width: 200px">Configurations for each service</p>
+        <p class="sbl" style="left: 380px; top: 470px; width: 108px">Workspace</p>
+        <p class="sbl" style="left: 500px; top: 470px; width: 108px">Endpoint</p>
+        <p class="sbl" style="left: 620px; top: 470px; width: 108px">Dependency</p>
+        <p class="sbl" style="left: 740px; top: 470px; width: 108px">Volume</p>
+        <p class="sbl" style="left: 860px; top: 470px; width: 108px">Resource</p>
+        <p class="sbl" style="left: 980px; top: 470px; width: 108px">Container</p>
+
+        <p class="sbn sbn-path" style="left: 1050px; top: 110px; width: 210px">Create a Workspace from Git Repository</p>
+        <p class="sbn" style="left: 900px; top: 200px; width: 140px">Name Sandbox</p>
+        <p class="sbn" style="left: 1050px; top: 200px; width: 140px">Workspace Location (Folder)</p>
+        <p class="sbn" style="left: 1210px; top: 200px; width: 150px">Customizations</p>
+        <p class="sbl" style="left: 1080px; top: 290px; width: 124px">Branch Name</p>
+        <p class="sbl" style="left: 1210px; top: 290px; width: 124px">Select Base Image</p>
+        <p class="sbl" style="left: 1340px; top: 290px; width: 124px">Select Home Snapshot</p>
+      </div>
+    </div>
+
+    <p class="wfcap">Creating a workspace — single machine</p>
+    <p class="wfcap-sub">The proposed path: one route in, two steps.</p>
+    <div class="wf">
+      <p class="wfn wfn-root">Creating a Workspace</p>
+      <span class="wfline"></span>
+      <p class="wfn"><small>Step 1</small>Select a Template</p>
+      <span class="wfline"></span>
+      <p class="wfn"><small>Step 2</small>Customize the Workspace</p>
+      <span class="wfline"></span>
+      <div class="wfrow wfrow-3">
+        <div class="wfb"><p class="wfn">Name Workspace</p></div>
+        <div class="wfb"><p class="wfn">Workspace Location (Folder)</p></div>
+        <div class="wfb">
+          <p class="wfn">Customizations</p>
+          <span class="wfline"></span>
+          <div class="wfrow wfrow-2">
+            <div class="wfb"><p class="wfn">Flavors</p></div>
+            <div class="wfb"><p class="wfn">Environment Variables</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel breathe" id="components" data-rail-target>
+    <p class="section-title">Main components to change</p>
+    <div class="comps">
+      <div class="comp">
+        <figure>
+          <div class="win">
+            <div class="win-screen">
+              <div class="win-chrome">
+                <span style="background: #ff5f57;"></span>
+                <span style="background: #febc2e;"></span>
+                <span style="background: #28c840;"></span>
+              </div>
+              <img src="../assets/crafting-menu-topbar.svg" alt="The left menu and top bar">
+            </div>
+          </div>
+        </figure>
+        <p class="comp-n">Left menu &amp; top bar</p>
+        <p class="comp-b">The primary navigation, reworked so single-machine users aren't presented with multi-service concepts they don't need.</p>
+      </div>
+      <div class="comp">
+        <figure>
+          <div class="win">
+            <div class="win-screen">
+              <div class="win-chrome">
+                <span style="background: #ff5f57;"></span>
+                <span style="background: #febc2e;"></span>
+                <span style="background: #28c840;"></span>
+              </div>
+              <img src="../assets/craft-home.svg" alt="The home page">
+            </div>
+          </div>
+        </figure>
+        <p class="comp-n">Home page</p>
+        <p class="comp-b">The landing surface, including the welcome banner and the entry points into creating or resuming an environment.</p>
+      </div>
+      <div class="comp comp-wide">
+        <figure class="states">
+          <div class="pivot">
+            <img class="state" src="../assets/craft-card-1.svg" alt="The workspace card as it stands" style="opacity: {{ opCurrent }};">
+            <img class="state" src="../assets/craft-card-2.svg" alt="The reworked workspace card" style="opacity: {{ opNext }};">
+          </div>
+          <div class="pivot-bar">
+            <p class="pivot-key" style="opacity: {{ keyCurrent }};">Current</p>
+            <span class="pivot-arrow"></span>
+            <p class="pivot-key" style="opacity: {{ keyNext }};">Reworked</p>
+          </div>
+        </figure>
+        <p class="comp-n">Workspace card</p>
+        <p class="comp-b">The repeated unit carrying workspace, dependency and container states. The version in place carries too little to act on; the rework adds repository, ports and direct actions.</p>
+      </div>
+      <div class="comp">
+        <figure>
+          <div class="win">
+            <div class="win-screen">
+              <div class="win-chrome">
+                <span style="background: #ff5f57;"></span>
+                <span style="background: #febc2e;"></span>
+                <span style="background: #28c840;"></span>
+              </div>
+              <img src="../assets/craft-details.svg" alt="The workspace detailed page" style="aspect-ratio: 972 / 601;">
+            </div>
+          </div>
+        </figure>
+        <p class="comp-n">Workspace detailed page</p>
+        <p class="comp-b">Setup and automation, endpoints, environment variables, snapshots, and workspace customization in one view.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="chapter" data-ch="{{ chapterStyle }}" data-n="03"><h2 class="chapter-t">Outcome</h2></div>
+
+  <section class="panel breathe" id="final" data-rail-target>
+    <p class="section-title">Final design</p>
+    <figure class="cba">
+      <div class="cba-tabs">
+        <button class="cba-tab" onClick="{{ cbaGo1 }}" style="opacity: {{ cb1 }}; border-bottom-color: {{ cbb1 }};">Left menu &amp; top bar</button>
+        <button class="cba-tab" onClick="{{ cbaGo2 }}" style="opacity: {{ cb2 }}; border-bottom-color: {{ cbb2 }};">Workspace card</button>
+        <button class="cba-tab" onClick="{{ cbaGo3 }}" style="opacity: {{ cb3 }}; border-bottom-color: {{ cbb3 }};">Home page</button>
+        <button class="cba-tab" onClick="{{ cbaGo4 }}" style="opacity: {{ cb4 }}; border-bottom-color: {{ cbb4 }};">New workspace flow</button>
+        <button class="cba-tab" onClick="{{ cbaGo5 }}" style="opacity: {{ cb5 }}; border-bottom-color: {{ cbb5 }};">Workspace detail</button>
+      </div>
+      <div class="cba-stage">
+        <div class="win">
+          <div class="win-screen">
+            <div class="win-chrome"><span style="background:#e5484d"></span><span style="background:#f5a623"></span><span style="background:#34c759"></span></div>
+            <div class="cba-view">
+              <img src="{{ cbaAfter }}" alt="Redesigned screen" draggable="false">
+              <img src="{{ cbaBefore }}" alt="Original screen" draggable="false" style="clip-path: inset(0 {{ cbaR }}% 0 0)">
+              <div class="cba-tags"><span class="cba-tag">Before</span><span class="cba-tag">After</span></div>
+              <input class="cba-range" type="range" min="0" max="100" value="{{ cba }}" onChange="{{ setCba }}" aria-label="Compare original and redesigned screens">
+              <div class="cba-line" style="left: {{ cba }}%"><span class="cba-knob"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4M2 12h20"></path></svg></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="cba-note">{{ cbaNote }}</p>
+    </figure>
+    <figure class="cwt">
+      <div class="cwt-stage">
+        <div class="win">
+          <div class="win-screen">
+            <div class="win-chrome"><span style="background:#e5484d"></span><span style="background:#f5a623"></span><span style="background:#34c759"></span></div>
+            <div class="cwt-view">
+              <img class="cwt-page" src="{{ cwPage }}" alt="{{ cwAlt }}" draggable="false" style="top: {{ cwScroll }}%;">
+              <div class="cwt-dim" style="opacity: {{ cwDimOn }};"></div>
+              <img class="cwt-dlg" src="{{ cwDlg }}" alt="" draggable="false" style="width: {{ cwDlgW }}%; top: {{ cwDlgTop }}; transform: {{ cwDlgTf }}; opacity: {{ cwDlgOn }};">
+              <svg class="cwt-cursor" viewBox="0 0 24 24" style="left: {{ cwCx }}%; top: {{ cwCy }}%; opacity: {{ cwCv }}; --tap: {{ cwTap }};"><path d="M5 3l14 8.5-6.2 1.3L9.6 19z" fill="#fff" stroke="#1d1e23" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cwt-progress"><span style="width: {{ cwProg }}%;"></span></div>
+      <div class="cwt-steps">
+        <button class="cwt-step" onClick="{{ cwGo1 }}" style="opacity: {{ cs1 }};"><span class="cwt-n">01</span><span class="cwt-l">Create a workspace</span><span class="cwt-d">Pick a template by machine spec, customise, launch.</span></button>
+        <button class="cwt-step" onClick="{{ cwGo2 }}" style="opacity: {{ cs2 }};"><span class="cwt-n">02</span><span class="cwt-l">Clear notifications</span><span class="cwt-d">Confirm items in place; the panel empties as you go.</span></button>
+        <button class="cwt-step" onClick="{{ cwGo3 }}" style="opacity: {{ cs3 }};"><span class="cwt-n">03</span><span class="cwt-l">Open in an IDE</span><span class="cwt-d">Local IDE and Remote Desktop each get a one-time setup dialog.</span></button>
+        <button class="cwt-step" onClick="{{ cwGo4 }}" style="opacity: {{ cs4 }};"><span class="cwt-n">04</span><span class="cwt-l">Workspace details</span><span class="cwt-d">Status, template and notes without leaving home.</span></button>
+        <button class="cwt-step" onClick="{{ cwGo5 }}" style="opacity: {{ cs5 }};"><span class="cwt-n">05</span><span class="cwt-l">Detail page</span><span class="cwt-d">Resources, setup, repositories and processes in collapsible tables.</span></button>
+        <button class="cwt-step" onClick="{{ cwGo6 }}" style="opacity: {{ cs6 }};"><span class="cwt-n">06</span><span class="cwt-l">Onboarding</span><span class="cwt-d">Instructions, SSH key and CLI download on one page.</span></button>
+      </div>
+      <div class="cwt-ctl">
+        <button class="cwt-play" type="button" onClick="{{ cwToggle }}">{{ cwPlayLabel }}</button>
+        <p class="cwt-note">Walkthrough of the shipped Single Workspace UI. Loops.</p>
+      </div>
+    </figure>
+
+  </section>
+
+  <section class="panel" id="results" data-rail-target>
+    <p class="section-title">Results</p>
+    <p class="section-body" style="margin-bottom: var(--space-4)">Shipped in 2024.</p>
+    <div class="stats">
+      <div>
+        <p class="stat-fig"><span class="stat-arrow">↓</span>25%</p>
+        <p class="stat-n">Task Completion Time</p>
+        <p class="stat-b">Users have reported a 25% reduction in task completion time due to the streamlined Single Workspace UI.</p>
+      </div>
+      <div>
+        <p class="stat-fig"><span class="stat-arrow">↑</span>30%</p>
+        <p class="stat-n">Workflow Efficiency</p>
+        <p class="stat-b">The new interface has led to a 30% increase in overall workflow efficiency, allowing users to manage their projects more effectively.</p>
+      </div>
+    </div>
+    <div class="quotes">
+      <blockquote class="quote-bubble"><span class="quote-mark">“</span>I love having the option to use the new single workspace UI. It's clean, straightforward, and has all the essentials without the clutter of multi-service features I don't need.</blockquote>
+      <blockquote class="quote-bubble"><span class="quote-mark">“</span>The option to choose between the existing multi-service UI and the new single workspace UI means I can select the environment that best suits my project needs, which is incredibly convenient.</blockquote>
+    </div>
+  </section>
+
+  <a class="next" href="./nasym.dc.html">
+    <div class="next-body">
+      <p class="next-label">Next project</p>
+      <h2 class="next-title">NaSYMSurgical</h2>
+      <p class="next-desc">Real-time nasal symmetry measurement for rhinoplasty, on hardware surgeons already carry.</p>
+      <span class="next-go">Read it →</span>
+    </div>
+    <figure class="next-fig"><div class="nasym-thumb"><div class="nasym-thumb-phone"><img src="../assets/nasym-cover.svg" alt="The NaSYMSurgical app" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;"><img src="../assets/nasym-mesh.png" alt="" style="position:absolute;left:20.55%;top:27.36%;width:58.95%;height:40.65%;object-fit:fill;"></div></div></figure>
+  </a>
+
+</div>
+<div class="wrap"><footer class="credits">
+  <p class="cred-name">Elizabeth Lin</p>
+  <div class="cred-links"><a href="mailto:lizlin.lin@gmail.com">lizlin.lin@gmail.com</a><a href="https://www.linkedin.com/in/e34lin/" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+  <p class="cred-year">© 2026</p>
+</footer></div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;journeyColor&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;original&quot;,&quot;options&quot;:[&quot;original&quot;,&quot;mono&quot;,&quot;focus&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;User journey&quot;},
+  &quot;chapterStyle&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;number&quot;,&quot;options&quot;:[&quot;band&quot;,&quot;tint&quot;,&quot;rule&quot;,&quot;large&quot;,&quot;eyebrow&quot;,&quot;number&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Section breaks&quot;},
+  &quot;titleStyle&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;ticked&quot;,&quot;options&quot;:[&quot;plain&quot;,&quot;caps&quot;,&quot;accent&quot;,&quot;ticked&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Section breaks&quot;},
+  &quot;dividerStyle&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;hairline&quot;,&quot;options&quot;:[&quot;hairline&quot;,&quot;none&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Section breaks&quot;}
+}">
+class Component extends DCLogic {
+  state = { pivot: 0, cba: 50, cbaTab: 1, cw: { page: 'ws0', scroll: 0, dlg: '', dlgW: 78, cx: 50, cy: 40, cv: 0, tap: 1, step: 1, i: 0, playing: true } };
+  cwFrames() {
+    if (this._cwF) return this._cwF;
+    const F = []; let t = 0; const add = (dt, patch, step) => { t += dt; F.push({ at: t, patch, step }); };
+    const move = (cx, cy) => add(0, { cx, cy, cv: 1 });
+    const tap = () => { add(680, { tap: 0.8 }); add(150, { tap: 1 }); };
+    // dialog geometry helpers: view is 1440x1026; dialogs centered
+    const D = { dg3: [1128,582], dg4: [1128,582], dg5: [1128,908], f2: [1128,908], dg0: [560,416], dg2: [560,610], 'dg-close': [560,470] };
+    const dw = (k) => D[k][0] / 1440 * 100;
+    const V = 810 / 1440; const tall = (k) => D[k][1] / 1440 > V * 0.92;
+    const pt = (k, px, py) => { const [w, h] = D[k]; const W = w / 1440, H = h / 1440; const y0 = tall(k) ? 0.03 * V : (V - H) / 2; return [ (1 - W) / 2 * 100 + W * 100 * px, (y0 + H * py) / V * 100 ]; };
+    const dlg = (k) => ({ dlg: k, dlgW: dw(k), dlgTall: tall(k) });
+    const none = { dlg: '', scroll: 0 };
+    // 01 create workspace
+    add(0, Object.assign({ page: 'ws0', cx: 50, cy: 40, cv: 1 }, none), 1);
+    add(600, {}); move(17, 34.2); tap(); add(200, dlg('dg3'));
+    add(900, {}); move(...pt('dg3', 0.27, 0.33)); tap(); add(120, dlg('dg4'));
+    add(700, {}); move(...pt('dg4', 0.955, 0.945)); tap(); add(160, dlg('dg5'));
+    add(900, {}); move(...pt('dg5', 0.5, 0.315)); tap(); add(120, dlg('f2'));
+    add(900, {}); move(...pt('f2', 0.5, 0.375)); tap(); add(120, dlg('dg5'));
+    add(500, {}); move(...pt('dg5', 0.96, 0.965)); tap(); add(160, Object.assign({ page: 'ws1' }, none));
+    // 02 notifications
+    add(1200, {}, 2); move(76, 16.3); tap(); add(160, { page: 'ws3' });
+    add(700, {}); move(76, 16.3); tap(); add(160, { page: 'ws4' });
+    // 03 open in IDE
+    add(1100, {}, 3); move(16.4, 51.9); tap(); add(180, dlg('dg0'));
+    add(1500, {}); move(...pt('dg0', 0.955, 0.06)); tap(); add(120, none);
+    add(500, {}); move(29.2, 51.9); tap(); add(180, dlg('dg2'));
+    add(1500, {}); move(...pt('dg2', 0.955, 0.045)); tap(); add(120, none);
+    // 04 details dialog
+    add(500, {}, 4); move(25.2, 61.6); tap(); add(180, dlg('dg-close'));
+    add(1500, {}); move(...pt('dg-close', 0.955, 0.055)); tap(); add(120, none);
+    // 05 detail page
+    add(500, {}, 5); move(16, 41.2); tap(); add(200, Object.assign({ page: 'dp0' }, none));
+    add(900, { scroll: -75, cv: 0 });
+    add(1900, { scroll: -151 });
+    add(1800, { scroll: 0 });
+    // 06 onboarding
+    add(1300, { cv: 1 }, 6); move(33.8, 2.8); tap(); add(200, Object.assign({ page: 'ob0' }, none));
+    add(900, { scroll: -73, cv: 0 });
+    add(2000, { scroll: 0 });
+    add(1200, { cv: 1 }); move(24.3, 2.8); tap(); add(200, Object.assign({ page: 'ws0' }, none));
+    add(1200, { cv: 0 });
+    add(500, {});
+    this._cwF = F; return F;
+  }
+  cwSchedule() {
+    clearTimeout(this._cwT);
+    const F = this.cwFrames(); const i = this.state.cw.i;
+    const prev = i === 0 ? 0 : F[i - 1].at; const f = F[i % F.length];
+    const dt = i === 0 ? 0 : (i >= F.length ? 400 : f.at - prev);
+    this._cwT = setTimeout(() => {
+      const idx = i % F.length; const fr = F[idx];
+      this.setState(s => ({ cw: Object.assign({}, s.cw, fr.patch, { i: idx + 1 }, fr.step ? { step: fr.step } : {}) }), () => { if (this.state.cw.playing) this.cwSchedule(); });
+    }, dt);
+  }
+  cwGo(step) {
+    const F = this.cwFrames(); const idx = F.findIndex(f => f.step === step);
+    clearTimeout(this._cwT);
+    // jump: apply the accumulated page state up to idx so the screen matches
+    const acc = {}; for (let k = 0; k <= idx; k++) Object.assign(acc, F[k].patch);
+    this.setState(s => ({ cw: Object.assign({}, s.cw, acc, { i: idx + 1, step, playing: true, cv: 1, tap: 1 }) }), () => this.cwSchedule());
+  }
+  cwToggle() {
+    const playing = !this.state.cw.playing;
+    this.setState(s => ({ cw: Object.assign({}, s.cw, { playing }) }), () => { if (playing) this.cwSchedule(); else clearTimeout(this._cwT); });
+  }
+  cbaData = [
+    { k: 'nav', note: 'The left menu and top bar merged into one horizontal bar: Workspaces, Onboarding and Secrets as tabs, with Full Web Console one click away for anyone who needs the complete UI.' },
+    { k: 'card', note: 'The workspace card leads with the four ways to open a workspace — Terminal, Web IDE, Local IDE, Remote Desktop — and moves status and management actions to a quiet row underneath.' },
+    { k: 'home', note: 'Home drops the sandbox-first layout for a welcome panel, notifications and a flat grid of workspaces, so the first thing a developer sees is what they can open right now.' },
+    { k: 'flow', note: 'Creating a workspace became two steps: pick a template by machine spec, then customise name, folder, flavor and environment before launch.' },
+    { k: 'detail', note: 'The detail page keeps the sandbox header and ports, then puts the open-in buttons up top and folds resources, setup, repositories and processes into collapsible tables.' }
+  ];
+  renderVals() {
+    const p = this.state.pivot;
+    const ct = this.state.cbaTab, cd = this.cbaData[ct - 1];
+    const w = this.state.cw, CF = this.cwFrames();
+    const cwAlts = { ws0: 'Home', ws1: 'Home with the new workspace', ws3: 'Home, one notification confirmed', ws4: 'Home, notifications cleared', dp0: 'Workspace detail page', ob0: 'Onboarding' };
+    const cwVals = { cwPage: '../assets/craft-proto-' + w.page + '.png', cwAlt: cwAlts[w.page] || 'App screen', cwScroll: w.scroll,
+      cwDimOn: w.dlg ? 1 : 0, cwDlgOn: w.dlg ? 1 : 0, cwDlg: w.dlg ? '../assets/craft-proto-' + w.dlg + '.png' : '../assets/craft-proto-dg1.png', cwDlgW: w.dlgW, cwDlgTop: w.dlgTall ? '3%' : '50%', cwDlgTf: w.dlgTall ? 'translate(-50%, 0)' : 'translate(-50%, -50%)',
+      cwCx: w.cx, cwCy: w.cy, cwCv: w.cv, cwTap: w.tap, cwProg: Math.round((Math.min(w.i, CF.length) / CF.length) * 100),
+      cwToggle: () => this.cwToggle(), cwPlayLabel: w.playing ? 'Pause' : 'Play' };
+    for (let i = 1; i <= 6; i++) { cwVals['cwGo' + i] = () => this.cwGo(i); cwVals['cs' + i] = w.step === i ? 1 : 0.42; }
+    const cbaVals = Object.assign(cwVals, { cba: this.state.cba, cbaR: 100 - this.state.cba, setCba: (e) => this.setState({ cba: +e.target.value }),
+      cbaBefore: '../assets/craft-ba-' + cd.k + '-before.png', cbaAfter: '../assets/craft-ba-' + cd.k + '-after.png', cbaNote: cd.note });
+    for (let i = 1; i <= 5; i++) { cbaVals['cbaGo' + i] = () => this.setState({ cbaTab: i, cba: 50 }); cbaVals['cb' + i] = ct === i ? 1 : 0.42; cbaVals['cbb' + i] = ct === i ? 'var(--color-accent)' : 'transparent'; }
+    return Object.assign(cbaVals, {
+      opCurrent: p === 0 ? 1 : 0,
+      opNext: p === 0 ? 0 : 1,
+      keyCurrent: p === 0 ? 1 : 0.34,
+      keyNext: p === 0 ? 0.34 : 1,
+      chapterStyle: this.props.chapterStyle ?? 'band',
+      titleStyle: this.props.titleStyle ?? 'plain',
+      dividerStyle: this.props.dividerStyle ?? 'hairline',
+      journeyColor: this.props.journeyColor ?? 'original',
+    });
+  }
+  componentWillUnmount() { clearInterval(this._pivotT); clearTimeout(this._cwT); }
+  componentDidMount() {
+    this.cwSchedule();
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this._pivotT = setInterval(() => this.setState(s => ({ pivot: s.pivot ? 0 : 1 })), 2600);
+    }
+    const io = window.IntersectionObserver && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: 0.06 })
+      : null;
+    this.revealTargets = [...document.querySelectorAll('.panel, .chapter, .next, .laptop')];
+    if (io) { this.revealTargets.forEach(el => { el.classList.add('reveal'); io.observe(el); }); }
+    this.io = io;
+    this.revealFailsafe = setTimeout(() => { this.revealTargets.forEach(el => el.classList.add('is-in')); }, 2000);
+    const bar = document.querySelector('.progress span');
+    if (bar) {
+      this.onProg = () => {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (h > 0 ? Math.min(100, Math.max(0, (window.scrollY / h) * 100)) : 0) + '%';
+      };
+      window.addEventListener('scroll', this.onProg, { passive: true });
+      window.addEventListener('resize', this.onProg);
+      this.onProg();
+    }
+
+    // the chart is wider than the column — open it centred on the root
+    const centre = () => document.querySelectorAll('.sbscroll').forEach(el => {
+      el.scrollLeft = Math.max(0, (el.scrollWidth - el.clientWidth) / 2);
+    });
+    centre();
+    setTimeout(centre, 80);
+    setTimeout(centre, 400);
+    const links = [...document.querySelectorAll('.rail a')];
+    const targets = [...document.querySelectorAll('[data-rail-target]')];
+    if (!links.length || !targets.length) return;
+    const mark = () => {
+      let best = null, bestTop = -Infinity;
+      for (const t of targets) {
+        const top = t.getBoundingClientRect().top - 100;
+        if (top <= 0 && top > bestTop) { bestTop = top; best = t; }
+      }
+      if (!best) best = targets[0];
+      for (const a of links) {
+        if (a.getAttribute('href') === '#' + best.id) a.setAttribute('data-active', '');
+        else a.removeAttribute('data-active');
+      }
+    };
+    let queued = false;
+    this.onScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => { queued = false; mark(); });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onScroll);
+    mark();
+  }
+  componentWillUnmount() {
+    if (this.revealFailsafe) clearTimeout(this.revealFailsafe);
+    if (this.io) this.io.disconnect();
+    if (this.onProg) { window.removeEventListener('scroll', this.onProg); window.removeEventListener('resize', this.onProg); }
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onScroll);
+  }
+}
+</script>
+</body>
+</html>

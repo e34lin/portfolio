@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/styles.css">
+<script src="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<title>Elizabeth Lin — Product Designer</title>
+<style>
+:root { --display: "Instrument Serif", Georgia, serif; --edge: clamp(20px, 5vw, 72px); --measure: 58ch; }
+body { margin: 0; text-wrap: pretty; }
+a { color: var(--color-accent-700); }
+a:hover { color: var(--color-accent); }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 var(--edge); }
+.nav { padding-inline: max(var(--edge), calc((100% - 1160px) / 2 + var(--edge))); position: sticky; top: 0; z-index: 10; }
+.nav a { white-space: nowrap; }
+.kicker { display: block; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 var(--space-3); }
+.rule { height: 1px; border: 0; margin: 0; background: var(--color-divider); }
+
+.hero-flush { padding: calc(2.6 * var(--leading)) 0 calc(1.8 * var(--leading)); }
+.hero-glow { margin: calc(1.6 * var(--leading)) 0 calc(1.8 * var(--leading)); padding: calc(2 * var(--leading)) clamp(24px,4vw,56px); border-radius: var(--radius-lg); background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); box-shadow: var(--shadow-md); }
+.display { font-family: var(--display); font-weight: 400; font-size: clamp(40px, 6.4vw, 82px); line-height: 1.0; letter-spacing: -0.025em; margin: 0; max-width: 14ch; }
+.display em { font-style: italic; color: var(--color-accent); }
+.hero-flush .sub, .hero-glow .sub { font-size: 17px; line-height: 1.6; max-width: var(--measure); margin: var(--space-6) 0 0; color: color-mix(in srgb, var(--color-text) 75%, transparent); }
+
+.avail { margin: var(--space-4) 0 0; font-size: 13.5px; line-height: 1.4; color: color-mix(in srgb, var(--color-text) 66%, transparent); }
+.avail::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); margin-right: 9px; vertical-align: middle; }
+.avail a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--color-divider); }
+.avail a:hover { color: var(--color-accent); text-decoration-color: currentColor; }
+.projects { padding: calc(1.6 * var(--leading)) 0 0; }
+.group-h { display: flex; align-items: baseline; gap: var(--space-4); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 52%, transparent); margin: 0 0 calc(1.1 * var(--leading)); }
+.group-h::after { content: ""; flex: 1; height: 1px; background: var(--color-divider); }
+
+/* featured tier */
+.featured { display: grid; gap: calc(1.4 * var(--leading)); }
+.lead { display: grid; grid-template-columns: minmax(0,6fr) minmax(0,5fr); gap: clamp(24px,3.5vw,48px); align-items: start; text-decoration: none; color: inherit; }
+.lead-fig { margin: 0; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: box-shadow 200ms ease, transform 200ms ease; }
+.lead:hover .lead-fig { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.lead-fig image-slot { display: block; width: 100%; aspect-ratio: 16/10; transition: transform 420ms cubic-bezier(.2,.6,.2,1); }
+.lead:hover .lead-fig image-slot { transform: scale(1.03); }
+.lead-body { display: block; }
+.lead-num { font-family: var(--display); font-weight: 400; font-size: clamp(34px,3.6vw,46px); line-height: 0.85; letter-spacing: -0.02em; color: var(--color-accent-700); margin: 0 0 var(--space-3); }
+.lead-title { font-family: var(--display); font-weight: 400; font-size: clamp(26px,2.9vw,38px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 8px; }
+.lead-role { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 58%, transparent); margin: 0 0 var(--space-3); }
+.lead-copy { font-size: 15px; line-height: 1.55; margin: 0 0 var(--space-3); color: color-mix(in srgb, var(--color-text) 78%, transparent); max-width: 40ch; }
+.lead-arrow { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 14px; color: var(--color-accent-700); white-space: nowrap; }
+.featured > .lead + .lead, .featured > sc-if .lead { padding-top: calc(1.4 * var(--leading)); border-top: 1px solid var(--color-divider); }
+.featured[data-style="panel"] .lead { padding: clamp(20px,2.4vw,32px); border-radius: var(--radius-lg); background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); box-shadow: var(--shadow-sm); }
+.featured[data-style="panel"] .lead:hover .lead-fig { transform: none; }
+.featured[data-style="panel"] .lead:hover { box-shadow: var(--shadow-md); }
+
+/* secondary tier */
+.more-wrap { padding: calc(2.4 * var(--leading)) 0 calc(1.4 * var(--leading)); }
+.more { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6) clamp(20px,2.6vw,36px); }
+.mini { display: grid; grid-template-columns: 76px minmax(0,1fr); gap: var(--space-4); align-items: start; text-decoration: none; color: inherit; padding-top: var(--space-4); border-top: 1px solid var(--color-divider); }
+.mini-fig { margin: 0; border-radius: var(--radius-md); overflow: hidden; }
+.mini-fig image-slot { display: block; width: 100%; aspect-ratio: 1/1; transition: transform 420ms cubic-bezier(.2,.6,.2,1); }
+.mini:hover .nasym-thumb, .mini:hover .craft-thumb, .lead:hover .craft-thumb { transform: scale(1.03); }
+.craft-thumb { position: relative; overflow: hidden; width: 100%; }
+.craft-thumb img { position: absolute; width: 270%; max-width: none; left: -18.8%; top: 0; transform: translateY(-8.85%); }
+.mini-fig .craft-thumb { aspect-ratio: 1/1; }
+.more[data-also="imagetop"] .mini-fig .craft-thumb { aspect-ratio: 4/3; }
+.more[data-also="cards"] .mini-fig .craft-thumb { aspect-ratio: 16/10; }
+.more[data-also="gallery"] .mini-fig .craft-thumb { aspect-ratio: 3/2; }
+.nasym-thumb { position: relative; overflow: hidden; width: 100%; background-image: radial-gradient(circle at 50% 42%, rgba(74,95,214,0.10), rgba(74,95,214,0) 62%); aspect-ratio: 1/1; background: #f6f6f9; }
+.nasym-thumb-phone { position: absolute; height: 150%; width: auto; aspect-ratio: 440 / 916; left: 50%; top: 7%; transform: translateX(-50%); filter: drop-shadow(0 3px 8px rgba(20,22,28,0.10)) drop-shadow(0 18px 34px rgba(20,22,28,0.22)); }
+.mini:hover .mini-fig image-slot { transform: scale(1.03); }
+.mini-n { font-family: var(--display); font-weight: 400; font-size: 20px; line-height: 1; color: var(--color-accent-700); margin: 0 0 8px; }
+.mini-title { font-family: var(--display); font-weight: 400; font-size: 21px; line-height: 1.12; margin: 0 0 5px; }
+.mini-role { font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 55%, transparent); margin: 0 0 6px; }
+.mini-copy { font-size: 13.5px; line-height: 1.5; margin: 0; color: color-mix(in srgb, var(--color-text) 70%, transparent); }
+.mini:hover .mini-title { color: var(--color-accent-700); }
+
+/* 1a — image-top */
+.more[data-also="imagetop"] .mini { grid-template-columns: 1fr; gap: var(--space-3); align-items: start; padding-top: 0; border-top: 0; }
+.more[data-also="imagetop"] .mini-fig { box-shadow: var(--shadow-sm); transition: box-shadow 200ms ease, transform 200ms ease; }
+.more[data-also="imagetop"] .mini:hover .mini-fig { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.more[data-also="imagetop"] .mini-fig image-slot, .more[data-also="imagetop"] .mini-fig .nasym-thumb { aspect-ratio: 4/3; }
+.more[data-also="imagetop"] .mini-title { font-size: 22px; }
+.more[data-also="imagetop"] .mini-copy { font-size: 13.5px; }
+
+/* 1b — glass cards */
+.more[data-also="cards"] { gap: var(--space-6); }
+.more[data-also="cards"] .mini { grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 0; align-items: stretch; padding-top: 0; border-top: 0; border-radius: var(--radius-lg); background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); box-shadow: var(--shadow-sm); overflow: hidden; transition: box-shadow 200ms ease, transform 200ms ease; }
+.more[data-also="cards"] .mini:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.more[data-also="cards"] .mini-fig { border-radius: 0; }
+.more[data-also="cards"] .mini-fig image-slot, .more[data-also="cards"] .mini-fig .nasym-thumb { aspect-ratio: 16/10; }
+.more[data-also="cards"] .mini > div { padding: var(--space-4) clamp(18px,2vw,24px) var(--space-4); }
+.more[data-also="cards"] .mini-title { font-size: 20px; }
+.more[data-also="cards"] .mini-copy { font-size: 14px; }
+
+/* 1d — gallery */
+.more[data-also="gallery"] .mini { grid-template-columns: 1fr; gap: var(--space-3); align-items: start; padding-top: 0; border-top: 0; }
+.more[data-also="gallery"] .mini-fig { box-shadow: var(--shadow-sm); transition: box-shadow 200ms ease, transform 200ms ease; }
+.more[data-also="gallery"] .mini:hover .mini-fig { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.more[data-also="gallery"] .mini-fig image-slot, .more[data-also="gallery"] .mini-fig .nasym-thumb { aspect-ratio: 3/2; }
+.more[data-also="gallery"] .mini > div { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); }
+.more[data-also="gallery"] .mini-title { font-size: 20px; margin: 0; }
+.more[data-also="gallery"] .mini-role { margin: 0; white-space: nowrap; }
+.more[data-also="gallery"] .mini-copy { display: none; }
+
+.contact { margin: calc(1.6 * var(--leading)) 0 calc(1.6 * var(--leading)); padding: clamp(24px,3vw,40px); border-radius: var(--radius-lg); background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); box-shadow: var(--shadow-sm); }
+.contact .kicker { margin-bottom: var(--space-3); }
+.contact p { font-size: 16px; line-height: 1.6; max-width: 58ch; margin: 0; color: color-mix(in srgb, var(--color-text) 82%, transparent); }
+.contact-row { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-4); }
+footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-3) var(--space-6); padding: calc(1.2 * var(--leading)) 0 calc(2 * var(--leading)); margin-top: calc(0.6 * var(--leading)); border-top: 1px solid var(--color-divider); font-size: 13px; color: color-mix(in srgb, var(--color-text) 66%, transparent); }
+.cred-name { font-family: var(--display); font-weight: 400; font-size: 19px; line-height: 1; color: var(--color-text); margin: 0; }
+.cred-links { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.cred-links a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--color-divider); padding-bottom: 2px; }
+.cred-links a:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+.cred-year { margin: 0; }
+@media (max-width: 880px) {
+  .lead { grid-template-columns: 1fr; }
+}
+</style>
+</helmet>
+<div style="--leading: {{ leadingPx }}px">
+<nav class="nav">
+  <span class="nav-brand">Elizabeth Lin</span>
+  <a href="#work" aria-current="location">Work</a>
+  <a href="./about.dc.html">About</a>
+  <a href="mailto:lizlin.lin@gmail.com"><button type="button" class="btn btn-primary">Get in touch</button></a>
+</nav>
+
+<div class="wrap">
+  <sc-if value="{{ isGlowHero }}" hint-placeholder-val="{{ false }}">
+    <section class="hero-glow">
+      <span class="kicker">Product Designer</span>
+      <h1 class="display">Product design, <em>systems-first.</em></h1>
+      <p class="sub">I'm Elizabeth Lin, a Product Designer working across Microsoft Edge, cross-platform design systems, and the theming infrastructure that keeps them consistent — from component tokens to the products people use every day.</p>
+      <p class="avail">Open to full-time roles — <a href="mailto:lizlin.lin@gmail.com">get in touch</a>.</p>
+    </section>
+  </sc-if>
+  <sc-if value="{{ isFlushHero }}" hint-placeholder-val="{{ true }}">
+    <section class="hero-flush">
+      <span class="kicker">Product Designer</span>
+      <h1 class="display">Product design, <em>systems-first.</em></h1>
+      <p class="sub">I'm Elizabeth Lin, a Product Designer working across Microsoft Edge, cross-platform design systems, and the theming infrastructure that keeps them consistent — from component tokens to the products people use every day.</p>
+      <p class="avail">Open to full-time roles — <a href="mailto:lizlin.lin@gmail.com">get in touch</a>.</p>
+    </section>
+    
+  </sc-if>
+</div>
+
+<div class="wrap">
+  <section class="projects" id="work">
+    <p class="group-h">RECENT WORK</p>
+    <div class="featured" data-style="{{ featuredStyle }}">
+
+      <a class="lead" href="./projects/edge.dc.html">
+        <div class="lead-body">
+          <p class="lead-num">01</p>
+          <h2 class="lead-title">Microsoft Edge</h2>
+          <p class="lead-role">Design systems · Tokenization</p>
+          <p class="lead-copy">Redefining Edge's semantic token system and tokenizing every component for scale.</p>
+          <span class="lead-arrow">View case study →</span>
+        </div>
+        <figure class="lead-fig"><image-slot id="thumb-edge" shape="rect" placeholder="Drop an Edge screenshot"></image-slot></figure>
+      </a>
+
+      <sc-if value="{{ craftFeatured }}" hint-placeholder-val="{{ false }}">
+        <a class="lead" href="./projects/crafting-inc.dc.html">
+          <div class="lead-body">
+            <p class="lead-num">03</p>
+            <h2 class="lead-title">Crafting Sandbox</h2>
+            <p class="lead-role">Developer tools · Web app</p>
+            <p class="lead-copy">A single-machine interface for cloud dev environments, without disrupting existing multi-service users.</p>
+            <span class="lead-arrow">View case study →</span>
+          </div>
+          <figure class="lead-fig"><div class="craft-thumb" style="aspect-ratio: 16/10; transition: transform 420ms cubic-bezier(.2,.6,.2,1);"><img src="./assets/craft-laptop.png" alt="The Crafting Sandbox dashboard"></div></figure>
+        </a>
+      </sc-if>
+
+    </div>
+  </section>
+
+  <section class="more-wrap">
+    
+    <div class="more" data-also="{{ alsoLayout }}">
+      <a class="mini" href="./projects/edge-components.dc.html">
+        <figure class="mini-fig"><image-slot id="thumb-ec" shape="rounded" radius="10" placeholder="Edge components"></image-slot></figure>
+        <div>
+          <p class="mini-n">02</p>
+          <p class="mini-title">Edge design systems</p>
+          <p class="mini-role">Components · Upstream alignment</p>
+          <p class="mini-copy">Deciding which parts of a browser are worth owning, and which should go back upstream.</p>
+        </div>
+      </a>
+      <sc-if value="{{ craftMinor }}" hint-placeholder-val="{{ true }}">
+        <a class="mini" href="./projects/crafting-inc.dc.html">
+          <figure class="mini-fig"><div class="craft-thumb" style="border-radius: 10px; transition: transform 420ms cubic-bezier(.2,.6,.2,1);"><img src="./assets/craft-laptop.png" alt="The Crafting Sandbox dashboard"></div></figure>
+          <div>
+            <p class="mini-n">03</p>
+            <p class="mini-title">Crafting Sandbox</p>
+            <p class="mini-role">Developer tools · Web app</p>
+            <p class="mini-copy">A single-machine interface for cloud dev environments, without disrupting existing multi-service users.</p>
+          </div>
+        </a>
+      </sc-if>
+      <a class="mini" href="./projects/nasym.dc.html">
+        <figure class="mini-fig"><div class="nasym-thumb" style="border-radius: 10px; transition: transform 420ms cubic-bezier(.2,.6,.2,1);"><div class="nasym-thumb-phone"><img src="./assets/nasym-cover.svg" alt="The NaSYMSurgical app" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;"><img src="./assets/nasym-mesh.png" alt="" style="position:absolute;left:20.55%;top:27.36%;width:58.95%;height:40.65%;object-fit:fill;"></div></div></figure>
+        <div>
+          <p class="mini-n">04</p>
+          <p class="mini-title">NaSYMSurgical</p>
+          <p class="mini-role">Mobile product · Medical UX</p>
+          <p class="mini-copy">Real-time nasal symmetry measurement for rhinoplasty, on hardware surgeons already carry.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+</div>
+<div class="wrap">
+  <section class="contact">
+    <span class="kicker">Get in touch</span>
+    <p>I'm open to full-time roles. Always happy to talk — new projects, collaborations, or just design systems.</p>
+    <div class="contact-row">
+      <a href="mailto:lizlin.lin@gmail.com"><button type="button" class="btn btn-primary">Email me</button></a>
+      <a href="https://www.linkedin.com/in/e34lin/" target="_blank" rel="noopener"><button type="button" class="btn btn-secondary">LinkedIn ↗</button></a>
+    </div>
+  </section>
+</div>
+<div class="wrap"><footer>
+  <p class="cred-name">Elizabeth Lin</p>
+  <div class="cred-links"><a href="mailto:lizlin.lin@gmail.com">lizlin.lin@gmail.com</a><a href="https://www.linkedin.com/in/e34lin/" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+  <p class="cred-year">© 2026</p>
+</footer></div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;alsoLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;imagetop&quot;,&quot;options&quot;:[&quot;rows&quot;,&quot;imagetop&quot;,&quot;cards&quot;,&quot;gallery&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hierarchy&quot;},&quot;featuredCount&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;one&quot;,&quot;options&quot;:[&quot;one&quot;,&quot;two&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hierarchy&quot;},&quot;featuredStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;flush&quot;,&quot;options&quot;:[&quot;flush&quot;,&quot;panel&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hierarchy&quot;},&quot;heroTreatment&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;flush&quot;,&quot;options&quot;:[&quot;flush&quot;,&quot;glow&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Feel&quot;},&quot;rhythm&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;airy&quot;,&quot;options&quot;:[&quot;compact&quot;,&quot;airy&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Feel&quot;},&quot;surface&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;flush&quot;,&quot;options&quot;:[&quot;cards&quot;,&quot;flush&quot;,&quot;plain&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;heroSurface&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;flush&quot;,&quot;options&quot;:[&quot;match&quot;,&quot;cards&quot;,&quot;flush&quot;,&quot;plain&quot;,&quot;tint&quot;,&quot;accent&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;headerLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;flipped&quot;,&quot;options&quot;:[&quot;split&quot;,&quot;flipped&quot;,&quot;stacked&quot;,&quot;banner&quot;,&quot;none&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;focusLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;columns&quot;,&quot;options&quot;:[&quot;columns&quot;,&quot;rows&quot;,&quot;list&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const featured = this.props.featuredCount ?? 'two';
+    const hero = this.props.heroTreatment ?? 'flush';
+    const rhythm = this.props.rhythm ?? 'airy';
+    return {
+      craftFeatured: featured === 'two',
+      craftMinor: featured === 'one',
+      featuredStyle: this.props.featuredStyle ?? 'panel',
+      alsoLayout: this.props.alsoLayout ?? 'imagetop',
+      isFlushHero: hero === 'flush',
+      isGlowHero: hero === 'glow',
+      leadingPx: rhythm === 'compact' ? 20 : 30,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
