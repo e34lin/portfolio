@@ -46,6 +46,7 @@ a:hover { color: var(--color-accent); }
 
 [data-div="none"] .panel { border-top-color: transparent; }
 .panel { display: grid; grid-template-columns: minmax(0,190px) minmax(0,1fr); gap: var(--space-3) clamp(24px,4vw,64px); align-items: start; padding: calc(1.7 * var(--leading)) 0; border-top: 1px solid var(--color-divider); }
+.panel > * { min-width: 0; }
 .panel > .section-title { grid-column: 1; grid-row: 1; }
 .panel > :not(.section-title) { grid-column: 2; }
 .panel.breathe { padding-top: calc(2.4 * var(--leading)); padding-bottom: calc(2.4 * var(--leading)); }
@@ -88,7 +89,7 @@ a:hover { color: var(--color-accent); }
 .pull { margin: var(--space-4) 0 0; padding: 20px 24px; border-radius: var(--radius-md); background: var(--color-accent-100); border: 1px solid var(--color-accent-300); font-size: 16.5px; line-height: 1.55; color: var(--color-accent-700); max-width: 62ch; }
 
 /* token mapping schematic */
-.map { margin: var(--space-4) 0 0; padding: clamp(18px,2.2vw,26px); border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); }
+.map { margin: var(--space-4) 0 0; padding: clamp(18px,2.2vw,26px); border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); min-width: 0; }
 .map-head { display: grid; grid-template-columns: 84px 14px minmax(0,228px) 14px minmax(0,1fr) minmax(0,1fr); gap: 10px; align-items: end; margin-bottom: 12px; }
 .map-h { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label-ink); margin: 0; }
 .map-row { display: grid; grid-template-columns: 84px 14px minmax(0,228px) 14px minmax(0,1fr) minmax(0,1fr); gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--color-divider); }
@@ -138,7 +139,7 @@ a:hover { color: var(--color-accent); }
 @media (max-width: 700px) { .worlds { grid-template-columns: 1fr; } .layer { grid-template-columns: 1fr; gap: 6px; } .worlds-join span { white-space: normal; text-align: center; } }
 
 /* live theme demo */
-.demo { margin: var(--space-4) 0 0; }
+.demo { margin: var(--space-4) 0 0; min-width: 0; }
 .demo-bar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; margin-bottom: 12px; }
 .demo-h { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label-ink); margin: 0; }
 .swap { display: inline-flex; gap: 4px; padding: 3px; border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); }
@@ -159,6 +160,7 @@ a:hover { color: var(--color-accent); }
 .ch-bar { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background-color: var(--dt-surface); border-bottom: 1px solid var(--dt-line); }
 .ch-ico { width: 16px; height: 16px; border-radius: 4px; background-color: var(--dt-fg-mute); opacity: 0.35; flex: none; }
 .ch-omni { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; background-color: var(--dt-bg); border: 1px solid var(--dt-line); font-size: 12px; color: var(--dt-fg-mute); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.ch-url { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ch-lock { width: 10px; height: 10px; border-radius: 2px; background-color: var(--dt-brand); flex: none; }
 .ch-body { background-color: var(--dt-surface); padding: 22px 20px 26px; display: grid; gap: 12px; }
 .ch-h { height: 14px; width: 46%; border-radius: 4px; background-color: var(--dt-fg); opacity: 0.82; }
@@ -491,7 +493,7 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
         </div>
         <div class="ch-bar">
           <span class="ch-ico"></span><span class="ch-ico"></span>
-          <span class="ch-omni"><span class="ch-lock"></span>learn.microsoft.com/edge</span>
+          <span class="ch-omni"><span class="ch-lock"></span><span class="ch-url">learn.microsoft.com/edge</span></span>
           <span class="ch-ico"></span>
         </div>
         <div class="ch-body">
