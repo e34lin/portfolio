@@ -1,0 +1,10 @@
+# Netlify clean-URL rewrites (rewrite, not redirect — status 200 keeps the
+# clean path in the address bar instead of bouncing to the .dc.html file).
+# In-site <a href> links still point at the literal .dc.html files (see
+# CHANGELOG.md for why), so this covers direct/typed/shared links for now.
+/                          /index.dc.html                          200
+/about                     /about.dc.html                          200
+/projects/edge             /projects/edge.dc.html                  200
+/projects/edge-components  /projects/edge-components.dc.html       200
+/projects/nasym            /projects/nasym.dc.html                 200
+/projects/crafting-inc     /projects/crafting-inc.dc.html          200
