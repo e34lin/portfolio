@@ -186,15 +186,17 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
   <section class="more-wrap">
     
     <div class="more" data-also="{{ alsoLayout }}">
-      <a class="mini" href="./projects/edge-components.dc.html">
-        <figure class="mini-fig"><image-slot id="thumb-ec" shape="rounded" radius="10" placeholder="Edge components"></image-slot></figure>
-        <div>
-          <p class="mini-n">02</p>
-          <p class="mini-title">Edge design systems</p>
-          <p class="mini-role">Components · Upstream alignment</p>
-          <p class="mini-copy">Deciding which parts of a browser are worth owning, and which should go back upstream.</p>
-        </div>
-      </a>
+      <sc-if value="{{ false }}" hint-placeholder-val="{{ false }}">
+        <a class="mini" href="./projects/edge-components.dc.html">
+          <figure class="mini-fig"><image-slot id="thumb-ec" shape="rounded" radius="10" placeholder="Edge components"></image-slot></figure>
+          <div>
+            <p class="mini-n">02</p>
+            <p class="mini-title">Edge design systems</p>
+            <p class="mini-role">Components · Upstream alignment</p>
+            <p class="mini-copy">Deciding which parts of a browser are worth owning, and which should go back upstream.</p>
+          </div>
+        </a>
+      </sc-if>
       <sc-if value="{{ craftMinor }}" hint-placeholder-val="{{ true }}">
         <a class="mini" href="./projects/crafting-inc.dc.html">
           <figure class="mini-fig"><div class="craft-thumb" style="border-radius: 10px; transition: transform 420ms cubic-bezier(.2,.6,.2,1);"><img src="./assets/craft-laptop.png" alt="The Crafting Sandbox dashboard"></div></figure>
