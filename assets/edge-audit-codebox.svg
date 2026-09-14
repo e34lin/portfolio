@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" xml:space="preserve" role="img" aria-label="A Chromium source snippet: hardcoded pixel and hex-color values scattered across five unrelated component files, with no shared design token linking them">
+  <defs>
+    <clipPath id="frame"><rect x="0" y="0" width="1600" height="1000" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect x="0" y="0" width="1600" height="1000" fill="#1d1e23"/>
+    <rect x="0" y="0" width="1600" height="64" fill="#26272d"/>
+    <line x1="0" y1="64" x2="1600" y2="64" stroke="#000000" stroke-opacity="0.35" stroke-width="1"/>
+    <circle cx="32" cy="32" r="7" fill="#565a63"/>
+    <circle cx="60" cy="32" r="7" fill="#565a63"/>
+    <circle cx="88" cy="32" r="7" fill="#565a63"/>
+    <text x="118" y="39" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#71747d">chromium/src</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="23">
+    <text x="60" y="140" fill="#8b8f99" font-style="italic">// --- ui/gfx/color_palette.h ---</text>
+    <text x="60" y="186" fill="#e9eaee">constexpr SkColor kGoogleBlue600 = SkColorSetRGB(<tspan fill="#f0b2a0">0x1A</tspan>, <tspan fill="#f0b2a0">0x73</tspan>, <tspan fill="#f0b2a0">0xE8</tspan>); <tspan fill="#63666f">// literal button-accent hex</tspan></text>
+
+    <text x="60" y="278" fill="#8b8f99" font-style="italic">// --- ui/views/controls/button/md_text_button.cc ---</text>
+    <text x="60" y="324" fill="#e9eaee">const int kFocusBorderThickness    = <tspan fill="#f0b2a0">2</tspan>;   <tspan fill="#63666f">// focus ring stroke width (dp)</tspan></text>
+    <text x="60" y="370" fill="#e9eaee">const int kFocusBorderCornerRadius = <tspan fill="#f0b2a0">3</tspan>;   <tspan fill="#63666f">// focus ring corner radius (dp)</tspan></text>
+    <text x="60" y="416" fill="#e9eaee">const int kBaseHeight              = <tspan fill="#f0b2a0">28</tspan>;  <tspan fill="#63666f">// default button height (dp)</tspan></text>
+    <text x="60" y="462" fill="#e9eaee">const int kHorizontalPadding       = <tspan fill="#f0b2a0">16</tspan>;  <tspan fill="#63666f">// left/right padding inside button (dp)</tspan></text>
+    <text x="60" y="508" fill="#e9eaee">const SkAlpha kStrokeOpacity       = <tspan fill="#f0b2a0">0x1A</tspan>; <tspan fill="#63666f">// ~10% opacity border stroke</tspan></text>
+
+    <text x="60" y="600" fill="#8b8f99" font-style="italic">// --- chrome/browser/ui/layout_constants.cc (TOOLBAR_BUTTON inset) ---</text>
+    <text x="60" y="646" fill="#e9eaee">gfx::Insets(touch_optimized_material ? <tspan fill="#f0b2a0">12</tspan> : <tspan fill="#f0b2a0">6</tspan>); <tspan fill="#63666f">// padding around toolbar button icon (dp)</tspan></text>
+
+    <text x="60" y="738" fill="#8b8f99" font-style="italic">// --- ash/search_box/search_box_constants.h ---</text>
+    <text x="60" y="784" fill="#e9eaee">constexpr int kSearchBoxBorderCornerRadius = <tspan fill="#f0b2a0">24</tspan>; <tspan fill="#63666f">// search box corner radius (dp)</tspan></text>
+    <text x="60" y="830" fill="#e9eaee">constexpr int kSearchBoxPadding             = <tspan fill="#f0b2a0">12</tspan>; <tspan fill="#63666f">// search box horizontal padding (dp)</tspan></text>
+  </g>
+</svg>
