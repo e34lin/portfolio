@@ -7,6 +7,20 @@ single one without affecting the others.
 
 ## Autonomous session — recruiter-lens pass (while you were away)
 
+**All PNG assets losslessly optimized — 8.2MB → 4.9MB (~40% smaller).**
+`optipng -o2` across `assets/*.png` plus the three competitive-analysis
+screenshots in `projects/nasym/` (found those on a second pass — they live
+outside `assets/`, so the first sweep missed them). This is genuinely
+lossless, not "looks the same": diffed pixel data against the previous
+git-committed bytes for the largest files and got an empty bounding box
+(zero differing pixels) every time.
+
+**Noticed, not touched: three more orphaned images.**
+`projects/assets/craft-comp-1.png`, `projects/assets/craft-hero.png`, and
+`projects/nasym/assets/e04f33be9ec42e47.png` aren't referenced by any page
+(same situation as `uploads/`, just smaller). Left them alone for the same
+reason — not my call to delete unlinked files I don't have context on.
+
 **All SVG assets losslessly optimized — 6.5MB → 3.0MB (~54% smaller).**
 Ran `svgo --multipass` across everything in `assets/`. The three heaviest —
 `craft-details.svg` (983KB→403KB), `crafting-sandbox.svg` (772KB→332KB),
