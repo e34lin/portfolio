@@ -22,6 +22,22 @@ on their phone.
 
 Both fixed; re-verified all six pages at 390px width with zero overflow.
 
+**Follow-up: tested 320/480/768/900/1024px too, found three more.** All on
+small phones (iPhone SE class, 320px):
+- The shared nav (`_ds/.../styles.css`, used by all six pages) had no
+  `flex-wrap`, so brand + Work + About + the "Get in touch" button
+  overflowed by 9px. Fixed once at the shared source.
+- `edge.dc.html`'s theme demo: found the actual mechanism behind both this
+  and the earlier `.map`/`.dg` near-misses — grid items default to
+  `min-width: auto`, so a `1fr` track still won't shrink below its
+  content's natural minimum width. Fixed generally with
+  `.panel > * { min-width: 0 }` (covers every current and future panel
+  child, not just the ones that happened to trigger it), plus
+  `text-overflow: ellipsis` on the address-bar URL text specifically.
+
+Re-verified all six pages at all five widths (320 through 1024px): zero
+overflow anywhere. Confirmed no desktop regression via screenshot diff.
+
 
 **Favicon, meta descriptions, Open Graph/Twitter tags — added, all six
 pages.** A branded "EL" favicon (`assets/favicon.svg`, your site's accent
