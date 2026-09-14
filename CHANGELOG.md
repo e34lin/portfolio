@@ -7,6 +7,17 @@ single one without affecting the others.
 
 ## Autonomous session — recruiter-lens pass (while you were away)
 
+**All SVG assets losslessly optimized — 6.5MB → 3.0MB (~54% smaller).**
+Ran `svgo --multipass` across everything in `assets/`. The three heaviest —
+`craft-details.svg` (983KB→403KB), `crafting-sandbox.svg` (772KB→332KB),
+`crafting-menu-topbar.svg` (766KB→325KB) — all sit in hero figures loaded
+on first paint, so this is real weight off the page for anyone clicking
+through on a phone. Verified safety two ways: pixel-diffed the largest
+file's before/after render at 1200px (identical apart from antialiasing
+noise), then re-screenshotted the actual live pages (crafting-inc's hero
+and components section, nasym's phone stage) against earlier screenshots
+from this session — no visible difference anywhere.
+
 **Two real mobile bugs found and fixed.** Screenshotted every page at a
 390px (iPhone-width) viewport and checked for horizontal overflow — this
 is the kind of thing that reads as sloppy to a recruiter clicking through
