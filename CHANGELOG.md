@@ -7,6 +7,22 @@ single one without affecting the others.
 
 ## Autonomous session — recruiter-lens pass (while you were away)
 
+**Two real mobile bugs found and fixed.** Screenshotted every page at a
+390px (iPhone-width) viewport and checked for horizontal overflow — this
+is the kind of thing that reads as sloppy to a recruiter clicking through
+on their phone.
+- `crafting-inc.dc.html`: `.panel` never collapsed to a single column
+  below 800px (every other project page does this), and `.cards3` wasn't
+  in the mobile grid-collapse list either. Together they squeezed page
+  content into a 136px column while a 230px-minimum card grid tried to
+  render inside it — 74px of horizontal overflow on phones.
+- `edge.dc.html`: a `white-space: nowrap` on a full sentence in the
+  "One browser, two rendering worlds" diagram never wrapped, overflowing
+  the viewport by 15px on phones.
+
+Both fixed; re-verified all six pages at 390px width with zero overflow.
+
+
 **Favicon, meta descriptions, Open Graph/Twitter tags — added, all six
 pages.** A branded "EL" favicon (`assets/favicon.svg`, your site's accent
 color), a `<meta name="description">`, and `og:title`/`og:description`/
