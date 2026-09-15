@@ -5,6 +5,19 @@ newest first. Every entry corresponds to a git commit — use `git log` or
 `git show <hash>` for the exact diff, and `git revert <hash>` to undo any
 single one without affecting the others.
 
+## Edge thumbnail: white body fills to the bottom, tags moved to their subjects
+
+After the thumbnail grew to 4:3, the mock browser's white content area no
+longer reached the bottom — it kept its old fixed height and left a grey
+band underneath. Made the window a flex column so the white body stretches
+to fill it. Also re-anchored two of the token tags, which had been
+positioned as percentages of the whole thumbnail and drifted away from what
+they label when the proportions changed: `backgroundOmniboxRest` now sits
+on the address-bar row and `backgroundCtrlBrandRest` beside the Primary
+action button. Both are anchored with the window's own fixed row heights
+now rather than free-floating percentages, so they track their subjects at
+any thumbnail size (checked at 900px and 1440px).
+
 ## Symmetry diagram redrawn properly + homepage lead card aligned
 
 **Symmetry diagram, second attempt.** My first redraw dropped almost all
