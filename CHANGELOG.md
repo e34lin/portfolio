@@ -5,6 +5,44 @@ newest first. Every entry corresponds to a git commit — use `git log` or
 `git show <hash>` for the exact diff, and `git revert <hash>` to undo any
 single one without affecting the others.
 
+## Crafting Sandbox "Outcome" section — nav tab visuals + video walkthrough
+
+You sent an updated `crafting-inc.dc.html` export with instructions to apply
+visual updates only to the Outcome section's "Left menu & top bar" tab and
+the interactive video walkthrough, and to leave everything else alone
+(including the other four before/after tabs — Workspace card, Home page,
+New workspace flow, Workspace detail — which the export also updated new
+assets for, but weren't asked for).
+
+**"Left menu & top bar" before/after slider**: swapped from PNG to new SVG
+before/after art (`craft-ba-nav-before.svg` / `craft-ba-nav-after.svg`),
+with a per-tab CSS override (`.cba-view[data-tab="1"]`) so only this tab's
+aspect ratio and image-fit changed — the other four tabs stay on their
+original 1600×978 PNG sizing untouched, verified by clicking through each
+one after the change.
+
+**Video walkthrough**: converted from static PNG frames to inline SVG
+frames fetched and injected at runtime, adding real hover → press micro-
+interactions on the buttons the cursor "clicks" through the walkthrough
+(brand-blue highlight on hover, darker on press, before the screen
+advances) — a genuine visual upgrade over the previous straight PNG swap.
+Updated cursor coordinates to match the new SVGs' actual button positions.
+
+**Skipped, staying with what you already have**: the other four before/after
+tabs' new PNG assets (not asked for), the meta/Open Graph tag removal the
+export included (would've reverted earlier work), and a stale reversion of
+a mobile-overflow fix (`.panel` collapsing to one column under 800px) that
+was also bundled into that export.
+
+**Left un-optimized, deliberately**: the new prototype-walkthrough SVGs
+(~13MB across 13 files) use custom `data-hit="..."` attributes that the
+hover/press CSS depends on to find the right shape to recolor. Ran `svgo`
+as a test on one file and it rendered with a small (non-zero) pixel
+difference — safe for a static illustration, but I didn't want to risk
+subtly resizing or merging a hit-region shape on an interactive control
+without being able to verify pixel-for-pixel losslessness. Left them as
+exported; happy to revisit if the extra weight matters to you.
+
 ## About page portrait — filled in with your real photo
 
 The earlier autonomous pass had tried to fetch a LinkedIn profile photo and
