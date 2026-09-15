@@ -2,21 +2,22 @@
 <html>
 <head>
 <meta charset="utf-8">
+<base href="/portfolio/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="../_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/styles.css">
-<script src="../_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/_ds_bundle.js"></script>
-<script src="./image-slot.js"></script>
+<link rel="stylesheet" href="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/styles.css">
+<script src="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/_ds_bundle.js"></script>
+<script src="image-slot.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <title>Edge component layer — Elizabeth Lin</title>
 <meta name="description" content="Case study: deciding what a browser should carry — which parts of Edge's interface the team must own, and which it should stop owning.">
-<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta property="og:title" content="Edge component layer — Elizabeth Lin">
 <meta property="og:description" content="Deciding what a browser should carry: which parts of Edge's interface are ours to maintain, and which shouldn't be.">
 <meta property="og:type" content="article">
@@ -183,10 +184,10 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 <div data-st="{{ titleStyle }}" data-div="{{ dividerStyle }}" data-fn="{{ featureNames }}">
 <div class="progress"><span></span></div>
 <nav class="nav">
-  <a href="../index.dc.html" class="nav-brand" style="text-decoration:none;">Elizabeth Lin</a>
-  <a href="../index.dc.html#work">Work</a>
-  <a href="../about.dc.html">About</a>
-  <a href="../assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
+  <a href="./" class="nav-brand" style="text-decoration:none;">Elizabeth Lin</a>
+  <a href="./#work">Work</a>
+  <a href="about/">About</a>
+  <a href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
   <a href="mailto:lizlin.lin@gmail.com"><button type="button" class="btn btn-primary">Get in touch</button></a>
 </nav>
 <nav class="rail" aria-label="Sections">
@@ -215,7 +216,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 </nav>
 <div class="wrap">
 
-  <a class="backlink" href="../index.dc.html#work"><span>←</span>All work</a>
+  <a class="backlink" href="./#work"><span>←</span>All work</a>
 
   <header class="header">
     <span class="kicker">Microsoft Edge</span>
@@ -394,14 +395,14 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
     <p class="section-body">Design systems work is usually described as adding — more components, more coverage, more documentation. Most of what was valuable here was the opposite: removing a difference that nobody could justify, retiring a pattern, taking work off one person's desk. A smaller thing to maintain is worth more than a bigger thing to admire.</p>
   </section>
 
-  <a class="next" href="./crafting-inc.dc.html">
+  <a class="next" href="projects/crafting-inc/">
     <div class="next-body">
       <p class="next-label">Next project</p>
       <h2 class="next-title">Crafting Sandbox</h2>
       <p class="next-desc">A single-machine interface for cloud dev environments, without disrupting existing multi-service users.</p>
       <span class="next-go">Read it →</span>
     </div>
-    <figure class="next-fig"><div class="craft-thumb"><img src="../assets/craft-laptop.png" alt="The Crafting Sandbox dashboard"></div></figure>
+    <figure class="next-fig"><div class="craft-thumb"><img src="assets/craft-laptop.png" alt="The Crafting Sandbox dashboard"></div></figure>
   </a>
 
 </div>

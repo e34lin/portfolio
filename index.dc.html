@@ -2,15 +2,16 @@
 <html>
 <head>
 <meta charset="utf-8">
+<base href="/portfolio/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
 <link rel="stylesheet" href="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/styles.css">
 <script src="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/_ds_bundle.js"></script>
-<script src="./image-slot.js"></script>
+<script src="image-slot.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -162,8 +163,8 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
 <nav class="nav">
   <span class="nav-brand">Elizabeth Lin</span>
   <a href="#work" aria-current="location">Work</a>
-  <a href="./about.dc.html">About</a>
-  <a href="./assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
+  <a href="about/">About</a>
+  <a href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
   <a href="mailto:lizlin.lin@gmail.com"><button type="button" class="btn btn-primary">Get in touch</button></a>
 </nav>
 
@@ -192,7 +193,7 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
     <p class="group-h">RECENT WORK</p>
     <div class="featured" data-style="{{ featuredStyle }}">
 
-      <a class="lead" href="./projects/edge.dc.html">
+      <a class="lead" href="projects/edge/">
         <div class="lead-body">
           <p class="lead-num">01</p>
           <h2 class="lead-title">Microsoft Edge</h2>
@@ -213,7 +214,7 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
       </a>
 
       <sc-if value="{{ craftFeatured }}" hint-placeholder-val="{{ false }}">
-        <a class="lead" href="./projects/crafting-inc.dc.html">
+        <a class="lead" href="projects/crafting-inc/">
           <div class="lead-body">
             <p class="lead-num">02</p>
             <h2 class="lead-title">Crafting Sandbox</h2>
@@ -221,7 +222,7 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
             <p class="lead-copy">A single-machine interface for cloud dev environments, without disrupting existing multi-service users.</p>
             <span class="lead-arrow">View case study →</span>
           </div>
-          <figure class="lead-fig"><div class="craft-thumb" style="aspect-ratio: 16/10; transition: transform 420ms cubic-bezier(.2,.6,.2,1);"><img src="./assets/craft-laptop.png" alt="The Crafting Sandbox dashboard"></div></figure>
+          <figure class="lead-fig"><div class="craft-thumb" style="aspect-ratio: 16/10; transition: transform 420ms cubic-bezier(.2,.6,.2,1);"><img src="assets/craft-laptop.png" alt="The Crafting Sandbox dashboard"></div></figure>
         </a>
       </sc-if>
 
@@ -232,7 +233,7 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
     
     <div class="more" data-also="{{ alsoLayout }}">
       <sc-if value="{{ false }}" hint-placeholder-val="{{ false }}">
-        <a class="mini" href="./projects/edge-components.dc.html">
+        <a class="mini" href="projects/edge-components/">
           <figure class="mini-fig"><image-slot id="thumb-ec" shape="rounded" radius="10" placeholder="Edge components"></image-slot></figure>
           <div>
             <p class="mini-n">02</p>
@@ -243,8 +244,8 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
         </a>
       </sc-if>
       <sc-if value="{{ craftMinor }}" hint-placeholder-val="{{ true }}">
-        <a class="mini" href="./projects/crafting-inc.dc.html">
-          <figure class="mini-fig"><div class="craft-thumb" style="border-radius: 10px; transition: transform 420ms cubic-bezier(.2,.6,.2,1);"><img src="./assets/craft-laptop.png" alt="The Crafting Sandbox dashboard"></div></figure>
+        <a class="mini" href="projects/crafting-inc/">
+          <figure class="mini-fig"><div class="craft-thumb" style="border-radius: 10px; transition: transform 420ms cubic-bezier(.2,.6,.2,1);"><img src="assets/craft-laptop.png" alt="The Crafting Sandbox dashboard"></div></figure>
           <div>
             <p class="mini-n">02</p>
             <p class="mini-title">Crafting Sandbox</p>
@@ -253,8 +254,8 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
           </div>
         </a>
       </sc-if>
-      <a class="mini" href="./projects/nasym.dc.html">
-        <figure class="mini-fig"><div class="nasym-thumb" style="border-radius: 10px; transition: transform 420ms cubic-bezier(.2,.6,.2,1);"><div class="nasym-thumb-phone"><img src="./assets/nasym-cover.svg" alt="The NaSYMSurgical app" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;"><img src="./assets/nasym-mesh.png" alt="" style="position:absolute;left:20.55%;top:27.36%;width:58.95%;height:40.65%;object-fit:fill;"></div></div></figure>
+      <a class="mini" href="projects/nasym/">
+        <figure class="mini-fig"><div class="nasym-thumb" style="border-radius: 10px; transition: transform 420ms cubic-bezier(.2,.6,.2,1);"><div class="nasym-thumb-phone"><img src="assets/nasym-cover.svg" alt="The NaSYMSurgical app" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;"><img src="assets/nasym-mesh.png" alt="" style="position:absolute;left:20.55%;top:27.36%;width:58.95%;height:40.65%;object-fit:fill;"></div></div></figure>
         <div>
           <p class="mini-n">03</p>
           <p class="mini-title">NaSYMSurgical</p>

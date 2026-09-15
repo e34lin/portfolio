@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build clean-URL site
+        run: |
+          set -e
+          rm -rf _site
+          mkdir -p _site
+
+          # shared, unchanged at any depth (paths are anchored by <base href="/portfolio/"> in every page)
+          cp -r _ds _site/_ds
+          cp -r assets _site/assets
+          cp .nojekyll _site/.nojekyll
+          cp robots.txt _site/robots.txt
+          cp image-slot.js _site/image-slot.js
+          cp support.js _site/support.js
+
+          # homepage
+          cp index.dc.html _site/index.html
+
+          # about
+          mkdir -p _site/about
+          cp about.dc.html _site/about/index.html
+
+          # project case studies
+          mkdir -p _site/projects/edge _site/projects/edge-components _site/projects/nasym _site/projects/crafting-inc
+          cp projects/edge.dc.html _site/projects/edge/index.html
+          cp projects/edge-components.dc.html _site/projects/edge-components/index.html
+          cp projects/nasym.dc.html _site/projects/nasym/index.html
+          cp projects/crafting-inc.dc.html _site/projects/crafting-inc/index.html
+
+          # nasym's own local asset subfolder (fig-assets.css, embedded component images, etc.)
+          cp -r projects/nasym/* _site/projects/nasym/
+
+          # _source/ (raw design exports, drafts) is intentionally NOT copied — never deployed
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
