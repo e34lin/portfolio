@@ -44,6 +44,18 @@ a:hover { color: var(--color-accent); }
 .hero-figure { margin: 0 0 calc(0.6 * var(--leading)); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
 .hero-figure image-slot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
 
+.hero-art { display: flex; align-items: center; gap: clamp(16px,2.4vw,32px); margin: 0 0 calc(0.6 * var(--leading)); }
+.hero-side { flex: 1; min-width: 0; }
+.hero-cap { display: flex; align-items: baseline; gap: 8px; margin: 0 0 10px; }
+.hero-cap b { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); }
+.hero-cap span { font-size: 13px; color: var(--label-ink); }
+.hero-eq { flex: none; display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--color-accent-700); }
+.hero-eq span { font-family: var(--display); font-size: 32px; line-height: 1; }
+.hero-eq small { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--label-ink); white-space: nowrap; }
+.hero-code { margin: 14px 0 0; padding: 16px 18px; border-radius: var(--radius-md); background: #1d1e23; color: #e9eaee; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; line-height: 1.8; overflow-x: auto; }
+.hero-code i, .hero-code em { font-style: normal; color: #f0b2a0; }
+@media (max-width: 700px) { .hero-art { flex-direction: column; } .hero-eq { flex-direction: row; } .hero-eq span { font-size: 22px; } .hero-side { width: 100%; } }
+
 [data-div="none"] .panel { border-top-color: transparent; }
 .panel { display: grid; grid-template-columns: minmax(0,190px) minmax(0,1fr); gap: var(--space-3) clamp(24px,4vw,64px); align-items: start; padding: calc(1.7 * var(--leading)) 0; border-top: 1px solid var(--color-divider); }
 .panel > * { min-width: 0; }
@@ -277,9 +289,33 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
     </div>
   </header>
 
-  <figure class="hero-figure">
-    <image-slot id="edge-hero" shape="rect" placeholder="Drop the hero — Edge UI, or the token system in Figma"></image-slot>
-  </figure>
+  <div class="hero-art">
+    <div class="hero-side">
+      <p class="hero-cap"><b>Before</b><span>Hard-coded</span></p>
+      <div class="chrome">
+        <div class="ch-tabs"><div class="ch-tab" data-on><span class="ch-dot"></span>New tab</div><div class="ch-tab">Favorites</div></div>
+        <div class="ch-bar"><span class="ch-ico"></span><span class="ch-omni"><span class="ch-lock"></span><span class="ch-url">edge://settings</span></span><span class="ch-ico"></span></div>
+        <div class="ch-body"><div class="ch-h"></div><div class="ch-l"></div><div class="ch-l s"></div><div class="ch-btn">Primary action</div></div>
+      </div>
+      <pre class="hero-code">background: <i>#FFFFFF</i>;
+color:      <i>#1B1A19</i>;
+border:     <i>#E2E2E2</i>;
+fill:       <i>#0078D4</i>;</pre>
+    </div>
+    <div class="hero-eq"><span>=</span><small>Same pixels</small></div>
+    <div class="hero-side">
+      <p class="hero-cap"><b>After</b><span>Semantic tokens</span></p>
+      <div class="chrome">
+        <div class="ch-tabs"><div class="ch-tab" data-on><span class="ch-dot"></span>New tab</div><div class="ch-tab">Favorites</div></div>
+        <div class="ch-bar"><span class="ch-ico"></span><span class="ch-omni"><span class="ch-lock"></span><span class="ch-url">edge://settings</span></span><span class="ch-ico"></span></div>
+        <div class="ch-body"><div class="ch-h"></div><div class="ch-l"></div><div class="ch-l s"></div><div class="ch-btn">Primary action</div></div>
+      </div>
+      <pre class="hero-code">background: <em>surface.default</em>;
+color:      <em>text.primary</em>;
+border:     <em>stroke.divider</em>;
+fill:       <em>brand.fill</em>;</pre>
+    </div>
+  </div>
 
   <section class="panel" id="background" data-rail-target>
     <p class="section-title">Background</p>
