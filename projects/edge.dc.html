@@ -44,7 +44,7 @@ a:hover { color: var(--color-accent); }
 .hero-figure { margin: 0 0 calc(0.6 * var(--leading)); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
 .hero-figure image-slot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
 
-.hero-art { display: flex; align-items: center; gap: clamp(16px,2.4vw,32px); margin: 0 0 calc(0.6 * var(--leading)); }
+.hero-art { display: flex; align-items: center; gap: clamp(16px,2.4vw,32px); }
 .hero-side { flex: 1; min-width: 0; }
 .hero-cap { display: flex; align-items: baseline; gap: 8px; margin: 0 0 10px; }
 .hero-cap b { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); }
@@ -289,6 +289,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
     </div>
   </header>
 
+  <figure class="hero-figure" aria-label="Schematic: the same browser surface, once on hard-coded values and once on semantic tokens, rendering identically">
   <div class="hero-art">
     <div class="hero-side">
       <p class="hero-cap"><b>Before</b><span>Hard-coded</span></p>
@@ -316,6 +317,7 @@ border:     <em>stroke.divider</em>;
 fill:       <em>brand.fill</em>;</pre>
     </div>
   </div>
+  </figure>
 
   <section class="panel" id="background" data-rail-target>
     <p class="section-title">Background</p>
