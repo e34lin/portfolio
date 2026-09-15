@@ -5,6 +5,74 @@ newest first. Every entry corresponds to a git commit — use `git log` or
 `git show <hash>` for the exact diff, and `git revert <hash>` to undo any
 single one without affecting the others.
 
+## Edge case study — merged illustration upgrades from your Claude Design export
+
+You sent an updated `edge.dc.html` exported from Claude Design with instructions
+to apply illustration changes only and leave the "same interface, two themes"
+demo alone. Diffed your export against the live file line by line and applied
+only the visual/illustration side; **verified after merging that the theme
+demo still shows the warm palette and black button exactly as before** —
+clicked through to the MAI state and screenshotted it to confirm.
+
+**Applied:**
+- New hero figure: a real before/after comparison (hard-coded hex values →
+  semantic token names) with a dark-terminal code panel, replacing the older
+  placeholder hero art. Realistic token names throughout
+  (`backgroundLayerApp`, `foregroundCtrlNeutralPrimaryRest`,
+  `strokeDividerDefault`, `backgroundCtrlBrandRest`).
+- The design-system-audit code panel (`#source`) is now live HTML text (a
+  real Chromium-style source excerpt) instead of a static SVG image — same
+  dark editor-window styling, but it's real, selectable text now. This
+  needed a workaround: the site's renderer mangles raw text matching
+  `k`+Uppercase (e.g. `kGoogleBlue600`) into garbage when written as live
+  HTML, so a zero-width non-joiner is inserted after each `k` — invisible,
+  and confirmed via an isolated test that it doesn't affect ordinary
+  camelCase names.
+- "Sequencing the rollout" section: replaced two empty image placeholders
+  with a working mock of a browser DevTools "Styles" pane, showing the
+  actual-looking custom-property names (`--smtc-background-ctrl-brand-rest`,
+  etc.) the way they'd really appear mid-audit.
+- "Craft" section: replaced an empty image placeholder with your real
+  `edge-craft-before-sharp.png` screenshot, annotated with three callout
+  labels pointing at the three different hard-coded blues on screen.
+- "Shipped" section: replaced the empty payoff placeholder with a working
+  3-state interactive slider (auto-advances, click-to-jump) showing the
+  favorites flyout across hard-coded → Phoenix → MAI, using three new SVGs
+  you provided (`edge-flyout-pretoken.svg`, `edge-flyout-phoenix.svg`,
+  `edge-flyout-mai.svg`).
+- Shared chrome-mockup polish: slightly larger corner radius, plus a small
+  CSS detail where an active browser tab now visually "bites into" the
+  window-chrome corner instead of sitting as a flat rectangle.
+- Found and fixed two new mobile-overflow bugs introduced by the above (both
+  at 320px only): the DevTools-pane mock wasn't shrinking inside its grid
+  cell (same root cause as an earlier fix — grid items don't shrink below
+  content width without `min-width: 0`), and one comment line in the new
+  audit code was a single unbroken file path with nowhere to wrap. Both
+  fixed and re-verified at 320/480/768/900/1024px across all six pages —
+  zero overflow anywhere.
+
+**Explicitly NOT applied (per your instruction):**
+- Your export's version of the theme-demo colors, chrome background, and
+  primary-action button — it was a stale snapshot from before your later
+  "make the button black," "keep the tab background warm," and hex-value
+  requests, so applying it would have silently reverted that work. Kept the
+  current warm-palette/black-button version untouched, and verified this
+  after the merge by clicking to the MAI state and confirming it still
+  matches.
+- A few other things your export would have reverted for the same
+  stale-snapshot reason: the address-bar text-overflow-ellipsis fix, the
+  `.panel > * { min-width: 0 }` mobile-overflow fix, the "two rendering
+  worlds" diagram wrap fix, the page's meta/Open-Graph tags, and the "next
+  project" link pointing at Crafting Sandbox.
+- A new sentence your export added to the token-mapping section's prose
+  ("Concretely, the Phoenix theme's values were what Fluent had
+  specified..."). You asked for illustration changes specifically, and
+  didn't ask for a copy edit here, so left the existing paragraph as-is.
+- Some CSS in your export (`.tok-tree`, `.arch`, `.spec-cards`, `.flip-*`)
+  that isn't referenced by any markup in the file you sent — looked like
+  leftover exploration from the design canvas. Left it out rather than
+  importing dead code.
+
 ## Autonomous session — recruiter-lens pass (while you were away)
 
 **All PNG assets losslessly optimized — 8.2MB → 4.9MB (~40% smaller).**

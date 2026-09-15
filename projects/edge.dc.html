@@ -44,17 +44,30 @@ a:hover { color: var(--color-accent); }
 .hero-figure { margin: 0 0 calc(0.6 * var(--leading)); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
 .hero-figure image-slot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
 
-.hero-art { display: flex; align-items: center; gap: clamp(16px,2.4vw,32px); }
-.hero-side { flex: 1; min-width: 0; }
-.hero-cap { display: flex; align-items: baseline; gap: 8px; margin: 0 0 10px; }
-.hero-cap b { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); }
-.hero-cap span { font-size: 13px; color: var(--label-ink); }
-.hero-eq { flex: none; display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--color-accent-700); }
-.hero-eq span { font-family: var(--display); font-size: 32px; line-height: 1; }
-.hero-eq small { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--label-ink); white-space: nowrap; }
-.hero-code { margin: 14px 0 0; padding: 16px 18px; border-radius: var(--radius-md); background: #1d1e23; color: #e9eaee; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; line-height: 1.8; overflow-x: auto; }
-.hero-code i, .hero-code em { font-style: normal; color: #f0b2a0; }
-@media (max-width: 700px) { .hero-art { flex-direction: column; } .hero-eq { flex-direction: row; } .hero-eq span { font-size: 22px; } .hero-side { width: 100%; } }
+/* hero: abstract recreation, no work files */
+.hero-art { position: relative; padding: clamp(22px,3.4vw,48px); --hero-brand: #0078d4; background: radial-gradient(circle at 12% 10%, color-mix(in oklch, var(--hero-brand) 7%, transparent), transparent 28%), radial-gradient(circle at 92% 95%, color-mix(in oklch, var(--hero-brand) 5%, transparent), transparent 24%), var(--color-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: clamp(12px,2vw,24px); align-items: center; }
+.hero-art .chrome { box-shadow: var(--shadow-md); }
+.hero-art .ch-body { padding: 16px 16px 18px; gap: 9px; }
+.hero-art .ch-btn { padding: 7px 12px; font-size: 11.5px; }
+.hero-side { display: grid; gap: 10px; min-width: 0; }
+.hero-cap { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label-ink); }
+.hero-cap b { font-weight: 600; color: var(--color-text); letter-spacing: 0.06em; }
+.hero-code { margin: 0; padding: 12px 14px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; line-height: 1.9; white-space: normal; overflow: visible; color: #d7d9de; }
+.hero-code .kw { font-style: normal; color: #569cd6; }
+.hero-code .val { font-style: normal; color: #b5cea8; }
+.hero-code .cm { font-style: normal; color: #6a9955; }
+.hero-code i.val { color: #b5cea8; }
+.hero-code em { font-style: normal; font-weight: 600; color: #4ec9b0; }
+.code-win { border-radius: var(--radius-md); overflow: hidden; background: #14161c; border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); }
+.code-tb { display: flex; align-items: center; gap: 7px; padding: 9px 12px; background: #1d2027; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.code-tb span { width: 8px; height: 8px; border-radius: 50%; background: #3a3e48; }
+.code-tb b { margin-left: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-weight: 400; font-size: 10.5px; color: #7c8494; }
+.code-win-lg { max-width: 100%; }
+.code-win-lg .src-code { padding: 18px 20px; line-height: 1.85; font-size: 12px; white-space: normal; overflow-wrap: anywhere; }
+.hero-eq { display: grid; justify-items: center; gap: 6px; color: var(--color-text); }
+.hero-eq span { font-family: var(--display); font-size: clamp(28px,3.4vw,44px); line-height: 1; }
+.hero-eq small { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label-ink); white-space: nowrap; }
+@media (max-width: 760px) { .hero-art { grid-template-columns: 1fr; } .hero-eq { grid-auto-flow: column; align-items: center; } .hero-code { font-size: 10.5px; } }
 
 [data-div="none"] .panel { border-top-color: transparent; }
 .panel { display: grid; grid-template-columns: minmax(0,190px) minmax(0,1fr); gap: var(--space-3) clamp(24px,4vw,64px); align-items: start; padding: calc(1.7 * var(--leading)) 0; border-top: 1px solid var(--color-divider); }
@@ -118,6 +131,26 @@ a:hover { color: var(--color-accent); }
 .map-out { display: flex; gap: 6px; align-items: center; }
 .map-out .chip { font-size: 11px; gap: 6px; }
 .map-note { font-size: 12.5px; line-height: 1.5; color: var(--label-ink); margin: 12px 0 0; }
+/* devtools styles-pane mock */
+.dt-panel { position: relative; background: #fff; border: 1px solid var(--color-divider); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); overflow: hidden; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; }
+.dt-tb { display: flex; gap: 4px; padding: 8px 12px 0; background: #f3f3f3; border-bottom: 1px solid var(--color-divider); position: relative; }
+.dt-tab { font-size: 11px; padding: 6px 12px; color: var(--label-ink); border-radius: 4px 4px 0 0; white-space: nowrap; flex: none; position: relative; }
+.dt-tab[data-on] { background: #fff; color: var(--color-text); font-weight: 600; margin-bottom: -1px; padding-bottom: 7px; border: 1px solid var(--color-divider); border-bottom-color: #fff; }
+.dt-rule { padding: 8px 14px 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; color: var(--label-ink); }
+.dt-sel { color: #a626a4; }
+.dt-rows { padding: 2px 14px 6px; overflow: hidden; flex: 1; }
+.dt-group { margin: 8px 0 3px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; color: #6a9955; }
+.dt-row { display: flex; align-items: baseline; gap: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.55; padding-left: 12px; white-space: nowrap; overflow: hidden; }
+.dt-sw { width: 9px; height: 9px; border-radius: 2px; flex: none; border: 1px solid rgba(0,0,0,0.15); }
+.dt-k { color: #881391; overflow: hidden; text-overflow: ellipsis; min-width: 0; flex-shrink: 1; }
+.dt-v { color: #1a1aa6; flex: none; }
+.dt-close { padding-top: 0; }
+.dt-fade { position: absolute; left: 0; right: 0; bottom: 0; height: 26px; background: linear-gradient(to bottom, transparent, #fff); }
+.opt-row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(14px,2vw,20px); margin-top: var(--space-4); align-items: start; }
+.opt-row figure { margin: 0; min-width: 0; }
+.opt-row figcaption { font-size: 12px; line-height: 1.5; margin-top: 9px; color: var(--label-ink); }
+.opt-row figcaption b { color: var(--color-text); }
+@media (max-width: 900px) { .opt-row { grid-template-columns: 1fr; } }
 
 
 
@@ -160,14 +193,18 @@ a:hover { color: var(--color-accent); }
 .swap button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 .demo[data-theme="ph"] .swap-ph, .demo[data-theme="mai"] .swap-mai { background-color: var(--color-accent); color: var(--color-bg); }
 
-.chrome { --dt-bg: #f3f3f3; --dt-surface: #ffffff; --dt-fg: #1b1a19; --dt-fg-mute: #6b6a68; --dt-line: #e2e2e2; --dt-brand: #0078d4; --dt-radius: 6px;
+.chrome { --dt-bg: #f3f3f3; --dt-surface: #ffffff; --dt-fg: #1b1a19; --dt-fg-mute: #6b6a68; --dt-line: #e2e2e2; --dt-brand: #0078d4; --dt-radius: 9px;
   border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-divider); box-shadow: var(--shadow-sm);
   background-color: var(--dt-bg); }
 .demo[data-theme="mai"] .chrome { --dt-bg: #fbf8f5; --dt-surface: #fffefd; --dt-fg: #3a2f27; --dt-fg-mute: #8a7b6e; --dt-line: #ece5dc; --dt-brand: #b08662; --dt-radius: 10px; }
 .demo[data-theme="mai"] .ch-btn { background-color: #201a16; }
 .ch-tabs { display: flex; align-items: flex-end; gap: 6px; padding: 8px 10px 0; }
 .ch-tab { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: var(--dt-radius) var(--dt-radius) 0 0; font-size: 12px; color: var(--dt-fg-mute); background-color: transparent; }
-.ch-tab[data-on] { background-color: var(--dt-surface); color: var(--dt-fg); }
+.ch-tab[data-on] { background-color: var(--dt-surface); color: var(--dt-fg); position: relative; }
+.ch-tab[data-on]::before, .ch-tab[data-on]::after { content: ""; position: absolute; bottom: 0; width: var(--dt-radius); height: var(--dt-radius); background-color: var(--dt-surface); }
+.ch-tab[data-on]::before { left: calc(-1 * var(--dt-radius)); mask: radial-gradient(circle at 0 0, transparent calc(var(--dt-radius) - 0.5px), #000 var(--dt-radius)); -webkit-mask: radial-gradient(circle at 0 0, transparent calc(var(--dt-radius) - 0.5px), #000 var(--dt-radius)); }
+.ch-tab[data-on]::after { right: calc(-1 * var(--dt-radius)); mask: radial-gradient(circle at 100% 0, transparent calc(var(--dt-radius) - 0.5px), #000 var(--dt-radius)); -webkit-mask: radial-gradient(circle at 100% 0, transparent calc(var(--dt-radius) - 0.5px), #000 var(--dt-radius)); }
+.ch-tabs { padding-left: calc(10px + var(--dt-radius)); }
 .ch-dot { width: 9px; height: 9px; border-radius: 50%; background-color: var(--dt-brand); flex: none; }
 .ch-bar { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background-color: var(--dt-surface); border-bottom: 1px solid var(--dt-line); }
 .ch-ico { width: 16px; height: 16px; border-radius: 4px; background-color: var(--dt-fg-mute); opacity: 0.35; flex: none; }
@@ -185,6 +222,22 @@ a:hover { color: var(--color-accent); }
 .inline-fig image-slot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; transition: transform 420ms cubic-bezier(.2,.6,.2,1); }
 .inline-fig:hover image-slot { transform: scale(1.02); }
 .inline-fig figcaption { font-size: 13px; line-height: 1.45; margin-top: 10px; color: var(--label-ink); }
+.craft-fig { position: relative; max-width: 923px; margin-left: auto; margin-right: auto; }
+.craft-tag { position: absolute; transform: translate(-50%,-100%); font-size: 10.5px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; padding: 4px 8px; border-radius: 6px; background: rgba(255,255,255,0.92); border: 1px solid #0078d4; color: #0078d4; box-shadow: var(--shadow-sm); white-space: nowrap; }
+.evid-row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(10px,1.6vw,16px); }
+.evo { background: var(--color-bg); border: 1px solid var(--color-divider); border-radius: var(--radius-md); padding: clamp(16px,2.4vw,28px); display: grid; gap: 18px; }
+.evo-stage { position: relative; aspect-ratio: 400 / 300; max-width: 560px; width: 100%; margin: 0 auto; }
+.evo-img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transform: scale(0.985); transition: opacity 560ms cubic-bezier(.2,.6,.2,1), transform 560ms cubic-bezier(.2,.6,.2,1); }
+.evo[data-step="0"] .evo-img[data-i="0"], .evo[data-step="1"] .evo-img[data-i="1"], .evo[data-step="2"] .evo-img[data-i="2"] { opacity: 1; transform: none; }
+.evo-steps { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.evo-step { font: inherit; font-size: 12px; display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--color-divider); background: var(--glass-bg); color: var(--label-ink); cursor: pointer; transition: border-color 200ms, color 200ms, background 200ms; }
+.evo-step:hover { border-color: var(--color-accent-300); color: var(--color-text); }
+.evo-n { font-size: 10px; letter-spacing: 0.08em; opacity: 0.7; }
+.evo[data-step="0"] .evo-step[data-i="0"], .evo[data-step="1"] .evo-step[data-i="1"], .evo[data-step="2"] .evo-step[data-i="2"] { border-color: var(--color-accent-500); color: var(--color-accent-700); background: var(--color-accent-100); }
+.evo-arrow { font-size: 12px; color: var(--label-ink); }
+.evid-col { background: var(--color-bg); border: 1px solid var(--color-divider); border-radius: var(--radius-md); padding: 14px; display: grid; gap: 10px; }
+.evid-cap { margin: 0; font-size: 11.5px; letter-spacing: 0.02em; color: var(--label-ink); text-align: center; }
+@media (max-width: 700px) { .evid-row { grid-template-columns: 1fr; } }
 .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px,2vw,24px); margin-top: var(--space-4); }
 .gallery figure { margin: 0; display: flex; flex-direction: column; }
 .gallery image-slot { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; }
@@ -290,33 +343,33 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
   </header>
 
   <figure class="hero-figure" aria-label="Schematic: the same browser surface, once on hard-coded values and once on semantic tokens, rendering identically">
-  <div class="hero-art">
-    <div class="hero-side">
-      <p class="hero-cap"><b>Before</b><span>Hard-coded</span></p>
-      <div class="chrome">
-        <div class="ch-tabs"><div class="ch-tab" data-on><span class="ch-dot"></span>New tab</div><div class="ch-tab">Favorites</div></div>
-        <div class="ch-bar"><span class="ch-ico"></span><span class="ch-omni"><span class="ch-lock"></span><span class="ch-url">edge://settings</span></span><span class="ch-ico"></span></div>
-        <div class="ch-body"><div class="ch-h"></div><div class="ch-l"></div><div class="ch-l s"></div><div class="ch-btn">Primary action</div></div>
+    <div class="hero-art">
+      <div class="hero-side">
+        <p class="hero-cap"><b>Before</b><span>Hard-coded</span></p>
+        <div class="chrome">
+          <div class="ch-tabs"><div class="ch-tab" data-on><span class="ch-dot"></span>Microsoft Edge</div><div class="ch-tab">New tab</div></div>
+          <div class="ch-bar"><span class="ch-ico"></span><span class="ch-omni"><span class="ch-lock"></span><span class="ch-url">microsoft.com/edge</span></span><span class="ch-ico"></span></div>
+          <div class="ch-body"><div class="ch-h"></div><div class="ch-l"></div><div class="ch-l s"></div><div class="ch-btn">Primary action</div></div>
+        </div>
+        <div class="code-win">
+          <div class="code-tb"><span></span><span></span><span></span><b>chromium/src</b></div>
+          <pre class="hero-code"><i class="kw">background</i>: <i class="val">#FFFFFF</i>;<br><i class="kw">color</i>:      <i class="val">#1B1A19</i>;<br><i class="kw">border</i>:     <i class="val">#E2E2E2</i>;<br><i class="kw">fill</i>:       <i class="val">#0078D4</i>;</pre>
+        </div>
       </div>
-      <pre class="hero-code">background: <i>#FFFFFF</i>;
-color:      <i>#1B1A19</i>;
-border:     <i>#E2E2E2</i>;
-fill:       <i>#0078D4</i>;</pre>
-    </div>
-    <div class="hero-eq"><span>=</span><small>Same pixels</small></div>
-    <div class="hero-side">
-      <p class="hero-cap"><b>After</b><span>Semantic tokens</span></p>
-      <div class="chrome">
-        <div class="ch-tabs"><div class="ch-tab" data-on><span class="ch-dot"></span>New tab</div><div class="ch-tab">Favorites</div></div>
-        <div class="ch-bar"><span class="ch-ico"></span><span class="ch-omni"><span class="ch-lock"></span><span class="ch-url">edge://settings</span></span><span class="ch-ico"></span></div>
-        <div class="ch-body"><div class="ch-h"></div><div class="ch-l"></div><div class="ch-l s"></div><div class="ch-btn">Primary action</div></div>
+      <div class="hero-eq"><span>=</span><small>Same pixels</small></div>
+      <div class="hero-side">
+        <p class="hero-cap"><b>After</b><span>Semantic tokens</span></p>
+        <div class="chrome">
+          <div class="ch-tabs"><div class="ch-tab" data-on><span class="ch-dot"></span>Microsoft Edge</div><div class="ch-tab">New tab</div></div>
+          <div class="ch-bar"><span class="ch-ico"></span><span class="ch-omni"><span class="ch-lock"></span><span class="ch-url">microsoft.com/edge</span></span><span class="ch-ico"></span></div>
+          <div class="ch-body"><div class="ch-h"></div><div class="ch-l"></div><div class="ch-l s"></div><div class="ch-btn">Primary action</div></div>
+        </div>
+        <div class="code-win">
+          <div class="code-tb"><span></span><span></span><span></span><b>chromium/src</b></div>
+          <pre class="hero-code"><i class="kw">background</i>: <em>backgroundLayerApp</em>;<br><i class="kw">color</i>:      <em>foregroundCtrlNeutralPrimaryRest</em>;<br><i class="kw">border</i>:     <em>strokeDividerDefault</em>;<br><i class="kw">fill</i>:       <em>backgroundCtrlBrandRest</em>;</pre>
+        </div>
       </div>
-      <pre class="hero-code">background: <em>surface.default</em>;
-color:      <em>text.primary</em>;
-border:     <em>stroke.divider</em>;
-fill:       <em>brand.fill</em>;</pre>
     </div>
-  </div>
   </figure>
 
   <section class="panel" id="background" data-rail-target>
@@ -380,7 +433,10 @@ fill:       <em>brand.fill</em>;</pre>
     </div>
 
     <figure class="inline-fig">
-      <image-slot id="edge-audit" shape="rect" placeholder="Drop a Chromium source snippet — a component file with the hardcoded values" src="../assets/edge-audit-codebox.svg"></image-slot>
+      <div class="code-win code-win-lg">
+        <div class="code-tb"><span></span><span></span><span></span><b>chromium/src</b></div>
+        <pre class="hero-code src-code"><i class="cm">// --- ui/gfx/color_palette.h ---</i><br><br><i class="kw">constexpr</i> SkColor k‌GoogleBlue600 = SkColorSetRGB(<i class="val">0x1A</i>, <i class="val">0x73</i>, <i class="val">0xE8</i>); <i class="cm">// literal button-accent hex</i><br><br><i class="cm">// --- ui/views/controls/button/md_text_button.cc ---</i><br><br><i class="kw">const</i> int k‌FocusBorderThickness = <i class="val">2</i>; <i class="cm">// focus ring stroke width (dp)</i><br><i class="kw">const</i> int k‌FocusBorderCornerRadius = <i class="val">3</i>; <i class="cm">// focus ring corner radius (dp)</i><br><i class="kw">const</i> int k‌BaseHeight = <i class="val">28</i>; <i class="cm">// default button height (dp)</i><br><i class="kw">const</i> int k‌HorizontalPadding = <i class="val">16</i>; <i class="cm">// left/right padding inside button (dp)</i><br><i class="kw">const</i> SkAlpha k‌StrokeOpacity = <i class="val">0x1A</i>; <i class="cm">// ~10% opacity border stroke</i><br><br><i class="cm">// --- chrome/browser/ui/layout_constants.cc (TOOLBAR_BUTTON inset) ---</i><br><br>gfx::Insets(touch_optimized_material ? <i class="val">12</i> : <i class="val">6</i>); <i class="cm">// padding around toolbar button icon (dp)</i><br><br><i class="cm">// --- ash/search_box/search_box_constants.h ---</i><br><br><i class="kw">constexpr</i> int k‌SearchBoxBorderCornerRadius = <i class="val">24</i>; <i class="cm">// search box corner radius (dp)</i><br><i class="kw">constexpr</i> int k‌SearchBoxPadding = <i class="val">12</i>; <i class="cm">// search box horizontal padding (dp)</i></pre>
+      </div>
       <figcaption>Where the real values lived: hardcoded in the component source, with no token between the component and the color.</figcaption>
     </figure>
   </section>
@@ -483,9 +539,34 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
     <p class="section-title">Sequencing the rollout</p>
     <p class="section-body">I ordered the migration shared components first, surfaces second. The twenty or so general components — button, and its neighbours — account for most of what the browser is made of, so tokenizing them once moved a large fraction of the interface before any individual feature was touched.</p>
     <p class="section-body">Only then did we go surface by surface: favorites flyout, then the next one, across both Views and WebUI. By that point each surface was mostly assembled from parts that were already correct, and the remaining work was the handful of values specific to it.</p>
-    <div class="gallery">
-      <figure><image-slot id="edge-1" shape="rect" placeholder="Drop the token mapping table"></image-slot><figcaption>The mapping table: every semantic token and what it resolved to in each theme.</figcaption></figure>
-      <figure><image-slot id="edge-2" shape="rect" placeholder="Drop redrawn Figma components on semantic tokens"></image-slot><figcaption>Shared components redrawn in Figma on the semantic layer.</figcaption></figure>
+    <div class="opt-row" style="grid-template-columns:1fr">
+      <figure>
+        <div class="dt-panel">
+          <div class="dt-tb"><span class="dt-tab" data-on>Styles</span><span class="dt-tab">Computed</span></div>
+          <div class="dt-rule"><span class="dt-sel">:root</span> {</div>
+          <div class="dt-rows">
+            <p class="dt-group">/* color */</p>
+            <div class="dt-row"><span class="dt-sw" style="background:#2169eb"></span><span class="dt-k">--smtc-background-ctrl-brand-rest</span>: <span class="dt-v">#2169EB</span>;</div>
+            <div class="dt-row"><span class="dt-sw" style="background:#000000db"></span><span class="dt-k">--smtc-foreground-ctrl-neutral-primary-rest</span>: <span class="dt-v">#000000DB</span>;</div>
+            <div class="dt-row"><span class="dt-sw" style="background:#0000001f"></span><span class="dt-k">--smtc-stroke-divider-default</span>: <span class="dt-v">#0000001F</span>;</div>
+            <p class="dt-group">/* shape + spacing */</p>
+            <div class="dt-row"><span class="dt-k">--smtc-corner-ctrl-rest</span>: <span class="dt-v">4px</span>;</div>
+            <div class="dt-row"><span class="dt-k">--smtc-corner-flyout-rest</span>: <span class="dt-v">8px</span>;</div>
+            <div class="dt-row"><span class="dt-k">--smtc-gap-between-ctrl-default</span>: <span class="dt-v">8px</span>;</div>
+            <div class="dt-row"><span class="dt-k">--smtc-padding-content-medium</span>: <span class="dt-v">16px</span>;</div>
+            <p class="dt-group">/* elevation + motion */</p>
+            <div class="dt-row"><span class="dt-k">--smtc-shadow-flyout-key</span>: <span class="dt-v">0 0 8px #00000024</span>;</div>
+            <div class="dt-row"><span class="dt-k">--durationNormal</span>: <span class="dt-v">200ms</span>;</div>
+            <div class="dt-row"><span class="dt-k">--curveEasyEaseMax</span>: <span class="dt-v">cubic-bezier(.8,0,.2,1)</span>;</div>
+            <p class="dt-group">/* type */</p>
+            <div class="dt-row"><span class="dt-k">--smtc-text-ramp-item-body-font-size</span>: <span class="dt-v">14px</span>;</div>
+            <div class="dt-row"><span class="dt-k">--smtc-text-style-default-regular-weight</span>: <span class="dt-v">400</span>;</div>
+          </div>
+          <div class="dt-rule dt-close">}</div>
+          <div class="dt-fade"></div>
+        </div>
+        <figcaption><b>DevTools styles pane</b> — how the tokens were actually found: read in place, grouped as encountered.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -503,9 +584,12 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
     <p class="section-body">Assigning a semantic token forces you to say what a value is <em>for</em>. That question does not have an answer everywhere, and the places it did not were the interesting ones.</p>
     <p class="section-body">Reviewing surface after surface, I kept finding the same class of problem: one color doing two unrelated jobs, or two near-identical colors doing the same job on different surfaces. Nobody had decided those — they were the residue of values copied between files over years. A token cannot express "this gray, because the file next to it used this gray," so each one had to be resolved into an actual decision.</p>
     <p class="section-body">I kept those corrections separate from the migration and logged them as their own work. Folding them in would have broken the guarantee the whole project rested on: that nothing changed appearance. Held apart, they became a list of things worth fixing on purpose, with a reason attached to each.</p>
-    <figure class="inline-fig">
-      <image-slot id="edge-craft" shape="rect" placeholder="Drop a craft find — an inconsistency the audit surfaced, before and after"></image-slot>
-      <figcaption>A case the audit surfaced: the same role rendered two ways across surfaces, resolved into one token.</figcaption>
+    <figure class="inline-fig craft-fig">
+      <img src="../assets/edge-craft-before-sharp.png" alt="Edge settings page, pre-tokenization, with three different blues in brand-colored elements" style="display:block; width:100%; max-width:923px; margin:0 auto; border-radius:var(--radius-md); border:1px solid var(--color-divider); box-shadow:var(--shadow-sm);">
+      <span class="craft-tag" style="left:87%; top:38%;">Toggle blue</span>
+      <span class="craft-tag" style="left:48%; top:48%;">Selected-card border blue</span>
+      <span class="craft-tag" style="left:60%; top:20%;">Link blue</span>
+      <figcaption>A case the audit surfaced, from before tokenization: three visually different blues, all doing brand duty on the same screen, each hard-coded on its own.</figcaption>
     </figure>
   </section>
 
@@ -544,8 +628,21 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
     </div>
 
     <figure class="inline-fig">
-      <image-slot id="edge-themes" shape="rect" placeholder="Drop the payoff — the same surface under both themes, side by side"></image-slot>
-      <figcaption>The payoff: one interface, themed by configuration.</figcaption>
+      <div class="evo" data-step="{{ evoStep }}">
+        <div class="evo-stage">
+          <img class="evo-img" data-i="0" src="../assets/edge-flyout-pretoken.svg?v=10" alt="Favorites flyout before tokenization, square corners">
+          <img class="evo-img" data-i="1" src="../assets/edge-flyout-phoenix.svg?v=10" alt="Favorites flyout on the Phoenix theme, rounded corners, blue accent">
+          <img class="evo-img" data-i="2" src="../assets/edge-flyout-mai.svg?v=10" alt="Favorites flyout on the MAI theme, near-black accent">
+        </div>
+        <div class="evo-steps">
+          <button type="button" class="evo-step" data-i="0" onClick="{{ evoGo0 }}"><span class="evo-n">01</span>Hard-coded</button>
+          <span class="evo-arrow">→</span>
+          <button type="button" class="evo-step" data-i="1" onClick="{{ evoGo1 }}"><span class="evo-n">02</span><span class="cn-on">Phoenix</span><span class="cn-off">Theme one</span></button>
+          <span class="evo-arrow">→</span>
+          <button type="button" class="evo-step" data-i="2" onClick="{{ evoGo2 }}"><span class="evo-n">03</span><span class="cn-on">MAI</span><span class="cn-off">Theme two</span></button>
+        </div>
+      </div>
+      <figcaption>The payoff, for real: the same favorites flyout across the actual progression — hard-coded, then tokenized on the first theme, then swapped to the second. Only the theme changed.</figcaption>
     </figure>
   </section>
 
@@ -581,9 +678,13 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
   &quot;dividerStyle&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;hairline&quot;,&quot;options&quot;:[&quot;hairline&quot;,&quot;none&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Section breaks&quot;}
 }">
 class Component extends DCLogic {
-  state = { demoTheme: 'ph' };
+  state = { demoTheme: 'ph', evoStep: 0 };
   renderVals() {
     return {
+      evoStep: this.state.evoStep,
+      evoGo0: () => this.evoGo(0),
+      evoGo1: () => this.evoGo(1),
+      evoGo2: () => this.evoGo(2),
       demoTheme: this.state.demoTheme,
       phPressed: this.state.demoTheme === 'ph',
       maiPressed: this.state.demoTheme === 'mai',
@@ -595,7 +696,17 @@ class Component extends DCLogic {
       codeNames: (this.props.codeNames ?? false) ? 'on' : 'off',
     };
   }
+  evoGo(i) {
+    this.setState({ evoStep: i });
+    this.evoStart();
+  }
+  evoStart() {
+    if (this.evoTimer) clearInterval(this.evoTimer);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.evoTimer = setInterval(() => this.setState(s => ({ evoStep: (s.evoStep + 1) % 3 })), 2600);
+  }
   componentDidMount() {
+    this.evoStart();
     const io = window.IntersectionObserver && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
       ? new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: 0.06 })
       : null;
@@ -640,6 +751,7 @@ class Component extends DCLogic {
     mark();
   }
   componentWillUnmount() {
+    if (this.evoTimer) clearInterval(this.evoTimer);
     if (this.revealFailsafe) clearTimeout(this.revealFailsafe);
     if (this.io) this.io.disconnect();
     if (this.onProg) { window.removeEventListener('scroll', this.onProg); window.removeEventListener('resize', this.onProg); }
