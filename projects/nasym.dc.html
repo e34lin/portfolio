@@ -306,6 +306,27 @@ body { margin: 0; text-wrap: pretty; }
 .next-fig { margin: 0; width: clamp(140px, 22%, 220px); flex: none; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
 .next-fig image-slot { display: block; width: 100%; aspect-ratio: 4/3; }
 @media (max-width: 700px) { .next-fig { display: none; } }
+/* edge thumb: schematic browser chrome + token labels */
+.edge-thumb { position: relative; overflow: hidden; width: 100%; aspect-ratio: 4/3; background: radial-gradient(circle at 20% 15%, color-mix(in oklch, var(--et-brand) 14%, transparent), transparent 55%), radial-gradient(circle at 90% 100%, color-mix(in oklch, var(--et-brand) 12%, transparent), transparent 50%), var(--color-bg); --et-r: 9px; --et-brand: #0078d4; --et-brand-ink: #005a9e; }
+.edge-thumb-win { position: absolute; left: 9%; right: -14%; top: 15%; bottom: -8%; background: #f3f3f3; border-radius: 12px 0 0 0; box-shadow: 0 2px 6px rgba(20,22,28,0.08), 0 22px 44px rgba(20,22,28,0.16); overflow: hidden; font-family: var(--font-body); }
+.et-tabs { display: flex; align-items: flex-end; gap: 6px; padding: 10px 10px 0 calc(10px + var(--et-r)); background: #f3f3f3; }
+.et-tab { position: relative; padding: 9px 16px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: #6b6a68; border-radius: var(--et-r) var(--et-r) 0 0; }
+.et-tab[data-on] { background: #fff; color: #1b1a19; }
+.et-tab[data-on]::before, .et-tab[data-on]::after { content: ""; position: absolute; bottom: 0; width: var(--et-r); height: var(--et-r); background: #fff; }
+.et-tab[data-on]::before { left: calc(-1 * var(--et-r)); -webkit-mask: radial-gradient(circle at 0 0, transparent calc(var(--et-r) - .5px), #000 var(--et-r)); mask: radial-gradient(circle at 0 0, transparent calc(var(--et-r) - .5px), #000 var(--et-r)); }
+.et-tab[data-on]::after { right: calc(-1 * var(--et-r)); -webkit-mask: radial-gradient(circle at 100% 0, transparent calc(var(--et-r) - .5px), #000 var(--et-r)); mask: radial-gradient(circle at 100% 0, transparent calc(var(--et-r) - .5px), #000 var(--et-r)); }
+.et-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--et-brand); }
+.et-bar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #fff; border-bottom: 1px solid #e2e2e2; }
+.et-ico { width: 14px; height: 14px; border-radius: 4px; background: #6b6a68; opacity: 0.35; flex: none; }
+.et-omni { flex: 1; height: 28px; border-radius: 14px; background: #f3f3f3; border: 1px solid #e2e2e2; display: flex; align-items: center; gap: 8px; padding: 0 12px; font-size: 11.5px; color: #6b6a68; }
+.et-lock { width: 10px; height: 10px; border-radius: 2px; background: var(--et-brand); flex: none; }
+.et-body { padding: 18px 20px; display: grid; gap: 10px; background: #fff; }
+.et-h { width: 44%; height: 12px; border-radius: 4px; background: #e2e2e2; }
+.et-l { width: 78%; height: 8px; border-radius: 4px; background: #ececec; }
+.et-l.s { width: 60%; }
+.et-btn { width: max-content; margin-top: 6px; padding: 7px 14px; border-radius: 7px; background: var(--et-brand); color: #fff; font-size: 11px; font-weight: 600; }
+.next-fig .et-tab { font-size: 10px; padding: 8px 10px; white-space: nowrap; }
+.next-fig .et-body { padding: 12px 14px; }
 .next { transition: box-shadow 200ms ease, transform 200ms ease; }
 .next:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
 .next-label { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 6px; opacity: 0.85; }
@@ -869,7 +890,13 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
       <p class="next-desc">Retokenizing a browser onto a semantic system that was still being defined, without changing how it looked.</p>
       <span class="next-go">Read it →</span>
     </div>
-    <figure class="next-fig"><image-slot id="next-edge" shape="rect" placeholder="Microsoft Edge"></image-slot></figure>
+    <figure class="next-fig"><div class="edge-thumb" role="img" aria-label="Schematic of the Edge browser chrome">
+      <div class="edge-thumb-win">
+        <div class="et-tabs"><div class="et-tab" data-on><span class="et-dot"></span>Microsoft Edge</div><div class="et-tab">New tab</div></div>
+        <div class="et-bar"><span class="et-ico"></span><span class="et-ico"></span><span class="et-omni"><span class="et-lock"></span>microsoft.com/edge</span><span class="et-ico"></span></div>
+        <div class="et-body"><div class="et-h"></div><div class="et-l"></div><div class="et-l s"></div><div class="et-btn">Primary action</div></div>
+      </div>
+    </div></figure>
   </a>
 
 </div>
