@@ -5,6 +5,17 @@ newest first. Every entry corresponds to a git commit — use `git log` or
 `git show <hash>` for the exact diff, and `git revert <hash>` to undo any
 single one without affecting the others.
 
+## Small fixes: slider color match, tag overlap, cache-bust
+
+- Recolored the Crafting Sandbox "Outcome" before/after slider (`.cba-line`/
+  `.cba-knob`) from white back to red (`var(--color-accent)`), to match the
+  NaSYMSurgical before/after slider's styling, at your request.
+- Repositioned the "Tested"/"Revised" tags on the NaSYMSurgical before/after
+  slider — they were sitting at a fixed 24% down the phone screen, which
+  landed right on top of the "Pinch to Zoom In & Out" instruction text.
+  Moved to the empty space between the face model and the toggle controls
+  below (65%).
+
 ## Resume link added to the nav, all six pages
 
 Added a third nav item, "Resume", between "About" and "Get in touch",
