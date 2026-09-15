@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/styles.css">
 <link rel="stylesheet" href="projects/nasym/fig-assets.css">
 <script src="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/_ds_bundle.js"></script>
-<script src="image-slot.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
@@ -210,8 +209,8 @@ body { margin: 0; text-wrap: pretty; }
 .panel > .dsys { grid-column: 1 / -1; }
 .panel > .inline-fig { margin: var(--space-4) 0 0; }
 .inline-fig { overflow: hidden; border-radius: var(--radius-md); }
-.inline-fig image-slot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; transition: transform 420ms cubic-bezier(.2,.6,.2,1); }
-.inline-fig:hover image-slot { transform: scale(1.02); }
+.inline-fig img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; transition: transform 420ms cubic-bezier(.2,.6,.2,1); }
+.inline-fig:hover img { transform: scale(1.02); }
 .inline-fig figcaption { font-size: 13px; line-height: 1.45; margin-top: 10px; color: var(--label-ink); }
 .sketches { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: clamp(16px,2.5vw,32px); margin-top: var(--space-4); }
 .sketches figure { margin: 0; }
@@ -574,7 +573,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
     </div>
     <p class="section-body" style="margin-top: var(--space-4)">A single verdict would have hidden the disagreement between these readings, and that disagreement is the information a surgeon is actually working with. The cost was navigation: four destinations instead of one number — which is what testing went on to flag.</p>
     <figure class="inline-fig">
-      <image-slot id="nasym-2" shape="rect" placeholder="Drop the symmetry line concept diagram" src="assets/nasym-symlines-concept.svg?v=3"></image-slot>
+      <img src="assets/nasym-symlines-concept.svg?v=3" alt="Symmetry line concept diagram: the nose's own midline, next to the face's true midline">
       <figcaption>Concept exploration: the nose's own midline, next to the face's true midline.</figcaption>
     </figure>
   </section>

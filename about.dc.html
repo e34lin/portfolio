@@ -11,7 +11,6 @@
 <helmet>
 <link rel="stylesheet" href="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/styles.css">
 <script src="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/_ds_bundle.js"></script>
-<script src="image-slot.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -44,7 +43,7 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
 /* layout only — chrome comes from the surface variant */
 .header { margin: calc(2 * var(--leading)) 0 0; display: grid; grid-template-columns: minmax(0,7fr) minmax(0,5fr); gap: var(--space-6) clamp(24px,4vw,56px); align-items: center; }
 .portrait { margin: 0; }
-.portrait image-slot { display: block; width: 100%; height: auto; aspect-ratio: 4/5; }
+.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; border-radius: 20px; }
 .panel { margin: 0; }
 .nav a.nav-brand { font-size: 18px; font-family: var(--font-heading); font-weight: var(--font-heading-weight); color: var(--color-text); }
 .nav a.nav-brand:hover { color: var(--color-accent); }
@@ -79,7 +78,7 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
 [data-hl="stacked"] .header { grid-template-columns: 1fr; }
 [data-hl="stacked"] .portrait { max-width: 300px; }
 [data-hl="banner"] .header { grid-template-columns: 1fr; }
-[data-hl="banner"] .portrait image-slot { aspect-ratio: 21/9; }
+[data-hl="banner"] .portrait img { aspect-ratio: 21/9; }
 [data-hl="none"] .header { grid-template-columns: 1fr; }
 [data-hl="none"] .portrait { display: none; }
 
@@ -119,7 +118,7 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
       
       <p class="sub">Outside of it: I love spending time with my two dogs, tennis, a camera I overpack, and an ongoing search for the best version of whatever I ate last.</p>
     </div>
-    <figure class="portrait"><image-slot id="about-portrait" shape="rounded" radius="20" placeholder="Drop a portrait photo" src="assets/about-portrait.jpg"></image-slot></figure>
+    <figure class="portrait"><img src="assets/about-portrait.jpg" alt="Elizabeth Lin"></figure>
   </header><section class="panel">
     <span class="kicker">Focus</span>
     <div class="skills">
