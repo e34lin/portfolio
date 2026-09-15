@@ -2,21 +2,22 @@
 <html>
 <head>
 <meta charset="utf-8">
+<base href="/portfolio/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="../_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/styles.css">
-<script src="../_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/_ds_bundle.js"></script>
-<script src="./image-slot.js"></script>
+<link rel="stylesheet" href="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/styles.css">
+<script src="_ds/liz-modernist-70284a96-fc1c-4876-8891-e6e8d24beee1/_ds_bundle.js"></script>
+<script src="image-slot.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <title>Crafting Sandbox — Elizabeth Lin</title>
 <meta name="description" content="Case study: a single-machine interface for cloud dev environments, designed without disrupting existing multi-service users at Crafting Inc.">
-<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta property="og:title" content="Crafting Sandbox — Elizabeth Lin">
 <meta property="og:description" content="A single-machine interface for cloud dev environments, without disrupting existing multi-service users.">
 <meta property="og:image" content="../assets/craft-laptop.png">
@@ -329,10 +330,10 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 <div data-st="{{ titleStyle }}" data-div="{{ dividerStyle }}" data-jc="{{ journeyColor }}">
 <div class="progress"><span></span></div>
 <nav class="nav">
-  <a href="../index.dc.html" class="nav-brand" style="text-decoration:none;">Elizabeth Lin</a>
-  <a href="../index.dc.html#work">Work</a>
-  <a href="../about.dc.html">About</a>
-  <a href="../assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
+  <a href="./" class="nav-brand" style="text-decoration:none;">Elizabeth Lin</a>
+  <a href="./#work">Work</a>
+  <a href="about/">About</a>
+  <a href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
   <a href="mailto:lizlin.lin@gmail.com"><button type="button" class="btn btn-primary">Get in touch</button></a>
 </nav>
 <nav class="rail" aria-label="Sections">
@@ -363,7 +364,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 </nav>
 <div class="wrap">
 
-  <a class="backlink" href="../index.dc.html#work"><span>←</span>All work</a>
+  <a class="backlink" href="./#work"><span>←</span>All work</a>
 
   <header class="header">
     <span class="kicker">Crafting Sandbox</span>
@@ -385,7 +386,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
           <span style="background: #febc2e;"></span>
           <span style="background: #28c840;"></span>
         </div>
-        <img src="../assets/crafting-sandbox.svg" alt="The Crafting Sandbox single-workspace interface">
+        <img src="assets/crafting-sandbox.svg" alt="The Crafting Sandbox single-workspace interface">
       </div>
     </div>
   </figure>
@@ -408,7 +409,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
             <span style="background: #febc2e;"></span>
             <span style="background: #28c840;"></span>
           </div>
-          <img src="../assets/crafting-sandbox.svg" alt="The multi-service sandbox UI" style="aspect-ratio: 1038 / 721;">
+          <img src="assets/crafting-sandbox.svg" alt="The multi-service sandbox UI" style="aspect-ratio: 1038 / 721;">
         </div>
       </div>
       <figcaption>The multi-service sandbox UI as it stood, built around concepts single-machine users didn't share.</figcaption>
@@ -629,7 +630,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
                 <span style="background: #febc2e;"></span>
                 <span style="background: #28c840;"></span>
               </div>
-              <img src="../assets/crafting-menu-topbar.svg" alt="The left menu and top bar">
+              <img src="assets/crafting-menu-topbar.svg" alt="The left menu and top bar">
             </div>
           </div>
         </figure>
@@ -645,7 +646,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
                 <span style="background: #febc2e;"></span>
                 <span style="background: #28c840;"></span>
               </div>
-              <img src="../assets/craft-home.svg" alt="The home page">
+              <img src="assets/craft-home.svg" alt="The home page">
             </div>
           </div>
         </figure>
@@ -655,8 +656,8 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
       <div class="comp comp-wide">
         <figure class="states">
           <div class="pivot">
-            <img class="state" src="../assets/craft-card-1.svg" alt="The workspace card as it stands" style="opacity: {{ opCurrent }};">
-            <img class="state" src="../assets/craft-card-2.svg" alt="The reworked workspace card" style="opacity: {{ opNext }};">
+            <img class="state" src="assets/craft-card-1.svg" alt="The workspace card as it stands" style="opacity: {{ opCurrent }};">
+            <img class="state" src="assets/craft-card-2.svg" alt="The reworked workspace card" style="opacity: {{ opNext }};">
           </div>
           <div class="pivot-bar">
             <p class="pivot-key" style="opacity: {{ keyCurrent }};">Current</p>
@@ -676,7 +677,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
                 <span style="background: #febc2e;"></span>
                 <span style="background: #28c840;"></span>
               </div>
-              <img src="../assets/craft-details.svg" alt="The workspace detailed page" style="aspect-ratio: 972 / 601;">
+              <img src="assets/craft-details.svg" alt="The workspace detailed page" style="aspect-ratio: 972 / 601;">
             </div>
           </div>
         </figure>
@@ -766,14 +767,14 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
     </div>
   </section>
 
-  <a class="next" href="./nasym.dc.html">
+  <a class="next" href="projects/nasym/">
     <div class="next-body">
       <p class="next-label">Next project</p>
       <h2 class="next-title">NaSYMSurgical</h2>
       <p class="next-desc">Real-time nasal symmetry measurement for rhinoplasty, on hardware surgeons already carry.</p>
       <span class="next-go">Read it →</span>
     </div>
-    <figure class="next-fig"><div class="nasym-thumb"><div class="nasym-thumb-phone"><img src="../assets/nasym-cover.svg" alt="The NaSYMSurgical app" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;"><img src="../assets/nasym-mesh.png" alt="" style="position:absolute;left:20.55%;top:27.36%;width:58.95%;height:40.65%;object-fit:fill;"></div></div></figure>
+    <figure class="next-fig"><div class="nasym-thumb"><div class="nasym-thumb-phone"><img src="assets/nasym-cover.svg" alt="The NaSYMSurgical app" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;"><img src="assets/nasym-mesh.png" alt="" style="position:absolute;left:20.55%;top:27.36%;width:58.95%;height:40.65%;object-fit:fill;"></div></div></figure>
   </a>
 
 </div>
@@ -797,13 +798,13 @@ class Component extends DCLogic {
   _svgKeys = ['ws0','ws1','ws3','ws4','dg3','dg4','dg5','f2','dg0','dg2','dg-close','dp0','ob0'];
   async cwSvg(k) {
     if (!this._svgKeys.includes(k)) return null;
-    if (!this._svgCache[k]) this._svgCache[k] = fetch('../assets/craft-proto-' + k + '.svg').then(r => r.text());
+    if (!this._svgCache[k]) this._svgCache[k] = fetch('assets/craft-proto-' + k + '.svg').then(r => r.text());
     return this._svgCache[k];
   }
   async cwPaint() {
     const w = this.state.cw; const pk = w.page, dk = w.dlg || this._lastDlg || 'dg3';
     const pe = this._pageRef.current, de = this._dlgRef.current;
-    if (pe && pe.dataset.key !== pk) { const s = await this.cwSvg(pk); if (s && this.state.cw.page === pk) { pe.innerHTML = s; pe.dataset.key = pk; } else if (!s) { pe.innerHTML = '<img src="../assets/craft-proto-' + pk + '.png" alt="" style="display:block;width:100%;height:auto">'; pe.dataset.key = pk; } }
+    if (pe && pe.dataset.key !== pk) { const s = await this.cwSvg(pk); if (s && this.state.cw.page === pk) { pe.innerHTML = s; pe.dataset.key = pk; } else if (!s) { pe.innerHTML = '<img src="assets/craft-proto-' + pk + '.png" alt="" style="display:block;width:100%;height:auto">'; pe.dataset.key = pk; } }
     if (de && de.dataset.key !== dk) { const s = await this.cwSvg(dk); if (s) { de.innerHTML = s; de.dataset.key = dk; } }
   }
   componentDidUpdate() { this.cwPaint(); }
@@ -894,7 +895,7 @@ class Component extends DCLogic {
       cwToggle: () => this.cwToggle(), cwPlayLabel: w.playing ? 'Pause' : 'Play' };
     for (let i = 1; i <= 6; i++) { cwVals['cwGo' + i] = () => this.cwGo(i); cwVals['cs' + i] = w.step === i ? 1 : 0.42; }
     const cbaVals = Object.assign(cwVals, { cbaTab: ct, cba: this.state.cba, cbaR: 100 - this.state.cba, setCba: (e) => this.setState({ cba: +e.target.value }),
-      cbaBefore: '../assets/craft-ba-' + cd.k + '-before.' + (cd.k === 'nav' ? 'svg' : 'png'), cbaAfter: '../assets/craft-ba-' + cd.k + '-after.' + (cd.k === 'nav' ? 'svg' : 'png'), cbaNote: cd.note });
+      cbaBefore: 'assets/craft-ba-' + cd.k + '-before.' + (cd.k === 'nav' ? 'svg' : 'png'), cbaAfter: 'assets/craft-ba-' + cd.k + '-after.' + (cd.k === 'nav' ? 'svg' : 'png'), cbaNote: cd.note });
     for (let i = 1; i <= 5; i++) { cbaVals['cbaGo' + i] = () => this.setState({ cbaTab: i, cba: 50 }); cbaVals['cb' + i] = ct === i ? 1 : 0.42; cbaVals['cbb' + i] = ct === i ? 'var(--color-accent)' : 'transparent'; }
     return Object.assign(cbaVals, {
       opCurrent: p === 0 ? 1 : 0,
@@ -909,8 +910,8 @@ class Component extends DCLogic {
   }
   componentWillUnmount() { clearInterval(this._pivotT); clearTimeout(this._cwT); }
   componentDidMount() {
-    ['dg0','dg1','dg2','dg3','dg4','dg5','f2','dg-close'].forEach(k => { const im = new Image(); im.src = '../assets/craft-proto-' + k + '.png'; });
-    ['ws0','ws1','ws3','ws4','dp0','ob0'].forEach(k => { const im = new Image(); im.src = '../assets/craft-proto-' + k + '.png'; });
+    ['dg0','dg1','dg2','dg3','dg4','dg5','f2','dg-close'].forEach(k => { const im = new Image(); im.src = 'assets/craft-proto-' + k + '.png'; });
+    ['ws0','ws1','ws3','ws4','dp0','ob0'].forEach(k => { const im = new Image(); im.src = 'assets/craft-proto-' + k + '.png'; });
     this.cwPaint(); this._svgKeys.forEach(k => this.cwSvg(k));
     this.cwSchedule();
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
