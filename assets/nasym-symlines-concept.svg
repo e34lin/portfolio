@@ -1,30 +1,49 @@
-<svg xmlns="http://www.w3.org/2000/svg" aria-label="Concept diagram: the nose's own intrinsic midline, side by side with the face's eccentric midline" viewBox="0 0 1600 1080">
-<path fill="#f7f8fa" d="M0 0h1600v1080H0z"/>
-<g transform="translate(400,0)">
-  <path fill="#fff" stroke="#4f5361" stroke-linejoin="round" stroke-width="4" d="M0 120C190 120 280 260 280 460 280 640 210 790 130 860 90 895 45 912 0 912 -45 912 -90 895 -130 860 -210 790 -280 640 -280 460 -280 260 -190 120 0 120Z"/>
-  <path fill="none" stroke="#4f5361" stroke-linecap="round" stroke-width="4" d="M-280 420c-34-8-52 20-50 50s24 50 52 42M280 420c34-8 52 20 50 50s-24 50-52 42"/>
-  <circle cx="-82" cy="392" r="9" fill="#4f5361"/>
-  <circle cx="82" cy="392" r="9" fill="#4f5361"/>
-  <path fill="none" stroke="#b03716" stroke-linecap="round" stroke-width="7" d="M4 332c-16 76-22 148-14 210-4 26-14 50-16 66"/>
-  <circle cx="4" cy="332" r="9" fill="none" stroke="#b03716" stroke-width="5"/>
-  <circle cx="-26" cy="608" r="9" fill="none" stroke="#b03716" stroke-width="5"/>
-</g>
-<g transform="translate(1200,0)">
-  <path fill="#fff" stroke="#4f5361" stroke-linejoin="round" stroke-width="4" d="M0 120C190 120 280 260 280 460 280 640 210 790 130 860 90 895 45 912 0 912 -45 912 -90 895 -130 860 -210 790 -280 640 -280 460 -280 260 -190 120 0 120Z"/>
-  <path fill="none" stroke="#4f5361" stroke-linecap="round" stroke-width="4" d="M-280 420c-34-8-52 20-50 50s24 50 52 42M280 420c34-8 52 20 50 50s-24 50-52 42"/>
-  <circle cx="-82" cy="392" r="9" fill="#4f5361"/>
-  <circle cx="82" cy="392" r="9" fill="#4f5361"/>
-  <path stroke="#7a2710" stroke-dasharray="4 14" stroke-linecap="round" stroke-width="5" d="M0 150v700"/>
-  <circle cx="0" cy="150" r="9" fill="#7a2710"/>
-  <circle cx="0" cy="850" r="9" fill="#7a2710"/>
-  <path fill="none" stroke="#b03716" stroke-linecap="round" stroke-width="7" d="M4 332c-16 76-22 148-14 210-4 26-14 50-16 66"/>
-  <circle cx="4" cy="332" r="9" fill="none" stroke="#b03716" stroke-width="5"/>
-  <circle cx="-26" cy="608" r="9" fill="none" stroke="#b03716" stroke-width="5"/>
-</g>
-<g font-family="Archivo, Helvetica, Arial, sans-serif" text-anchor="middle">
-  <text x="400" y="985" fill="#26282e" font-size="36" font-weight="700">Intrinsic</text>
-  <text x="400" y="1027" fill="#5b5e68" font-size="24">The nose&apos;s own midline, root to tip</text>
-  <text x="1200" y="985" fill="#26282e" font-size="36" font-weight="700">Eccentric</text>
-  <text x="1200" y="1027" fill="#5b5e68" font-size="24">The face&apos;s true midline, independent of the nose</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1080" role="img" aria-label="Concept diagram: the nose's own intrinsic midline, side by side with the face's eccentric midline">
+  <rect x="0" y="0" width="1600" height="1080" fill="#f7f8fa"/>
+
+  <!-- panel 1: intrinsic — the nose's own midline -->
+  <g transform="translate(-400,0)">
+    <path d="M800 120 C 990 120 1080 260 1080 460 C 1080 640 1010 790 930 860 C 890 895 845 912 800 912 C 755 912 710 895 670 860 C 590 790 520 640 520 460 C 520 260 610 120 800 120 Z" fill="#fff" stroke="#4f5361" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M520 420 C 486 412 468 440 470 470 C 472 500 494 520 522 512" fill="none" stroke="#4f5361" stroke-width="4" stroke-linecap="round"/>
+    <path d="M1080 420 C 1114 412 1132 440 1130 470 C 1128 500 1106 520 1078 512" fill="none" stroke="#4f5361" stroke-width="4" stroke-linecap="round"/>
+    <path d="M666 358 C 700 336 742 334 772 352" fill="none" stroke="#4f5361" stroke-width="6" stroke-linecap="round"/>
+    <path d="M828 352 C 858 334 900 336 934 358" fill="none" stroke="#4f5361" stroke-width="6" stroke-linecap="round"/>
+    <path d="M668 392 C 694 374 742 374 768 392 C 742 410 694 410 668 392 Z" fill="none" stroke="#4f5361" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M832 392 C 858 374 906 374 932 392 C 906 410 858 410 832 392 Z" fill="none" stroke="#4f5361" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="718" cy="392" r="7" fill="#4f5361"/>
+    <circle cx="882" cy="392" r="7" fill="#4f5361"/>
+    <path d="M796 378 C 792 440 780 500 758 556 C 746 586 750 610 774 622 C 800 634 828 628 842 606 C 856 584 848 560 832 552 C 816 500 812 440 808 378" fill="none" stroke="#4f5361" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M712 748 C 754 774 846 774 888 748" fill="none" stroke="#4f5361" stroke-width="5" stroke-linecap="round"/>
+    <path d="M797 378 C 793 460 785 540 774 622" fill="none" stroke="#b03716" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="797" cy="378" r="9" fill="#fff" stroke="#b03716" stroke-width="5"/>
+    <circle cx="774" cy="622" r="9" fill="#fff" stroke="#b03716" stroke-width="5"/>
+  </g>
+
+  <!-- panel 2: eccentric — the face's true midline, with the same nose line for contrast -->
+  <g transform="translate(400,0)">
+    <path d="M800 120 C 990 120 1080 260 1080 460 C 1080 640 1010 790 930 860 C 890 895 845 912 800 912 C 755 912 710 895 670 860 C 590 790 520 640 520 460 C 520 260 610 120 800 120 Z" fill="#fff" stroke="#4f5361" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M520 420 C 486 412 468 440 470 470 C 472 500 494 520 522 512" fill="none" stroke="#4f5361" stroke-width="4" stroke-linecap="round"/>
+    <path d="M1080 420 C 1114 412 1132 440 1130 470 C 1128 500 1106 520 1078 512" fill="none" stroke="#4f5361" stroke-width="4" stroke-linecap="round"/>
+    <path d="M666 358 C 700 336 742 334 772 352" fill="none" stroke="#4f5361" stroke-width="6" stroke-linecap="round"/>
+    <path d="M828 352 C 858 334 900 336 934 358" fill="none" stroke="#4f5361" stroke-width="6" stroke-linecap="round"/>
+    <path d="M668 392 C 694 374 742 374 768 392 C 742 410 694 410 668 392 Z" fill="none" stroke="#4f5361" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M832 392 C 858 374 906 374 932 392 C 906 410 858 410 832 392 Z" fill="none" stroke="#4f5361" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="718" cy="392" r="7" fill="#4f5361"/>
+    <circle cx="882" cy="392" r="7" fill="#4f5361"/>
+    <path d="M796 378 C 792 440 780 500 758 556 C 746 586 750 610 774 622 C 800 634 828 628 842 606 C 856 584 848 560 832 552 C 816 500 812 440 808 378" fill="none" stroke="#4f5361" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M712 748 C 754 774 846 774 888 748" fill="none" stroke="#4f5361" stroke-width="5" stroke-linecap="round"/>
+    <line x1="800" y1="150" x2="800" y2="888" stroke="#7a2710" stroke-width="5" stroke-dasharray="4 14" stroke-linecap="round"/>
+    <circle cx="800" cy="150" r="9" fill="#7a2710"/>
+    <circle cx="800" cy="888" r="9" fill="#7a2710"/>
+    <path d="M797 378 C 793 460 785 540 774 622" fill="none" stroke="#b03716" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="797" cy="378" r="9" fill="#fff" stroke="#b03716" stroke-width="5"/>
+    <circle cx="774" cy="622" r="9" fill="#fff" stroke="#b03716" stroke-width="5"/>
+  </g>
+
+  <g font-family="Archivo, Helvetica, Arial, sans-serif" text-anchor="middle">
+    <text x="400" y="985" font-size="36" font-weight="700" fill="#26282e">Intrinsic</text>
+    <text x="400" y="1027" font-size="24" fill="#5b5e68">The nose&apos;s own midline, root to tip</text>
+    <text x="1200" y="985" font-size="36" font-weight="700" fill="#26282e">Eccentric</text>
+    <text x="1200" y="1027" font-size="24" fill="#5b5e68">The face&apos;s true midline, independent of the nose</text>
+  </g>
 </svg>

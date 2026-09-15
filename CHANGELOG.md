@@ -5,6 +5,24 @@ newest first. Every entry corresponds to a git commit — use `git log` or
 `git show <hash>` for the exact diff, and `git revert <hash>` to undo any
 single one without affecting the others.
 
+## Symmetry diagram redrawn properly + homepage lead card aligned
+
+**Symmetry diagram, second attempt.** My first redraw dropped almost all
+the facial detail — it was a blank oval with two dots for eyes, no
+eyebrows, no nose, no mouth — which didn't match your reference at all.
+Rebuilt it reusing the face geometry from the original version (eyebrows,
+almond eyes with pupils, the drawn nose, the mouth, ears), laid out as
+the two panels your reference showed. Bumped the cache-bust to `?v=3`.
+
+**Homepage lead card.** The Edge thumbnail's left edge didn't line up
+with the NaSYMSurgical card directly below it — the lead row used a
+different column split and a different gap than the card grid beneath
+it. Set the lead row to two equal columns with the card grid's gap, so
+the thumbnail now matches that card exactly (verified: 0px difference on
+both edges at 900/1024/1200/1440px). Also switched the lead row from
+top-aligned to vertically centered, so the text block centers against
+the taller thumbnail instead of hugging its top.
+
 ## Homepage Edge thumbnail sized up to match the "main" card role
 
 The Edge lead-card thumbnail was smaller than the two secondary
