@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/index.dc.html" },
+    { "source": "/about", "destination": "/about.dc.html" },
+    { "source": "/projects/edge", "destination": "/projects/edge.dc.html" },
+    { "source": "/projects/edge-components", "destination": "/projects/edge-components.dc.html" },
+    { "source": "/projects/nasym", "destination": "/projects/nasym.dc.html" },
+    { "source": "/projects/crafting-inc", "destination": "/projects/crafting-inc.dc.html" }
+  ]
+}
