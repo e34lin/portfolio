@@ -5,6 +5,56 @@ newest first. Every entry corresponds to a git commit — use `git log` or
 `git show <hash>` for the exact diff, and `git revert <hash>` to undo any
 single one without affecting the others.
 
+## True clean URLs on GitHub Pages — no `.dc.html` anywhere, ever
+
+You asked to get rid of `.dc.html` in the address bar entirely, not just on
+first load. GitHub Pages can't rewrite URLs server-side the way Netlify or
+Vercel can — it only serves exact file paths — so the only way to make
+`/about` actually BE the About page (not redirect to it) is to publish it at
+that literal path. Did that with a real build step rather than hand-maintained
+duplicate files, so `*.dc.html` stays the single source of truth:
+
+- **`<base href="/portfolio/">`** added to every page's `<head>`. This anchors
+  every relative link/asset/script reference to the site root regardless of
+  how deep the actual served file lives, so the same rewritten source can be
+  copied to any folder depth without any path math.
+- **Every internal link and asset/script reference rewritten** across all six
+  pages (127 individual replacements) — `./about.dc.html` → `about/`,
+  `../assets/foo.svg` → `assets/foo.svg`, `../index.dc.html#work` → `./#work`,
+  and so on. Also promoted `projects/support.js` (a newer build with deck-
+  rendering support the root copy lacked) to be the one canonical `support.js`
+  everyone now resolves to, rather than silently downgrading the project pages.
+- **`.github/workflows/pages.yml` added** — on every push to `main`, copies
+  `index.dc.html` → `index.html`, `about.dc.html` → `about/index.html`,
+  `projects/edge.dc.html` → `projects/edge/index.html` (and so on for the
+  other three case studies), plus `_ds/`, `assets/`, and the scripts, into a
+  `_site/` build output, and publishes that via GitHub's official Pages
+  actions. `_source/` is never copied — it doesn't just go unlinked anymore,
+  it's genuinely excluded from what gets deployed.
+- Removed the redirect-based `index.html` stub from an earlier pass — no
+  longer needed now that the workflow generates a real one.
+
+**Verified for real, not just visually**: built a byte-identical local mirror
+of what the workflow produces (same folder structure, served with the same
+`/portfolio/` path prefix a GitHub Pages project site actually uses), and
+ran a full click-through — home → About → back via the brand link → Work
+anchor → Edge case study → Resume (opens the PDF in a new tab) → next-project
+card into Crafting Sandbox. Every step landed on a clean URL; `.dc.html`
+never appeared once. Re-ran the 320–1024px overflow sweep against that same
+mirror too — zero overflow on all six pages.
+
+**One tradeoff, as discussed before doing this**: Claude Design's own canvas
+editor expects `*.dc.html` extensions in cross-page links, so its live
+preview won't be able to follow these new extensionless links between pages
+if you go back to editing there. Editing any single page's own content still
+works fine — it's only navigating *between* pages inside that tool that's
+affected.
+
+**Still needed from you**: this switches how Pages builds the site, so in
+Settings → Pages, change **Source** from "Deploy from a branch" to
+**"GitHub Actions."** The workflow runs automatically on the next push (or
+you can trigger it manually from the Actions tab).
+
 ## Edge thumbnail: white body fills to the bottom, tags moved to their subjects
 
 After the thumbnail grew to 4:3, the mock browser's white content area no
