@@ -48,7 +48,7 @@ a:hover { color: var(--color-accent); }
 
 /* featured tier */
 .featured { display: grid; gap: calc(1.4 * var(--leading)); }
-.lead { display: grid; grid-template-columns: minmax(0,6fr) minmax(0,5fr); gap: clamp(24px,3.5vw,48px); align-items: start; text-decoration: none; color: inherit; }
+.lead { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,6fr); gap: clamp(24px,3.5vw,48px); align-items: start; text-decoration: none; color: inherit; }
 .lead-fig { margin: 0; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: box-shadow 200ms ease, transform 200ms ease; }
 .lead:hover .lead-fig { box-shadow: var(--shadow-md); transform: translateY(-2px); }
 .lead-fig image-slot { display: block; width: 100%; aspect-ratio: 16/10; transition: transform 420ms cubic-bezier(.2,.6,.2,1); }
@@ -81,7 +81,7 @@ a:hover { color: var(--color-accent); }
 .nasym-thumb-phone { position: absolute; height: 150%; width: auto; aspect-ratio: 440 / 916; left: 50%; top: 7%; transform: translateX(-50%); filter: drop-shadow(0 3px 8px rgba(20,22,28,0.10)) drop-shadow(0 18px 34px rgba(20,22,28,0.22)); }
 .mini:hover .mini-fig image-slot { transform: scale(1.03); }
 /* edge thumb: schematic browser chrome + token labels */
-.edge-thumb { position: relative; overflow: hidden; width: 100%; aspect-ratio: 16/10; background: radial-gradient(circle at 20% 15%, color-mix(in oklch, var(--et-brand) 14%, transparent), transparent 55%), radial-gradient(circle at 90% 100%, color-mix(in oklch, var(--et-brand) 12%, transparent), transparent 50%), var(--color-bg); --et-r: 9px; --et-brand: #0078d4; --et-brand-ink: #005a9e; }
+.edge-thumb { position: relative; overflow: hidden; width: 100%; aspect-ratio: 4/3; background: radial-gradient(circle at 20% 15%, color-mix(in oklch, var(--et-brand) 14%, transparent), transparent 55%), radial-gradient(circle at 90% 100%, color-mix(in oklch, var(--et-brand) 12%, transparent), transparent 50%), var(--color-bg); --et-r: 9px; --et-brand: #0078d4; --et-brand-ink: #005a9e; }
 .lead:hover .edge-thumb { transform: scale(1.03); }
 .edge-thumb-win { position: absolute; left: 9%; right: -14%; top: 15%; bottom: -8%; background: #f3f3f3; border-radius: 12px 0 0 0; box-shadow: 0 2px 6px rgba(20,22,28,0.08), 0 22px 44px rgba(20,22,28,0.16); overflow: hidden; font-family: var(--font-body); }
 .et-tabs { display: flex; align-items: flex-end; gap: 6px; padding: 10px 10px 0 calc(10px + var(--et-r)); background: #f3f3f3; }

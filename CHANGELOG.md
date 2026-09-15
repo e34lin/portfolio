@@ -5,6 +5,17 @@ newest first. Every entry corresponds to a git commit — use `git log` or
 `git show <hash>` for the exact diff, and `git revert <hash>` to undo any
 single one without affecting the others.
 
+## Homepage Edge thumbnail sized up to match the "main" card role
+
+The Edge lead-card thumbnail was smaller than the two secondary
+"imagetop" mini cards below it (Crafting Sandbox, NaSYMSurgical) —
+backwards for the card meant to be the primary one. Two contributing
+causes: the `.lead` grid gave the image column less width than text
+(6fr/5fr), and the thumbnail used a shorter 16:10 aspect ratio versus
+the mini cards' 4:3. Flipped the grid split to 5fr/6fr (favoring the
+image) and matched the aspect ratio to 4:3. Now measures larger in
+both dimensions than the two cards below it.
+
 ## Small fixes: slider color match, tag overlap, cache-bust
 
 - Recolored the Crafting Sandbox "Outcome" before/after slider (`.cba-line`/
