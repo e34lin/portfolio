@@ -5,6 +5,15 @@ newest first. Every entry corresponds to a git commit — use `git log` or
 `git show <hash>` for the exact diff, and `git revert <hash>` to undo any
 single one without affecting the others.
 
+## Resume link added to the nav, all six pages
+
+Added a third nav item, "Resume", between "About" and "Get in touch",
+opening `assets/resume.pdf` (the file you sent) in a new tab
+(`target="_blank" rel="noopener"`). Added to all six pages' nav markup
+(it's duplicated per page, not a shared include) — verified the link
+attributes are correct on each and re-checked all six pages at all five
+widths for overflow now that the nav carries one more item; none found.
+
 ## NaSYMSurgical symmetry-line diagram — redrawn to match your reference
 
 You sent a reference image (pasted in chat, not attached as a file — same
