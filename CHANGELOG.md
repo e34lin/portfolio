@@ -5,6 +5,21 @@ newest first. Every entry corresponds to a git commit — use `git log` or
 `git show <hash>` for the exact diff, and `git revert <hash>` to undo any
 single one without affecting the others.
 
+## NaSYMSurgical symmetry-line diagram — redrawn to match your reference
+
+You sent a reference image (pasted in chat, not attached as a file — same
+limitation as before: this sandbox can't pull raw bytes out of a chat
+paste) showing a cleaner two-panel version of the "Four ways to read
+symmetry" concept diagram: separate Intrinsic and Eccentric panels, each
+with its own caption, rather than the original's single face with both
+lines overlaid plus a shared legend. Redrew `nasym-symlines-concept.svg`
+from scratch to match — same two-panel structure, plain white face
+outlines instead of the filled gray from before, dot eyes, small ears, a
+curved solid line for the nose's own midline (both panels) and a dashed
+straight line for the facial midline (Eccentric panel only). Updated the
+figcaption too, since the old one ("on the same scan") no longer described
+a two-panel layout.
+
 ## Crafting Sandbox "Outcome" section — nav tab visuals + video walkthrough
 
 You sent an updated `crafting-inc.dc.html` export with instructions to apply
