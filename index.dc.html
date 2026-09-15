@@ -80,6 +80,35 @@ a:hover { color: var(--color-accent); }
 .nasym-thumb { position: relative; overflow: hidden; width: 100%; background-image: radial-gradient(circle at 50% 42%, rgba(74,95,214,0.10), rgba(74,95,214,0) 62%); aspect-ratio: 1/1; background: #f6f6f9; }
 .nasym-thumb-phone { position: absolute; height: 150%; width: auto; aspect-ratio: 440 / 916; left: 50%; top: 7%; transform: translateX(-50%); filter: drop-shadow(0 3px 8px rgba(20,22,28,0.10)) drop-shadow(0 18px 34px rgba(20,22,28,0.22)); }
 .mini:hover .mini-fig image-slot { transform: scale(1.03); }
+/* edge thumb: schematic browser chrome + token labels */
+.edge-thumb { position: relative; overflow: hidden; width: 100%; aspect-ratio: 16/10; background: radial-gradient(circle at 20% 15%, color-mix(in oklch, var(--et-brand) 14%, transparent), transparent 55%), radial-gradient(circle at 90% 100%, color-mix(in oklch, var(--et-brand) 12%, transparent), transparent 50%), var(--color-bg); --et-r: 9px; --et-brand: #0078d4; --et-brand-ink: #005a9e; }
+.lead:hover .edge-thumb { transform: scale(1.03); }
+.edge-thumb-win { position: absolute; left: 9%; right: -14%; top: 15%; bottom: -8%; background: #f3f3f3; border-radius: 12px 0 0 0; box-shadow: 0 2px 6px rgba(20,22,28,0.08), 0 22px 44px rgba(20,22,28,0.16); overflow: hidden; font-family: var(--font-body); }
+.et-tabs { display: flex; align-items: flex-end; gap: 6px; padding: 10px 10px 0 calc(10px + var(--et-r)); background: #f3f3f3; }
+.et-tab { position: relative; padding: 9px 16px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: #6b6a68; border-radius: var(--et-r) var(--et-r) 0 0; }
+.et-tab[data-on] { background: #fff; color: #1b1a19; }
+.et-tab[data-on]::before, .et-tab[data-on]::after { content: ""; position: absolute; bottom: 0; width: var(--et-r); height: var(--et-r); background: #fff; }
+.et-tab[data-on]::before { left: calc(-1 * var(--et-r)); -webkit-mask: radial-gradient(circle at 0 0, transparent calc(var(--et-r) - .5px), #000 var(--et-r)); mask: radial-gradient(circle at 0 0, transparent calc(var(--et-r) - .5px), #000 var(--et-r)); }
+.et-tab[data-on]::after { right: calc(-1 * var(--et-r)); -webkit-mask: radial-gradient(circle at 100% 0, transparent calc(var(--et-r) - .5px), #000 var(--et-r)); mask: radial-gradient(circle at 100% 0, transparent calc(var(--et-r) - .5px), #000 var(--et-r)); }
+.et-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--et-brand); }
+.et-bar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #fff; border-bottom: 1px solid #e2e2e2; }
+.et-ico { width: 14px; height: 14px; border-radius: 4px; background: #6b6a68; opacity: 0.35; flex: none; }
+.et-omni { flex: 1; height: 28px; border-radius: 14px; background: #f3f3f3; border: 1px solid #e2e2e2; display: flex; align-items: center; gap: 8px; padding: 0 12px; font-size: 11.5px; color: #6b6a68; }
+.et-lock { width: 10px; height: 10px; border-radius: 2px; background: var(--et-brand); flex: none; }
+.et-body { padding: 18px 20px; display: grid; gap: 10px; background: #fff; }
+.et-h { width: 44%; height: 12px; border-radius: 4px; background: #e2e2e2; }
+.et-l { width: 78%; height: 8px; border-radius: 4px; background: #ececec; }
+.et-l.s { width: 60%; }
+.et-btn { width: max-content; margin-top: 6px; padding: 7px 14px; border-radius: 7px; background: var(--et-brand); color: #fff; font-size: 11px; font-weight: 600; }
+.et-tag { position: absolute; padding: 5px 9px; border-radius: 6px; background: rgba(255,255,255,0.86); border: 1px solid color-mix(in oklch, var(--et-brand) 30%, transparent); backdrop-filter: blur(6px); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; line-height: 1; color: var(--et-brand-ink); box-shadow: 0 4px 12px rgba(20,22,28,0.10); white-space: nowrap; }
+.et-tag[data-at="tab"] { left: 4%; top: 7%; }
+.et-tag[data-at="omni"] { right: 4%; top: 58%; }
+.et-tag[data-at="btn"] { left: 43%; bottom: 8%; }
+.mini-fig .edge-thumb { aspect-ratio: 1/1; }
+.more[data-also="imagetop"] .mini-fig .edge-thumb { aspect-ratio: 4/3; }
+.more[data-also="cards"] .mini-fig .edge-thumb { aspect-ratio: 16/10; }
+.more[data-also="gallery"] .mini-fig .edge-thumb { aspect-ratio: 3/2; }
+@media (max-width: 700px) { .et-tag { font-size: 9.5px; } }
 .mini-n { font-family: var(--display); font-weight: 400; font-size: 20px; line-height: 1; color: var(--color-accent-700); margin: 0 0 8px; }
 .mini-title { font-family: var(--display); font-weight: 400; font-size: 21px; line-height: 1.12; margin: 0 0 5px; }
 .mini-role { font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 55%, transparent); margin: 0 0 6px; }
@@ -170,7 +199,16 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
           <p class="lead-copy">Redefining Edge's semantic token system and tokenizing every component for scale.</p>
           <span class="lead-arrow">View case study →</span>
         </div>
-        <figure class="lead-fig"><image-slot id="thumb-edge" shape="rect" placeholder="Drop an Edge screenshot"></image-slot></figure>
+        <figure class="lead-fig"><div class="edge-thumb" style="transition: transform 420ms cubic-bezier(.2,.6,.2,1);" role="img" aria-label="Schematic of the Edge browser chrome annotated with semantic token names">
+          <div class="edge-thumb-win">
+            <div class="et-tabs"><div class="et-tab" data-on><span class="et-dot"></span>Microsoft Edge</div><div class="et-tab">New tab</div></div>
+            <div class="et-bar"><span class="et-ico"></span><span class="et-ico"></span><span class="et-omni"><span class="et-lock"></span>microsoft.com/edge</span><span class="et-ico"></span></div>
+            <div class="et-body"><div class="et-h"></div><div class="et-l"></div><div class="et-l s"></div><div class="et-btn">Primary action</div></div>
+          </div>
+          <span class="et-tag" data-at="tab">backgroundTabActiveRest</span>
+          <span class="et-tag" data-at="omni">backgroundOmniboxRest</span>
+          <span class="et-tag" data-at="btn">backgroundCtrlBrandRest</span>
+        </div></figure>
       </a>
 
       <sc-if value="{{ craftFeatured }}" hint-placeholder-val="{{ false }}">
