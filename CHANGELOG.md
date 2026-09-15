@@ -5,6 +5,18 @@ newest first. Every entry corresponds to a git commit — use `git log` or
 `git show <hash>` for the exact diff, and `git revert <hash>` to undo any
 single one without affecting the others.
 
+## About page portrait — filled in with your real photo
+
+The earlier autonomous pass had tried to fetch a LinkedIn profile photo and
+got blocked by network policy, leaving the About page's portrait slot empty.
+You sent the actual photo (a mountain-summit hiking shot) this session — it
+had to come through as a pushed file rather than a chat paste, since this
+sandbox can't read either your local disk or raw chat image bytes directly.
+Wired it into the `about-portrait` image-slot, and resized/re-compressed it
+for web (3072×4096 original → 1400px wide, quality-80 progressive JPEG,
+981KB → 576KB). Verified it renders well at the default center-crop framing
+and checked for overflow regressions at all five widths — none found.
+
 ## Edge case study — merged illustration upgrades from your Claude Design export
 
 You sent an updated `edge.dc.html` exported from Claude Design with instructions
