@@ -406,7 +406,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 
   <section class="panel" id="problem" data-rail-target>
     <p class="section-title">The problem</p>
-    <p class="section-body">Themes were the goal, but you cannot theme what is hard-coded. Before any theme could exist, the browser had to stop referring to specific values and start referring to roles, and design and code had to be describing the same interface first.</p>
+    <p class="section-body">Themes were the goal, but you cannot theme what is hard-coded. Before any theme could exist, the browser had to stop referring to specific values and start referring to roles, and design and code had to be describing the same interface first. That problem was concentrated in Views: WebUI was already built with Fluent, but Views' native code was not.</p>
     <ul class="list" style="margin-top: var(--space-4)">
       <li><strong>Code shared no tokens with Fluent.</strong> The interface referenced colors directly. Fluent existed in Figma and nowhere in the codebase.</li>
       <li><strong>Design and production disagreed.</strong> The Figma files described a Fluent-based interface that was not what shipped, so neither side could be trusted as the source of truth.</li>
@@ -419,8 +419,8 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 
   <section class="panel" id="source" data-rail-target>
     <p class="section-title">Reading the source</p>
-    <p class="section-body">Edge is built on Chromium. The original task, component by component, was to find where the shipped code had drifted from its Fluent counterpart in Figma and work out what each one needed to change to close that gap. Instead of auditing the design files and hoping they matched, I went into the codebase directly to find what the interface was made of. I ran that audit alone and documented every finding, and it took about two months.</p>
-    <p class="section-body">That meant learning enough of the repository to know where interface values live, how they are referenced, and which layer a given color comes from. Edge also renders in two different worlds (native Views surfaces and WebUI surfaces) that do not share a styling mechanism, so a value had to be traced differently depending on where it lived.</p>
+    <p class="section-body">Edge is built on Chromium. The original task, component by component, was to find where Views' shipped code had drifted from its Fluent counterpart in Figma and work out what each one needed to change to close that gap. Instead of auditing the design files and hoping they matched, I went into the codebase directly to find what the interface was actually made of. I ran that audit alone and documented every finding, and it took about two months.</p>
+    <p class="section-body">That meant learning enough of the repository to know where interface values live, how they are referenced, and which layer a given color comes from. Edge also renders in two different worlds (native Views surfaces and WebUI surfaces) that do not share a styling mechanism; WebUI's stylesheets already pointed at Fluent, which is why this particular audit was about Views.</p>
     <p class="section-body">It is a very large codebase and none of it is organised for a designer, but it was the only place the real answer existed.</p>
     <div class="dg">
       <p class="dg-h">One browser, two rendering worlds</p>
@@ -441,13 +441,13 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
           <ul class="world-l">
             <li>Settings, history, downloads, flyouts</li>
             <li>Built as web pages inside the browser</li>
-            <li>Colors set in stylesheets</li>
+            <li>Already implemented with Fluent</li>
           </ul>
           <span class="world-tag">CSS</span>
         </div>
         <div class="worlds-join"><span>Both had to end up reading from the same semantic tokens</span></div>
       </div>
-      <p class="dg-note">The two halves of the interface don't share a styling mechanism, so the same value had to be traced, and later replaced, in two different ways depending on where it lived.</p>
+      <p class="dg-note">The Fluent audit only covered Views, since WebUI already matched it. Once the new semantic tokens arrived, both halves needed tracing and replacing, just in two different ways depending on where a value lived.</p>
     </div>
 
     <figure class="inline-fig">
