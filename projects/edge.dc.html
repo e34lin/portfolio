@@ -328,11 +328,9 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
   <div class="rail-grp">
     <p class="rail-h">Investigation</p>
     <a href="#source">Reading the source</a>
-    <a href="#found">What the code showed</a>
   </div>
   <div class="rail-grp">
     <p class="rail-h">Approach</p>
-    <a href="#directions">Two directions</a>
     <a href="#mapping">The 1:1 mapping</a>
     <a href="#sequence">Sequencing the rollout</a>
     <a href="#engineering">Working with engineering</a>
@@ -459,10 +457,8 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
       </div>
       <figcaption>Where the real values lived: hardcoded in the component source, with no token between the component and the color.</figcaption>
     </figure>
-  </section>
 
-  <section class="panel" id="found" data-rail-target>
-    <p class="section-title">What the code showed</p>
+    <p class="section-body" style="margin-top: var(--space-4)">What that tracing turned up:</p>
     <div class="cards3">
       <div class="tcard">
         <p class="tcard-n">Inconsistent even with itself</p>
@@ -481,14 +477,10 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 
   <div class="chapter" data-ch="{{ chapterStyle }}" data-n="02"><h2 class="chapter-t">Approach</h2></div>
 
-  <section class="panel" id="directions" data-rail-target>
-    <p class="section-title">Closing the gap in both directions</p>
-    <p class="section-body">We were still reconciling the code against Fluent, one piece at a time, or had just finished the audit that found where they'd diverged, when the semantic system landed. Rather than close that gap once as a one-off patch and retokenize separately later, we combined the two: redraw Edge in Figma on the new semantic tokens, and map those tokens to the values Fluent had already specified. The correction the audit had already identified would ship through the new architecture itself.</p>
-    <p class="section-body">This meant redrawing a great deal of the browser in Figma, not to change how it looked, but to rebuild it out of tokens instead of raw values, so the design files finally described the same interface the code did, in the vocabulary both would use going forward. I was staffed as the audit's owner; the design team joined in on redrawing surfaces and mapping tokens together, while the line to engineering (making sure the right tokens actually landed in code) stayed mine.</p>
-  </section>
-
   <section class="panel" id="mapping" data-rail-target>
     <p class="section-title">The 1:1 mapping</p>
+    <p class="section-body">We were still reconciling the code against Fluent, one piece at a time, or had just finished the audit that found where they'd diverged, when the semantic system landed. Rather than close that gap once as a one-off patch and retokenize separately later, we combined the two: redraw Edge in Figma on the new semantic tokens, and map those tokens to the values Fluent had already specified. The correction the audit had already identified would ship through the new architecture itself.</p>
+    <p class="section-body">This meant redrawing a great deal of the browser in Figma, not to change how it looked, but to rebuild it out of tokens instead of raw values, so the design files finally described the same interface the code did, in the vocabulary both would use going forward. I was staffed as the audit's owner; the design team joined in on redrawing surfaces and mapping tokens together, while the line to engineering (making sure the right tokens actually landed in code) stayed mine.</p>
     <p class="section-body">The decision that made this shippable: every one of roughly 500 new semantic tokens was mapped so it resolved 1:1 to what Fluent had already specified, not to whatever the code happened to be rendering at the time. In Figma, that produced no diff at all, since the redrawn files matched the original spec exactly. In production it did surface real differences, wherever code had quietly drifted from that spec. None of it amounted to a redesign: primary actions were still blue, and the browser still read as Edge. The architecture underneath changed completely. What it looked like barely moved.</p>
     <div class="pull">Map every token to what design already specifies, not to what's currently shipping. The gap between the two was already debt. The migration just collects it, once, on purpose.</div>
     <div class="dg">
