@@ -413,7 +413,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
       <li><strong>Code shared no tokens with Fluent.</strong> The interface referenced colors directly. Fluent existed in Figma and nowhere in the codebase.</li>
       <li><strong>Design and production disagreed.</strong> The Figma files described a Fluent-based interface that was not what shipped, so neither side could be trusted as the source of truth.</li>
       <li><strong>The target changed mid-project.</strong> As the code-to-Fluent reconciliation was ongoing, or just wrapping up, the org adopted a new semantic token system, and it was still being defined while we moved onto it.</li>
-      <li><strong>The scope was the whole browser.</strong> Dozens of components across more than 50 surfaces, tied together by roughly 500 tokens, not a component library in isolation.</li>
+      <li><strong>The scope was the whole browser.</strong> Dozens of components across more than 50 surfaces, not a component library in isolation.</li>
     </ul>
   </section>
 
@@ -465,12 +465,12 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
     <p class="section-title">What the code showed</p>
     <div class="cards3">
       <div class="tcard">
-        <p class="tcard-n">Hard-coded values throughout</p>
-        <p class="tcard-b">Colors written into components directly, with no token standing between the component and the value.</p>
+        <p class="tcard-n">Inconsistent even with itself</p>
+        <p class="tcard-b">The same visual role could be hardcoded differently depending on which file happened to draw it. Nothing forced two components doing the same job to agree, let alone to agree with Fluent.</p>
       </div>
       <div class="tcard">
-        <p class="tcard-n">No shared layer with Fluent</p>
-        <p class="tcard-b">Fluent lived in the design files only. The deltas were not drift within one system: they were two systems that had never met.</p>
+        <p class="tcard-n">Drift, not redesign</p>
+        <p class="tcard-b">Most of what shipped was already close to what Fluent specified. A handful of components had quietly wandered off it, sometimes for years, and nothing had caught it.</p>
       </div>
       <div class="tcard">
         <p class="tcard-n">No mechanism to stay honest</p>
@@ -483,13 +483,13 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 
   <section class="panel" id="directions" data-rail-target>
     <p class="section-title">Closing the gap in both directions</p>
-    <p class="section-body">We were still reconciling the code against Fluent, component by component, or had just finished the audit that found where they'd diverged, when the semantic system landed. Rather than close that gap once as a one-off patch and retokenize separately later, we combined the two: redraw Edge in Figma on the new semantic tokens, and map those tokens to the values Fluent had already specified. The correction the audit had already identified would ship through the new architecture itself.</p>
+    <p class="section-body">We were still reconciling the code against Fluent, one piece at a time, or had just finished the audit that found where they'd diverged, when the semantic system landed. Rather than close that gap once as a one-off patch and retokenize separately later, we combined the two: redraw Edge in Figma on the new semantic tokens, and map those tokens to the values Fluent had already specified. The correction the audit had already identified would ship through the new architecture itself.</p>
     <p class="section-body">This meant redrawing a great deal of the browser in Figma, not to change how it looked, but to rebuild it out of tokens instead of raw values, so the design files finally described the same interface the code did, in the vocabulary both would use going forward. I was staffed as the audit's owner; the design team joined in on redrawing surfaces and mapping tokens together, while the line to engineering (making sure the right tokens actually landed in code) stayed mine.</p>
   </section>
 
   <section class="panel" id="mapping" data-rail-target>
     <p class="section-title">The 1:1 mapping</p>
-    <p class="section-body">The decision that made this shippable: every new semantic token was mapped so it resolved 1:1 to what Fluent had already specified, not to whatever the code happened to be rendering at the time. In Figma, that produced no diff at all, since the redrawn files matched the original spec exactly. In production it did surface real differences, wherever code had quietly drifted from that spec. None of it amounted to a redesign: primary actions were still blue, and the browser still read as Edge. The architecture underneath changed completely. What it looked like barely moved.</p>
+    <p class="section-body">The decision that made this shippable: every one of roughly 500 new semantic tokens was mapped so it resolved 1:1 to what Fluent had already specified, not to whatever the code happened to be rendering at the time. In Figma, that produced no diff at all, since the redrawn files matched the original spec exactly. In production it did surface real differences, wherever code had quietly drifted from that spec. None of it amounted to a redesign: primary actions were still blue, and the browser still read as Edge. The architecture underneath changed completely. What it looked like barely moved.</p>
     <div class="pull">Map every token to what design already specifies, not to what's currently shipping. The gap between the two was already debt. The migration just collects it, once, on purpose.</div>
     <div class="dg">
       <p class="dg-h">What changed underneath</p>
