@@ -189,7 +189,7 @@ to apply illustration changes only and leave the "same interface, two themes"
 demo alone. Diffed your export against the live file line by line and applied
 only the visual/illustration side; **verified after merging that the theme
 demo still shows the warm palette and black button exactly as before** —
-clicked through to the MAI state and screenshotted it to confirm.
+clicked through to the Theme 2 state and screenshotted it to confirm.
 
 **Applied:**
 - New hero figure: a real before/after comparison (hard-coded hex values →
@@ -214,9 +214,9 @@ clicked through to the MAI state and screenshotted it to confirm.
   labels pointing at the three different hard-coded blues on screen.
 - "Shipped" section: replaced the empty payoff placeholder with a working
   3-state interactive slider (auto-advances, click-to-jump) showing the
-  favorites flyout across hard-coded → Phoenix → MAI, using three new SVGs
-  you provided (`edge-flyout-pretoken.svg`, `edge-flyout-phoenix.svg`,
-  `edge-flyout-mai.svg`).
+  favorites flyout across hard-coded → Theme 1 → Theme 2, using three new
+  SVGs you provided (`edge-flyout-pretoken.svg`, `edge-flyout-theme1.svg`,
+  `edge-flyout-theme2.svg`).
 - Shared chrome-mockup polish: slightly larger corner radius, plus a small
   CSS detail where an active browser tab now visually "bites into" the
   window-chrome corner instead of sitting as a flat rectangle.
@@ -234,7 +234,7 @@ clicked through to the MAI state and screenshotted it to confirm.
   "make the button black," "keep the tab background warm," and hex-value
   requests, so applying it would have silently reverted that work. Kept the
   current warm-palette/black-button version untouched, and verified this
-  after the merge by clicking to the MAI state and confirming it still
+  after the merge by clicking to the Theme 2 state and confirming it still
   matches.
 - A few other things your export would have reverted for the same
   stale-snapshot reason: the address-bar text-overflow-ellipsis fix, the
@@ -242,9 +242,9 @@ clicked through to the MAI state and screenshotted it to confirm.
   worlds" diagram wrap fix, the page's meta/Open-Graph tags, and the "next
   project" link pointing at Crafting Sandbox.
 - A new sentence your export added to the token-mapping section's prose
-  ("Concretely, the Phoenix theme's values were what Fluent had
-  specified..."). You asked for illustration changes specifically, and
-  didn't ask for a copy edit here, so left the existing paragraph as-is.
+  ("Concretely, the Theme 1 values were what Fluent had specified...").
+  You asked for illustration changes specifically, and didn't ask for a
+  copy edit here, so left the existing paragraph as-is.
 - Some CSS in your export (`.tok-tree`, `.arch`, `.spec-cards`, `.flip-*`)
   that isn't referenced by any markup in the file you sent — looked like
   leftover exploration from the design canvas. Left it out rather than
