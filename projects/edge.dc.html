@@ -400,13 +400,13 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
   <section class="panel" id="system" data-rail-target>
     <p class="section-title">The system we were adopting</p>
     <p class="section-body">The new system was Microsoft's shared semantic token set, one vocabulary of role-based tokens built to support theming, so a product could take on a different appearance by changing what its tokens resolve to rather than by being redesigned.</p>
-    <p class="section-body">I was part of that system's design group as well as Edge's adoption of it, which meant I saw both sides, what the system wanted to be in the abstract and what a shipping product needed from it on a schedule. Nearly everything I contributed to the system came out of Edge, cases a browser has that the token set had not yet accounted for.</p>
-    <p class="section-body">It was young. Names, structure and component-level tokens were all still settling while we were building against them, which is the constraint the rest of this project is a response to.</p>
+    <p class="section-body">I was part of that system's design group as well as Edge's adoption of it, so I saw what the system wanted to be in the abstract and what a shipping product needed from it on a schedule, both at the same time. Nearly everything I contributed to the system came out of real problems Edge ran into, cases the token set hadn't accounted for yet.</p>
+    <p class="section-body">It was young. Names, structure and component-level tokens were all still settling while we were building against them, which is the constraint the rest of this project responds to.</p>
   </section>
 
   <section class="panel" id="problem" data-rail-target>
     <p class="section-title">The problem</p>
-    <p class="section-body">Themes were the goal, but you cannot theme what is hard-coded. Before any theme could exist, the browser had to stop referring to specific values and start referring to roles, and design and code had to be describing the same interface first. That problem was concentrated in Views: WebUI was already built with Fluent, but Views' native code was not.</p>
+    <p class="section-body">Themes were the goal, but you cannot theme what is hard-coded. Before any theme could exist, the browser had to stop referring to specific values and start referring to roles, and design and code had to be describing the same interface first. That problem was concentrated in Views. WebUI was already built with Fluent, but Views' native code was not.</p>
     <ul class="list" style="margin-top: var(--space-4)">
       <li><strong>Code shared no tokens with Fluent.</strong> The interface referenced colors directly. Fluent existed in Figma and nowhere in the codebase.</li>
       <li><strong>Design and production disagreed.</strong> The Figma files described a Fluent-based interface that was not what shipped, so neither side could be trusted as the source of truth.</li>
@@ -420,7 +420,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
   <section class="panel" id="source" data-rail-target>
     <p class="section-title">Reading the source</p>
     <p class="section-body">Edge is built on Chromium. The original task, component by component, was to find where Views' shipped code had drifted from its Fluent counterpart in Figma and work out what each one needed to change to close that gap. Instead of auditing the design files and hoping they matched, I went into the codebase directly to find what the interface was actually made of. I ran that audit alone and documented every finding, and it took about two months.</p>
-    <p class="section-body">That meant learning enough of the repository to know where interface values live, how they are referenced, and which layer a given color comes from. Edge also renders in two different worlds (native Views surfaces and WebUI surfaces) that do not share a styling mechanism; WebUI's stylesheets already pointed at Fluent, which is why this particular audit was about Views.</p>
+    <p class="section-body">That meant learning enough of the repository to know where interface values live, how they are referenced, and which layer a given color comes from. Edge also renders in two different worlds (native Views surfaces and WebUI surfaces) that do not share a styling mechanism. WebUI's stylesheets already pointed at Fluent, which is why this particular audit was about Views.</p>
     <p class="section-body">It is a very large codebase and none of it is organised for a designer, but it was the only place the real answer existed.</p>
     <div class="dg">
       <p class="dg-h">One browser, two rendering worlds</p>
@@ -480,7 +480,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
   <section class="panel" id="mapping" data-rail-target>
     <p class="section-title">The 1:1 mapping</p>
     <p class="section-body">We were still reconciling the code against Fluent, one piece at a time, when the semantic system landed. Rather than close that gap once as a one-off patch and retokenize separately later, we combined the two, redrawing Edge in Figma on the new semantic tokens and mapping those tokens to the values Fluent had already specified.</p>
-    <p class="section-body">This meant redrawing a great deal of the browser in Figma, rebuilding it out of tokens instead of raw values, so the design files finally described the same interface the code did, in the vocabulary both would use going forward. I was staffed as the audit's owner; the design team joined in on redrawing surfaces and mapping tokens together, while the line to engineering (making sure the right tokens actually landed in code) stayed mine.</p>
+    <p class="section-body">This meant redrawing a great deal of the browser in Figma, rebuilding it out of tokens instead of raw values, so the design files finally described the same interface the code did, in the vocabulary both would use going forward. I was staffed as the audit's owner. The design team joined in on redrawing surfaces and mapping tokens together, while the line to engineering (making sure the right tokens actually landed in code) stayed mine.</p>
     <p class="section-body">Every one of roughly 500 new semantic tokens was mapped so it resolved 1:1 to what Fluent had already specified, not to whatever the code happened to be rendering at the time. That's the decision that made this shippable. In Figma, it produced no diff at all, since the redrawn files matched the original spec exactly. In production it did surface real differences, wherever code had quietly drifted from that spec. None of it amounted to a redesign. Primary actions were still blue, and the browser still read as Edge. The architecture underneath changed completely. What it looked like barely moved.</p>
     <div class="pull">Map every token to what design already specifies, not to what's currently shipping. The gap between the two was already debt. The migration just collects it, once, on purpose.</div>
     <div class="dg">
@@ -538,7 +538,7 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
         <span class="map-out"><span class="sw" style="background:#1b1a19"></span><span class="chip">unchanged</span></span>
         <span class="map-out"><span class="sw" style="background:rgb(39, 35, 32)"></span><span class="chip">#272320</span></span>
       </div>
-      <p class="map-note">The shape of the mapping is illustrative, not the real token names or values. Most values lined up with what was already shipping; a few, like this one, had quietly drifted. The second theme was mapped in the same pass, ready to switch on.</p>
+      <p class="map-note">The shape of the mapping is illustrative, not the real token names or values. Most values lined up with what was already shipping. A few, like this one, had quietly drifted. The second theme was mapped in the same pass, ready to switch on.</p>
     </div>
     <p class="section-body" style="margin-top: var(--space-4)">We mapped the second theme at the same time, so the appearance swap was already specified before anyone asked for it. It also meant only names were in flight, never appearances. When the semantic system changed underneath us, we were re-pointing references rather than re-deciding how Edge should look.</p>
   </section>
@@ -629,9 +629,9 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
   <section class="panel" id="shipped" data-rail-target>
     <p class="section-title">What shipped</p>
     <p class="section-body">The semantic tokens shipped. Edge's interface now reads from a semantic layer rather than from hard-coded values, and for the first time Figma and production describe the same system in the same vocabulary.</p>
-    <p class="section-body">Then the swap actually happened. Edge shipped first on the first theme, which resolved to what Fluent had already specified, closing the drift the audit had found without amounting to a redesign, and then moved to the shared system's compact theme, visually aligned to the shared Microsoft language, with the adjustments Edge's own surfaces needed. A change of that size, made by swapping what the tokens resolve to rather than by reopening every component. Deeper theming and additional themes are still working through canary and dev channels.</p>
+    <p class="section-body">Then the swap actually happened. Edge shipped first on the first theme, which resolved to what Fluent had already specified and closed the drift the audit had found, without amounting to a redesign. It then moved to the shared system's compact theme, visually aligned to the shared Microsoft language, with the adjustments Edge's own surfaces needed. A change of that size, made by swapping what the tokens resolve to rather than by reopening every component. Deeper theming and additional themes are still working through canary and dev channels.</p>
     <p class="section-body">Because the first theme did move real pixels, even if modestly, we didn't just trust the mapping and ship it. Several experiment flights ran before the wide rollout, checking that the change read as neutral or positive rather than as a regression.</p>
-    <p class="section-body">The swap also did something the mapping alone couldn't. It found bugs. The first theme was close enough to the browser's existing look that a wrong token could hide in plain sight. A value that resolved to nearly the same pixel as before was never going to draw anyone's eye. The second theme's bigger visual delta made those wrong assignments visible for the first time, in places that had shipped without complaint on the first theme. None of it looked like a regression until the second theme arrived; it just looked like Edge.</p>
+    <p class="section-body">The swap also did something the mapping alone couldn't. It found bugs. The first theme was close enough to the browser's existing look that a wrong token could hide in plain sight. A value that resolved to nearly the same pixel as before was never going to draw anyone's eye. The second theme's bigger visual delta made those wrong assignments visible for the first time, in places that had shipped without complaint on the first theme. None of it looked like a regression until the second theme arrived. It just looked like Edge.</p>
     <p class="section-body">The browser also simply looks more consistent than it did. Surfaces that had drifted apart over years now resolve from the same set of roles, so they agree by construction rather than by anyone remembering to check.</p>
     <div class="demo" data-theme="{{ demoTheme }}">
       <div class="demo-bar">
@@ -657,7 +657,7 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
           <div class="ch-btn">Primary action</div>
         </div>
       </div>
-      <p class="demo-note">Schematic, with illustrative values, but the mechanism is the real one. Nothing in the markup changes between the two states; only what the tokens resolve to.</p>
+      <p class="demo-note">Schematic, with illustrative values, but the mechanism is the real one. Nothing in the markup changes between the two states. Only what the tokens resolve to does.</p>
     </div>
 
     <figure class="inline-fig">
@@ -681,7 +681,7 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
 
   <section class="panel" id="reflection" data-rail-target>
     <p class="section-title">Reflection</p>
-    <p class="section-body">The most useful thing I did on this project was read the code. Every plan built on the design files would have been a plan for a browser that did not exist, and no amount of care in Figma would have surfaced that.</p>
+    <p class="section-body">One of the most useful things I did on this project was read the code. Every plan built on the design files would have been a plan for a browser that did not exist, and no amount of care in Figma would have surfaced that.</p>
     <p class="section-body">The second was being precise about which visual changes belonged inside the structural one. Correcting drift against a spec Fluent had already settled was fair game, since that was debt already owed and the architecture change was the moment to pay it. Cases with no single correct answer, where nothing had been decided yet, were a different kind of change, and folding those in too would have smuggled real design decisions into what was supposed to be a structural pass. Keeping that line clear made the work reviewable, and let the project survive a specification that changed twice while we were building against it.</p>
     <p class="section-body">A migration that stays this close to what's already there can hide mistakes as easily as it avoids risk, and that's what I'd carry forward. Folding the Fluent correction into the architecture change kept its footprint small on purpose, but that also meant a few wrong token assignments didn't surface until the second theme's larger visual delta forced them into view, a year after they'd shipped quietly. Next time, I'd stress-test the mapping against a deliberately different theme earlier, instead of waiting for the first real theme swap to be the first real test.</p>
   </section>
