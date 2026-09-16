@@ -123,11 +123,9 @@ a:hover { color: var(--color-accent); }
 .chip { display: flex; align-items: center; gap: 8px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; line-height: 1.3; color: var(--color-text); }
 .sw { width: 13px; height: 13px; border-radius: 3px; flex: none; border: 1px solid color-mix(in srgb, var(--color-text) 18%, transparent); }
 .tok { position: relative; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; line-height: 1.3; color: var(--color-accent-700); word-break: normal; overflow-wrap: break-word; }
-.tok[data-spec-on] { cursor: help; border-bottom: 1px dotted var(--color-accent-300); }
-[data-cn="on"] .tok[data-spec-on]::after { content: attr(data-spec-on); }
-[data-cn="off"] .tok[data-spec-off]::after { content: attr(data-spec-off); }
-.tok[data-spec-on]::after { position: absolute; left: 0; bottom: calc(100% + 9px); white-space: pre; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; letter-spacing: 0.01em; padding: 8px 10px; border-radius: var(--radius-sm); background: var(--color-text); color: var(--color-bg); box-shadow: var(--shadow-md); opacity: 0; transform: translateY(4px); transition: opacity 140ms ease, transform 140ms ease; pointer-events: none; z-index: 6; }
-.tok[data-spec-on]:hover::after, .tok[data-spec-on]:focus-visible::after { opacity: 1; transform: none; }
+.tok[data-spec] { cursor: help; border-bottom: 1px dotted var(--color-accent-300); }
+.tok[data-spec]::after { content: attr(data-spec); position: absolute; left: 0; bottom: calc(100% + 9px); white-space: pre; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; letter-spacing: 0.01em; padding: 8px 10px; border-radius: var(--radius-sm); background: var(--color-text); color: var(--color-bg); box-shadow: var(--shadow-md); opacity: 0; transform: translateY(4px); transition: opacity 140ms ease, transform 140ms ease; pointer-events: none; z-index: 6; }
+.tok[data-spec]:hover::after, .tok[data-spec]:focus-visible::after { opacity: 1; transform: none; }
 .map { overflow: visible; }
 .map-out { display: flex; gap: 6px; align-items: center; }
 .map-out .chip { font-size: 11px; gap: 6px; }
@@ -213,13 +211,13 @@ a:hover { color: var(--color-accent); }
 .swap button { font: inherit; font-size: 12.5px; line-height: 1; padding: 8px 12px; border: 0; border-radius: var(--radius-sm); background-color: transparent; color: var(--label-ink); cursor: pointer; }
 .swap button:hover { color: var(--color-text); }
 .swap button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
-.demo[data-theme="ph"] .swap-ph, .demo[data-theme="mai"] .swap-mai { background-color: var(--color-accent); color: var(--color-bg); }
+.demo[data-theme="t1"] .swap-t1, .demo[data-theme="t2"] .swap-t2 { background-color: var(--color-accent); color: var(--color-bg); }
 
 .chrome { --dt-bg: #f3f3f3; --dt-surface: #ffffff; --dt-fg: #1b1a19; --dt-fg-mute: #6b6a68; --dt-line: #e2e2e2; --dt-brand: #0078d4; --dt-radius: 9px;
   border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-divider); box-shadow: var(--shadow-sm);
   background-color: var(--dt-bg); }
-.demo[data-theme="mai"] .chrome { --dt-bg: #fbf8f5; --dt-surface: #fffefd; --dt-fg: #3a2f27; --dt-fg-mute: #8a7b6e; --dt-line: #ece5dc; --dt-brand: #b08662; --dt-radius: 10px; }
-.demo[data-theme="mai"] .ch-btn { background-color: #201a16; }
+.demo[data-theme="t2"] .chrome { --dt-bg: #fbf8f5; --dt-surface: #fffefd; --dt-fg: #3a2f27; --dt-fg-mute: #8a7b6e; --dt-line: #ece5dc; --dt-brand: #b08662; --dt-radius: 10px; }
+.demo[data-theme="t2"] .ch-btn { background-color: #201a16; }
 .ch-tabs { display: flex; align-items: flex-end; gap: 6px; padding: 8px 10px 0; }
 .ch-tab { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: var(--dt-radius) var(--dt-radius) 0 0; font-size: 12px; color: var(--dt-fg-mute); background-color: transparent; }
 .ch-tab[data-on] { background-color: var(--dt-surface); color: var(--dt-fg); position: relative; }
@@ -266,9 +264,6 @@ a:hover { color: var(--color-accent); }
 .gallery figcaption { font-size: 13px; line-height: 1.45; margin-top: 10px; color: var(--label-ink); }
 .panel > .gallery, .panel > .map, .panel > .demo, .panel > .pull, .panel > .dg { grid-column: 2; }
 
-/* code-name toggle */
-[data-cn="on"] .cn-off, [data-cn="off"] .cn-on { display: none; }
-
 .rail { display: none; }
 @media (min-width: 1560px) {
   .rail { display: block; position: fixed; top: 50%; transform: translateY(-50%); left: calc((100vw - 1160px) / 2 - 188px); width: 164px; z-index: 5; }
@@ -314,7 +309,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 .progress span { display: block; height: 100%; width: 0%; background: var(--color-accent); transition: width 90ms linear; }
 </style>
 </helmet>
-<div data-st="{{ titleStyle }}" data-div="{{ dividerStyle }}" data-cn="{{ codeNames }}">
+<div data-st="{{ titleStyle }}" data-div="{{ dividerStyle }}">
 <div class="progress"><span></span></div>
 <nav class="nav">
   <a href="./" class="nav-brand" style="text-decoration:none;">Elizabeth Lin</a>
@@ -406,7 +401,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 
   <section class="panel" id="system" data-rail-target>
     <p class="section-title">The system we were adopting</p>
-    <p class="section-body"><span class="cn-on">MAI</span><span class="cn-off">The new system</span> was Microsoft's shared semantic token set: one vocabulary of role-based tokens, with themes layered on top, so a product could take on a different appearance by changing what its tokens resolve to rather than by being redesigned.</p>
+    <p class="section-body">The new system was Microsoft's shared semantic token set: one vocabulary of role-based tokens, with themes layered on top, so a product could take on a different appearance by changing what its tokens resolve to rather than by being redesigned.</p>
     <p class="section-body">I was part of that system's design group as well as Edge's adoption of it, which meant I saw both sides: what the system wanted to be in the abstract, and what a shipping product actually needed from it on a schedule. Nearly everything I contributed to the system came out of Edge, cases a browser has that the token set had not yet accounted for.</p>
     <p class="section-body">It was young. Names, structure and component-level tokens were all still settling while we were building against them, which is the constraint the rest of this project is a response to.</p>
   </section>
@@ -501,7 +496,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
       <div class="stack">
         <div class="layer" data-top>
           <p class="layer-n">Theme<small>swappable</small></p>
-          <p class="layer-b">Decides what each role resolves to. Swapping this is what changes how the browser looks: <span class="cn-on">Phoenix, then MAI</span><span class="cn-off">one theme, then the next</span>.</p>
+          <p class="layer-b">Decides what each role resolves to. Swapping this is what changes how the browser looks: one theme, then the next.</p>
         </div>
         <p class="stack-arrow">↑</p>
         <div class="layer">
@@ -521,14 +516,13 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
       <div class="map-head">
         <p class="map-h">Before</p><span></span>
         <p class="map-h">Semantic token</p><span></span>
-        <p class="map-h"><span class="cn-on">Phoenix</span><span class="cn-off">Theme one</span></p>
-        <p class="map-h"><span class="cn-on">MAI</span><span class="cn-off">Theme two</span></p>
+        <p class="map-h">Theme one</p>
+        <p class="map-h">Theme two</p>
       </div>
       <div class="map-row">
         <span class="chip"><span class="sw" style="background:#0078d4"></span>#0078D4</span>
         <span class="map-arrow">→</span>
-        <span class="tok" tabindex="0" data-spec-on="Phoenix    #0078D4
-MAI        rgb(39, 35, 32)" data-spec-off="Theme one  #0078D4
+        <span class="tok" tabindex="0" data-spec="Theme one  #0078D4
 Theme two  rgb(39, 35, 32)">color.brand.background.primary</span>
         <span class="map-arrow">→</span>
         <span class="map-out"><span class="sw" style="background:#0078d4"></span><span class="chip">unchanged</span></span>
@@ -537,8 +531,7 @@ Theme two  rgb(39, 35, 32)">color.brand.background.primary</span>
       <div class="map-row">
         <span class="chip"><span class="sw" style="background:#f3f3f3"></span>#F3F3F3</span>
         <span class="map-arrow">→</span>
-        <span class="tok" tabindex="0" data-spec-on="Phoenix    #F3F3F3
-MAI        #FFFFFFB3" data-spec-off="Theme one  #F3F3F3
+        <span class="tok" tabindex="0" data-spec="Theme one  #F3F3F3
 Theme two  #FFFFFFB3">color.neutral.background.subtle</span>
         <span class="map-arrow">→</span>
         <span class="map-out"><span class="sw" style="background:#f3f3f3"></span><span class="chip">unchanged</span></span>
@@ -547,8 +540,7 @@ Theme two  #FFFFFFB3">color.neutral.background.subtle</span>
       <div class="map-row">
         <span class="chip"><span class="sw" style="background:#1b1a19"></span>#1B1A19</span>
         <span class="map-arrow">→</span>
-        <span class="tok" tabindex="0" data-spec-on="Phoenix    #1B1A19
-MAI        rgb(39, 35, 32)" data-spec-off="Theme one  #1B1A19
+        <span class="tok" tabindex="0" data-spec="Theme one  #1B1A19
 Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
         <span class="map-arrow">→</span>
         <span class="map-out"><span class="sw" style="background:#1b1a19"></span><span class="chip">unchanged</span></span>
@@ -556,7 +548,7 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
       </div>
       <p class="map-note">Illustrative: the shape of the mapping, not the real token names or values. The first theme resolved to what was already shipping; the second was mapped in the same pass, ready to switch on.</p>
     </div>
-    <p class="section-body" style="margin-top: var(--space-4)">We mapped the second theme at the same time. <span class="cn-on">Every token got both its Phoenix value and its MAI value</span><span class="cn-off">Every token got a value in each of the two themes</span>, so the appearance swap was already specified before anyone asked for it.</p>
+    <p class="section-body" style="margin-top: var(--space-4)">We mapped the second theme at the same time. Every token got a value in each of the two themes, so the appearance swap was already specified before anyone asked for it.</p>
     <p class="section-body">This is also what made a moving specification survivable. Only names were in flight, never appearances, so when the semantic system changed underneath us we were re-pointing references rather than re-deciding how Edge should look.</p>
   </section>
 
@@ -624,7 +616,7 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
     <p class="section-body">For each component we traced the shipped value back to the role it was playing and assigned the semantic token for that role. Where the system had no token for a case Edge needed, I defined one and fed it back to the system owners, because a real product need is exactly what a young semantic set is missing.</p>
     <p class="section-body">It also made me the person engineers came to. A large share of the browser was being tokenized at once and plenty of features had no Figma at all, so when a team hit a value with no drawing behind it, the question came to me to resolve. The engineering lead thanked me for that specifically, which said more about where the bottleneck had been than any documentation could.</p>
     <div class="pull" style="font-style: normal">"Thank you for answering all the token questions for the things that didn't have Figma drawn."<span style="display:block; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; margin-top:12px; opacity:0.8">Partner engineering lead</span></div>
-    <p class="section-body">The instability was the hard part. <span class="cn-on">Before MAI there was another theme, Kumo, that we nearly adopted</span><span class="cn-off">An earlier candidate theme was nearly adopted before the one we settled on</span>, and component tokens in the new system kept changing underneath us. Engineering absorbed a steady trickle of small revisions as a result. The 1:1 mapping is what kept that trickle small: churn landed on names and references, never on how anything looked.</p>
+    <p class="section-body">The instability was the hard part. An earlier candidate theme was nearly adopted before the one we settled on, and component tokens in the new system kept changing underneath us. Engineering absorbed a steady trickle of small revisions as a result. The 1:1 mapping is what kept that trickle small: churn landed on names and references, never on how anything looked.</p>
   </section>
 
   <section class="panel" id="craft" data-rail-target>
@@ -646,15 +638,15 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
   <section class="panel" id="shipped" data-rail-target>
     <p class="section-title">What shipped</p>
     <p class="section-body">The semantic tokens shipped. Edge's interface now reads from a semantic layer rather than from hard-coded values, and for the first time Figma and production describe the same system in the same vocabulary.</p>
-    <p class="section-body">Then the swap actually happened. Edge shipped first on <span class="cn-on">the Phoenix theme</span><span class="cn-off">the first theme</span>, which resolved to the appearance the product already had, and then moved to <span class="cn-on">the MAI compact theme</span><span class="cn-off">the shared system's compact theme</span>, visually aligned to the shared Microsoft language, with the adjustments Edge's own surfaces needed. A change of that size, made by swapping what the tokens resolve to rather than by reopening every component. Deeper theming and additional themes beyond MAI are still working through canary and dev channels.</p>
-    <p class="section-body">The swap also did something the mapping alone couldn't: it found bugs. Phoenix was close enough to the browser's existing look that a wrong token could hide in plain sight. A value that resolved to nearly the same pixel as before was never going to draw anyone's eye. MAI's bigger visual delta made those wrong assignments visible for the first time, in places that had shipped without complaint on Phoenix. None of it looked like a regression until the second theme arrived; it just looked like Edge.</p>
+    <p class="section-body">Then the swap actually happened. Edge shipped first on the first theme, which resolved to the appearance the product already had, and then moved to the shared system's compact theme, visually aligned to the shared Microsoft language, with the adjustments Edge's own surfaces needed. A change of that size, made by swapping what the tokens resolve to rather than by reopening every component. Deeper theming and additional themes are still working through canary and dev channels.</p>
+    <p class="section-body">The swap also did something the mapping alone couldn't: it found bugs. The first theme was close enough to the browser's existing look that a wrong token could hide in plain sight. A value that resolved to nearly the same pixel as before was never going to draw anyone's eye. The second theme's bigger visual delta made those wrong assignments visible for the first time, in places that had shipped without complaint on the first theme. None of it looked like a regression until the second theme arrived; it just looked like Edge.</p>
     <p class="section-body">The browser also simply looks more consistent than it did. Surfaces that had drifted apart over years now resolve from the same set of roles, so they agree by construction rather than by anyone remembering to check.</p>
     <div class="demo" data-theme="{{ demoTheme }}">
       <div class="demo-bar">
         <p class="demo-h">The same interface, two themes</p>
         <div class="swap">
-          <button type="button" class="swap-ph" aria-pressed="{{ phPressed }}" onClick="{{ showPhoenix }}"><span class="cn-on">Phoenix</span><span class="cn-off">Theme one</span></button>
-          <button type="button" class="swap-mai" aria-pressed="{{ maiPressed }}" onClick="{{ showMai }}"><span class="cn-on">MAI</span><span class="cn-off">Theme two</span></button>
+          <button type="button" class="swap-t1" aria-pressed="{{ theme1Pressed }}" onClick="{{ showTheme1 }}">Theme one</button>
+          <button type="button" class="swap-t2" aria-pressed="{{ theme2Pressed }}" onClick="{{ showTheme2 }}">Theme two</button>
         </div>
       </div>
       <div class="chrome">
@@ -680,15 +672,15 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
       <div class="evo" data-step="{{ evoStep }}">
         <div class="evo-stage">
           <img class="evo-img" data-i="0" src="assets/edge-flyout-pretoken.svg?v=10" alt="Favorites flyout before tokenization, square corners">
-          <img class="evo-img" data-i="1" src="assets/edge-flyout-phoenix.svg?v=10" alt="Favorites flyout on the Phoenix theme, rounded corners, blue accent">
-          <img class="evo-img" data-i="2" src="assets/edge-flyout-mai.svg?v=10" alt="Favorites flyout on the MAI theme, near-black accent">
+          <img class="evo-img" data-i="1" src="assets/edge-flyout-theme1.svg?v=10" alt="Favorites flyout on the first theme, rounded corners, blue accent">
+          <img class="evo-img" data-i="2" src="assets/edge-flyout-theme2.svg?v=10" alt="Favorites flyout on the second theme, near-black accent">
         </div>
         <div class="evo-steps">
           <button type="button" class="evo-step" data-i="0" onClick="{{ evoGo0 }}"><span class="evo-n">01</span>Hard-coded</button>
           <span class="evo-arrow">→</span>
-          <button type="button" class="evo-step" data-i="1" onClick="{{ evoGo1 }}"><span class="evo-n">02</span><span class="cn-on">Phoenix</span><span class="cn-off">Theme one</span></button>
+          <button type="button" class="evo-step" data-i="1" onClick="{{ evoGo1 }}"><span class="evo-n">02</span>Theme one</button>
           <span class="evo-arrow">→</span>
-          <button type="button" class="evo-step" data-i="2" onClick="{{ evoGo2 }}"><span class="evo-n">03</span><span class="cn-on">MAI</span><span class="cn-off">Theme two</span></button>
+          <button type="button" class="evo-step" data-i="2" onClick="{{ evoGo2 }}"><span class="evo-n">03</span>Theme two</button>
         </div>
       </div>
       <figcaption>The payoff, for real: the same favorites flyout across the actual progression, from hard-coded to tokenized on the first theme to swapped on the second. Only the theme changed.</figcaption>
@@ -699,7 +691,7 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
     <p class="section-title">Reflection</p>
     <p class="section-body">The most useful thing I did on this project was read the code. Every plan built on the design files would have been a plan for a browser that did not exist, and no amount of care in Figma would have surfaced that.</p>
     <p class="section-body">The second was refusing to bundle a visual change into a structural one. It was tempting to fix the appearance and the architecture in a single pass. Keeping them apart is what made the work reviewable, and what let the project survive a specification that changed twice while we were building against it.</p>
-    <p class="section-body">What I would carry forward: a migration that produces no visible difference can hide mistakes as easily as it hides risk. Phoenix's near-invisibility was the whole point of the approach, but it also meant a few wrong token assignments didn't surface until MAI's larger visual delta forced them into view, a year after they'd shipped quietly. Next time, I'd stress-test the mapping against a deliberately different theme earlier, instead of waiting for the first real theme swap to be the first real test.</p>
+    <p class="section-body">What I would carry forward: a migration that produces no visible difference can hide mistakes as easily as it hides risk. The first theme's near-invisibility was the whole point of the approach, but it also meant a few wrong token assignments didn't surface until the second theme's larger visual delta forced them into view, a year after they'd shipped quietly. Next time, I'd stress-test the mapping against a deliberately different theme earlier, instead of waiting for the first real theme swap to be the first real test.</p>
   </section>
 
   <a class="next" href="projects/crafting-inc/">
@@ -721,13 +713,12 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{
-  &quot;codeNames&quot;: {&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},
   &quot;chapterStyle&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;number&quot;,&quot;options&quot;:[&quot;band&quot;,&quot;tint&quot;,&quot;rule&quot;,&quot;large&quot;,&quot;eyebrow&quot;,&quot;number&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Section breaks&quot;},
   &quot;titleStyle&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;ticked&quot;,&quot;options&quot;:[&quot;plain&quot;,&quot;caps&quot;,&quot;accent&quot;,&quot;ticked&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Section breaks&quot;},
   &quot;dividerStyle&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;hairline&quot;,&quot;options&quot;:[&quot;hairline&quot;,&quot;none&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Section breaks&quot;}
 }">
 class Component extends DCLogic {
-  state = { demoTheme: 'ph', evoStep: 0 };
+  state = { demoTheme: 't1', evoStep: 0 };
   renderVals() {
     return {
       evoStep: this.state.evoStep,
@@ -735,14 +726,13 @@ class Component extends DCLogic {
       evoGo1: () => this.evoGo(1),
       evoGo2: () => this.evoGo(2),
       demoTheme: this.state.demoTheme,
-      phPressed: this.state.demoTheme === 'ph',
-      maiPressed: this.state.demoTheme === 'mai',
-      showPhoenix: () => this.setState({ demoTheme: 'ph' }),
-      showMai: () => this.setState({ demoTheme: 'mai' }),
+      theme1Pressed: this.state.demoTheme === 't1',
+      theme2Pressed: this.state.demoTheme === 't2',
+      showTheme1: () => this.setState({ demoTheme: 't1' }),
+      showTheme2: () => this.setState({ demoTheme: 't2' }),
       chapterStyle: this.props.chapterStyle ?? 'number',
       titleStyle: this.props.titleStyle ?? 'ticked',
       dividerStyle: this.props.dividerStyle ?? 'hairline',
-      codeNames: (this.props.codeNames ?? false) ? 'on' : 'off',
     };
   }
   evoGo(i) {
