@@ -168,7 +168,6 @@ a:hover { color: var(--color-accent); }
 .seq-chips { display: flex; flex-wrap: wrap; gap: 7px; }
 .seq-chip { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; padding: 5px 10px; border-radius: var(--radius-sm); background: var(--color-bg); border: 1px solid var(--color-divider); color: var(--label-ink); }
 .seq-pass[data-first] .seq-chip { background: var(--color-bg); border-color: var(--color-accent-300); color: var(--color-accent-700); }
-.seq-chip[data-more] { font-family: inherit; font-style: italic; color: var(--label-ink); background: transparent; border-style: dashed; }
 .seq-down { text-align: center; margin: 0; font-size: 13px; line-height: 1; color: var(--color-accent-700); }
 .seq-grid { display: grid; grid-template-columns: repeat(8, minmax(0,1fr)); gap: 6px; }
 .seq-cell { aspect-ratio: 2.6 / 1; border-radius: var(--radius-sm); background: var(--color-accent-300); }
@@ -553,7 +552,7 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
         <div class="seq-pass" data-first="">
           <p class="seq-pn">Pass one <span>~20 shared components</span></p>
           <div class="seq-chips">
-            <span class="seq-chip">button</span><span class="seq-chip">toggle</span><span class="seq-chip">input</span><span class="seq-chip">checkbox</span><span class="seq-chip">radio</span><span class="seq-chip">menu item</span><span class="seq-chip">list row</span><span class="seq-chip">tab</span><span class="seq-chip">flyout</span><span class="seq-chip">tooltip</span><span class="seq-chip" data-more="">and their neighbours</span>
+            <span class="seq-chip">accordion</span><span class="seq-chip">badge</span><span class="seq-chip">button</span><span class="seq-chip">checkbox</span><span class="seq-chip">colorpicker</span><span class="seq-chip">divider</span><span class="seq-chip">dropdown</span><span class="seq-chip">input</span><span class="seq-chip">link</span><span class="seq-chip">progressbar</span><span class="seq-chip">radio</span><span class="seq-chip">sequence</span><span class="seq-chip">slider</span><span class="seq-chip">spinner</span><span class="seq-chip">switch</span><span class="seq-chip">tag</span><span class="seq-chip">textarea</span><span class="seq-chip">tooltip</span>
           </div>
         </div>
         <p class="seq-down">↓</p>
