@@ -160,6 +160,27 @@ a:hover { color: var(--color-accent); }
 .dg-h { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label-ink); margin: 0 0 16px; }
 .dg-note { font-size: 12.5px; line-height: 1.5; color: var(--label-ink); margin: 16px 0 0; }
 
+/* sequencing: shared components vs surfaces */
+.seqd { display: grid; gap: clamp(14px,1.8vw,20px); }
+.seq-pass { padding: 16px 18px; border-radius: var(--radius-md); border: 1px solid var(--color-divider); background: color-mix(in srgb, var(--color-text) 3%, transparent); }
+.seq-pass[data-first] { border-color: var(--color-accent-300); background: var(--color-accent-100); }
+.seq-pn { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 13.5px; margin: 0 0 10px; color: var(--color-text); }
+.seq-pass[data-first] .seq-pn { color: var(--color-accent-700); }
+.seq-pn span { display: block; font-family: var(--font-body, inherit); font-weight: 400; font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--label-ink); margin-top: 3px; }
+.seq-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.seq-chip { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; padding: 5px 10px; border-radius: 999px; background: var(--color-bg); border: 1px solid var(--color-divider); color: var(--label-ink); }
+.seq-pass[data-first] .seq-chip { background: var(--color-bg); border-color: var(--color-accent-300); color: var(--color-accent-700); }
+.seq-chip[data-more] { font-family: inherit; font-style: italic; color: var(--label-ink); background: transparent; border-style: dashed; }
+.seq-down { text-align: center; margin: 0; font-size: 13px; line-height: 1; color: var(--color-accent-700); }
+.seq-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 6px; }
+.seq-cell { aspect-ratio: 1; border-radius: 5px; background: var(--color-accent-300); }
+.seq-cell[data-rest] { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+.seq-key { display: flex; flex-wrap: wrap; gap: clamp(14px,2vw,22px); margin-top: 12px; }
+.seq-key b { display: inline-flex; align-items: center; gap: 7px; font-weight: 400; font-size: 12px; color: var(--label-ink); }
+.seq-key i { display: inline-block; width: 11px; height: 11px; border-radius: 3px; background: var(--color-accent-300); font-style: normal; }
+.seq-key b[data-rest] i { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+@media (max-width: 560px) { .seq-grid { grid-template-columns: repeat(4, minmax(0,1fr)); } }
+
 /* two rendering worlds */
 .worlds { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px,1.8vw,22px); }
 .world { padding: 16px 18px 18px; border-radius: var(--radius-md); border: 1px solid var(--color-divider); background: color-mix(in srgb, var(--color-text) 3%, transparent); }
@@ -541,6 +562,29 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
     <p class="section-title">Sequencing the rollout</p>
     <p class="section-body">I ordered the migration shared components first, surfaces second. The twenty or so general components — button, and its neighbours — account for most of what the browser is made of, so tokenizing them once moved a large fraction of the interface before any individual feature was touched.</p>
     <p class="section-body">Only then did we go surface by surface: favorites flyout, then the next one, across both Views and WebUI. By that point each surface was mostly assembled from parts that were already correct, and the remaining work was the handful of values specific to it.</p>
+    <div class="dg">
+      <p class="dg-h">Why shared components went first</p>
+      <div class="seqd">
+        <div class="seq-pass" data-first="">
+          <p class="seq-pn">Pass one <span>~20 shared components</span></p>
+          <div class="seq-chips">
+            <span class="seq-chip">button</span><span class="seq-chip">toggle</span><span class="seq-chip">input</span><span class="seq-chip">checkbox</span><span class="seq-chip">radio</span><span class="seq-chip">menu item</span><span class="seq-chip">list row</span><span class="seq-chip">tab</span><span class="seq-chip">flyout</span><span class="seq-chip">tooltip</span><span class="seq-chip" data-more="">and their neighbours</span>
+          </div>
+        </div>
+        <p class="seq-down">↓</p>
+        <div class="seq-pass">
+          <p class="seq-pn">Pass two <span>any one surface, after pass one</span></p>
+          <div class="seq-grid">
+            <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell" data-rest=""></div><div class="seq-cell" data-rest=""></div><div class="seq-cell" data-rest=""></div><div class="seq-cell" data-rest=""></div>
+          </div>
+          <div class="seq-key">
+            <b><i></i>Already correct, inherited from pass one</b>
+            <b data-rest=""><i></i>Values specific to this surface</b>
+          </div>
+        </div>
+      </div>
+      <p class="dg-note">Each block is a part a surface is assembled from. Tokenizing the shared components once moved most of them, so the per-surface work that followed was the remainder rather than the whole thing. Proportions are illustrative.</p>
+    </div>
     <div class="opt-row" style="grid-template-columns:1fr">
       <figure>
         <div class="dt-panel">
