@@ -272,21 +272,30 @@ body { margin: 0; text-wrap: pretty; }
 .ufv { position: relative; padding: 11px 12px; border-radius: var(--radius-md); background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--shadow-sm); font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 12.5px; line-height: 1.35; text-align: center; margin: 0; }
 .ufv::before { content: ""; position: absolute; top: -28px; left: 50%; width: 1px; height: 28px; background: var(--color-divider); }
 @media (max-width: 640px) { .ufviews { grid-template-columns: 1fr 1fr; row-gap: 12px; } .ufviews::before { left: calc(25% - var(--ufg4) / 4); right: calc(25% - var(--ufg4) / 4); } }
-.cmp { display: grid; grid-template-columns: minmax(70px,92px) repeat(3, minmax(0,1fr)); column-gap: clamp(12px,1.6vw,20px); margin-top: var(--space-4); align-items: start; }
-.cmp-head { padding-bottom: 14px; }
-.cmp-rule { grid-column: 2 / -1; border-top: 1px solid var(--color-divider); }
+.cmp { display: grid; grid-template-columns: minmax(70px,92px) repeat(3, minmax(0,1fr)); grid-template-rows: auto auto auto auto auto; column-gap: clamp(12px,1.6vw,20px); margin-top: var(--space-4); }
+.cmp-labels, .cmp-prod { display: grid; grid-row: 1 / -1; grid-template-rows: subgrid; }
+.cmp-labels { grid-column: 1; }
+.cmp > .cmp-prod:nth-child(3) { grid-column: 2; }
+.cmp > .cmp-prod:nth-child(4) { grid-column: 3; }
+.cmp > .cmp-prod:nth-child(5) { grid-column: 4; }
+.cmp-head { grid-row: 1; padding-bottom: 14px; }
+.cmp [data-r="cost"] { grid-row: 3; }
+.cmp [data-r="features"] { grid-row: 4; }
+.cmp [data-r="limits"] { grid-row: 5; }
+.cmp-rule { grid-column: 2 / -1; grid-row: 2; border-top: 1px solid var(--color-divider); }
 .cmp-shot { width: 100%; aspect-ratio: 4/3; object-fit: contain; background: var(--color-neutral-100); padding: 10px; box-sizing: border-box; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); display: block; margin: 0 0 12px; }
 .cmp-name { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 14.5px; line-height: 1.3; margin: 0; }
 .cmp-lbl { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--label-ink); padding: 14px 0 0; margin: 0; }
 .cmp-val { font-size: 14px; line-height: 1.55; color: color-mix(in srgb, var(--color-text) 80%, transparent); padding: 14px 0 0; margin: 0; }
 .cmp-val.is-cost { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 14.5px; color: var(--color-text); }
 @media (max-width: 760px) {
-  .cmp { grid-template-columns: 1fr; column-gap: 0; }
-  .cmp-head { padding-bottom: 8px; border-top: 1px solid var(--color-divider); padding-top: 22px; }
-  .cmp-rule { display: none; }
-  .cmp-head:first-child { border-top: 0; padding-top: 0; }
-  .cmp-lbl { padding: 12px 0 0; }
+  .cmp { display: block; }
+  .cmp-labels, .cmp-rule { display: none; }
+  .cmp-prod { display: block; }
+  .cmp-prod + .cmp-prod { border-top: 1px solid var(--color-divider); padding-top: 22px; margin-top: 22px; }
+  .cmp-head { padding-bottom: 8px; }
   .cmp-val { padding: 2px 0 0; }
+  .cmp-val::before { content: attr(data-label); display: block; font-family: var(--font-body, inherit); font-weight: 400; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--label-ink); padding: 12px 0 2px; }
 }
 .screens { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px,2vw,24px); margin: 0 0 var(--space-6); }
 .screen { margin: 0; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--glass-border); background: rgb(249,249,252); display: flex; flex-direction: column; }
@@ -430,37 +439,43 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
     <p class="section-title">Competitive analysis</p>
     <p class="section-body">Three existing tools defined the landscape. Each solved part of the problem, but none worked in real time, inside a procedure, at a price a clinic could absorb.</p>
     <div class="cmp">
-      <div></div>
-      <div class="cmp-head">
-        <img class="cmp-shot" src="projects/nasym/vectra-h1.png" alt="VECTRA H1 handheld 3D imaging system">
-        <p class="cmp-name">VECTRA H1</p>
-      </div>
-      <div class="cmp-head">
-        <img class="cmp-shot" src="projects/nasym/canfield-mirror.png" alt="Canfield Scientific Mirror software">
-        <p class="cmp-name">Canfield Mirror® Software</p>
-      </div>
-      <div class="cmp-head">
-        <img class="cmp-shot" src="projects/nasym/bellus3d.png" alt="Bellus3D face scanning">
-        <p class="cmp-name">Bellus3D</p>
-      </div>
-
-      <div></div>
       <div class="cmp-rule"></div>
 
-      <p class="cmp-lbl">Cost</p>
-      <p class="cmp-val is-cost">$15,000 – $25,000</p>
-      <p class="cmp-val is-cost">$10,000 – $30,000</p>
-      <p class="cmp-val is-cost">$500 – $1,000</p>
+      <div class="cmp-labels" aria-hidden="true">
+        <p class="cmp-lbl" data-r="cost">Cost</p>
+        <p class="cmp-lbl" data-r="features">Features</p>
+        <p class="cmp-lbl" data-r="limits">Limitations</p>
+      </div>
 
-      <p class="cmp-lbl">Features</p>
-      <p class="cmp-val">Handheld, high-resolution 3D imaging, pre-operative planning, portable</p>
-      <p class="cmp-val">Pre-operative planning, 3D simulations, post-operative analysis</p>
-      <p class="cmp-val">Affordable, portable, high-resolution 3D face scanning</p>
+      <div class="cmp-prod">
+        <div class="cmp-head">
+          <img class="cmp-shot" src="projects/nasym/vectra-h1.png" alt="VECTRA H1 handheld 3D imaging system">
+          <p class="cmp-name">VECTRA H1</p>
+        </div>
+        <p class="cmp-val is-cost" data-r="cost" data-label="Cost">$15,000 – $25,000</p>
+        <p class="cmp-val" data-r="features" data-label="Features">Handheld, high-resolution 3D imaging, pre-operative planning, portable</p>
+        <p class="cmp-val" data-r="limits" data-label="Limitations">No real-time intraoperative capability, high cost, needs extra software for full analysis</p>
+      </div>
 
-      <p class="cmp-lbl">Limitations</p>
-      <p class="cmp-val">No real-time intraoperative capability, high cost, needs extra software for full analysis</p>
-      <p class="cmp-val">No real-time capability, depends on extra hardware for 3D imaging</p>
-      <p class="cmp-val">Built for consumer use rather than surgical precision. Services discontinued</p>
+      <div class="cmp-prod">
+        <div class="cmp-head">
+          <img class="cmp-shot" src="projects/nasym/canfield-mirror.png" alt="Canfield Scientific Mirror software">
+          <p class="cmp-name">Canfield Mirror® Software</p>
+        </div>
+        <p class="cmp-val is-cost" data-r="cost" data-label="Cost">$10,000 – $30,000</p>
+        <p class="cmp-val" data-r="features" data-label="Features">Pre-operative planning, 3D simulations, post-operative analysis</p>
+        <p class="cmp-val" data-r="limits" data-label="Limitations">No real-time capability, depends on extra hardware for 3D imaging</p>
+      </div>
+
+      <div class="cmp-prod">
+        <div class="cmp-head">
+          <img class="cmp-shot" src="projects/nasym/bellus3d.png" alt="Bellus3D face scanning">
+          <p class="cmp-name">Bellus3D</p>
+        </div>
+        <p class="cmp-val is-cost" data-r="cost" data-label="Cost">$500 – $1,000</p>
+        <p class="cmp-val" data-r="features" data-label="Features">Affordable, portable, high-resolution 3D face scanning</p>
+        <p class="cmp-val" data-r="limits" data-label="Limitations">Built for consumer use rather than surgical precision. Services discontinued</p>
+      </div>
     </div>
   </section>
 
