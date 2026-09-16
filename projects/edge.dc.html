@@ -39,7 +39,7 @@ a:hover { color: var(--color-accent); }
 .header { padding: calc(2.4 * var(--leading)) 0 calc(1.8 * var(--leading)); }
 .display { font-family: var(--display); font-weight: 400; font-size: clamp(32px, 4.6vw, 52px); line-height: 1.04; letter-spacing: -0.015em; margin: 0; max-width: 20ch; }
 .hero-q { font-size: 18px; line-height: 1.55; max-width: 54ch; margin: var(--space-4) 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
-.meta-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); row-gap: var(--space-4); column-gap: var(--space-6); margin-top: var(--space-6); align-items: start; }
+.meta-row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); row-gap: var(--space-4); column-gap: var(--space-6); margin-top: var(--space-6); align-items: start; }
 .meta-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--label-ink); margin: 0 0 4px; }
 .meta-value { font-size: 15px; margin: 0; font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
 .hero-figure { margin: 0 0 calc(0.6 * var(--leading)); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
@@ -358,10 +358,12 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
     <h1 class="display">Retokenizing a browser while the design system was still moving</h1>
     <p class="hero-q">How do you migrate an entire browser UI onto a new token system that is still being defined, without the browser changing appearance?</p>
     <div class="meta-row">
-      <div><p class="meta-label">Role</p><p class="meta-value">Product Designer, sole on audit</p></div>
+      <div><p class="meta-label">Role</p><p class="meta-value">Product Designer, audit owner</p></div>
       <div><p class="meta-label">Company</p><p class="meta-value">Microsoft, 2024–</p></div>
-      <div><p class="meta-label">Scope</p><p class="meta-value">Shared components, then surfaces</p></div>
+      <div><p class="meta-label">Scope</p><p class="meta-value">Shared components, then 50+ surfaces</p></div>
       <div><p class="meta-label">Partners</p><p class="meta-value">~6 engineers</p></div>
+      <div><p class="meta-label">Duration</p><p class="meta-value">~1 year, audit to shipped tokens</p></div>
+      <div><p class="meta-label">Status</p><p class="meta-value">Tokens shipped, stable</p></div>
     </div>
   </header>
 
@@ -416,7 +418,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
       <li><strong>Code shared no tokens with Fluent.</strong> The interface referenced colors directly. Fluent existed in Figma and nowhere in the codebase.</li>
       <li><strong>Design and production disagreed.</strong> The Figma files described a Fluent-based interface that was not what shipped, so neither side could be trusted as the source of truth.</li>
       <li><strong>The target changed mid-project.</strong> As we were preparing the code changes, the org adopted a new semantic token system, and it was still being defined while we moved onto it.</li>
-      <li><strong>The scope was the whole browser.</strong> Not a component library in isolation — every surface a user touches.</li>
+      <li><strong>The scope was the whole browser.</strong> Not a component library in isolation — dozens of components across more than 50 surfaces, tied together by roughly 500 tokens.</li>
     </ul>
   </section>
 
@@ -487,7 +489,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
   <section class="panel" id="directions" data-rail-target>
     <p class="section-title">Closing the gap in both directions</p>
     <p class="section-body">We were about to reconcile the code against Fluent when the semantic system landed. Rather than do the work twice, we changed target: redraw Edge in Figma on the new semantic tokens, and map those tokens to the values production was already shipping.</p>
-    <p class="section-body">That meant redrawing a great deal of the browser in Figma — not to change how it looked, but to rebuild it out of tokens instead of raw values, so the design files finally described the same interface the code did, in the vocabulary both would use going forward. Other designers took on surfaces; I set the mapping they drew against and reviewed the craft on what came back.</p>
+    <p class="section-body">That meant redrawing a great deal of the browser in Figma — not to change how it looked, but to rebuild it out of tokens instead of raw values, so the design files finally described the same interface the code did, in the vocabulary both would use going forward. I was staffed as the audit's owner; the design team joined in on redrawing surfaces and mapping tokens together, while the line to engineering — making sure the right tokens actually landed in code — stayed mine.</p>
   </section>
 
   <section class="panel" id="mapping" data-rail-target>
@@ -552,9 +554,9 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
         <span class="map-out"><span class="sw" style="background:#1b1a19"></span><span class="chip">unchanged</span></span>
         <span class="map-out"><span class="sw" style="background:rgb(39, 35, 32)"></span><span class="chip">#272320</span></span>
       </div>
-      <p class="map-note">Illustrative — the shape of the mapping, not the real token names or values. The first theme resolved to what was already shipping, so the migration produced no visual diff; the second was mapped in the same pass, ready to switch on.</p>
+      <p class="map-note">Illustrative — the shape of the mapping, not the real token names or values. The first theme resolved to what was already shipping; the second was mapped in the same pass, ready to switch on.</p>
     </div>
-    <p class="section-body" style="margin-top: var(--space-4)">We mapped the second theme at the same time. <span class="cn-on">Every token got both its Phoenix value and its MAI value</span><span class="cn-off">Every token got a value in each of the two themes</span>, so the appearance swap was already specified before anyone asked for it — a configuration change rather than a second migration.</p>
+    <p class="section-body" style="margin-top: var(--space-4)">We mapped the second theme at the same time. <span class="cn-on">Every token got both its Phoenix value and its MAI value</span><span class="cn-off">Every token got a value in each of the two themes</span>, so the appearance swap was already specified before anyone asked for it.</p>
     <p class="section-body">This is also what made a moving specification survivable. Only names were in flight, never appearances, so when the semantic system changed underneath us we were re-pointing references rather than re-deciding how Edge should look.</p>
   </section>
 
@@ -644,7 +646,8 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
   <section class="panel" id="shipped" data-rail-target>
     <p class="section-title">What shipped</p>
     <p class="section-body">The semantic tokens shipped. Edge's interface now reads from a semantic layer rather than from hard-coded values, and for the first time Figma and production describe the same system in the same vocabulary.</p>
-    <p class="section-body">Then the swap actually happened. Edge shipped first on <span class="cn-on">the Phoenix theme</span><span class="cn-off">the first theme</span>, which resolved to the appearance the product already had, and then moved to <span class="cn-on">the MAI compact theme</span><span class="cn-off">the shared system's compact theme</span> — visually aligned to the shared Microsoft language, with the adjustments Edge's own surfaces needed. A change of that size, made by swapping what the tokens resolve to rather than by reopening every component.</p>
+    <p class="section-body">Then the swap actually happened. Edge shipped first on <span class="cn-on">the Phoenix theme</span><span class="cn-off">the first theme</span>, which resolved to the appearance the product already had, and then moved to <span class="cn-on">the MAI compact theme</span><span class="cn-off">the shared system's compact theme</span> — visually aligned to the shared Microsoft language, with the adjustments Edge's own surfaces needed. A change of that size, made by swapping what the tokens resolve to rather than by reopening every component. Deeper theming and additional themes beyond MAI are still working through canary and dev channels.</p>
+    <p class="section-body">The swap also did something the mapping alone couldn't: it found bugs. Phoenix was close enough to the browser's existing look that a wrong token could hide in plain sight — a value that resolved to nearly the same pixel as before was never going to draw anyone's eye. MAI's bigger visual delta made those wrong assignments visible for the first time, in places that had shipped without complaint on Phoenix. None of it looked like a regression until the second theme arrived; it just looked like Edge.</p>
     <p class="section-body">The browser also simply looks more consistent than it did. Surfaces that had drifted apart over years now resolve from the same set of roles, so they agree by construction rather than by anyone remembering to check.</p>
     <div class="demo" data-theme="{{ demoTheme }}">
       <div class="demo-bar">
@@ -696,7 +699,7 @@ Theme two  rgb(39, 35, 32)">color.neutral.foreground.primary</span>
     <p class="section-title">Reflection</p>
     <p class="section-body">The most useful thing I did on this project was read the code. Every plan built on the design files would have been a plan for a browser that did not exist, and no amount of care in Figma would have surfaced that.</p>
     <p class="section-body">The second was refusing to bundle a visual change into a structural one. It was tempting to fix the appearance and the architecture in a single pass. Keeping them apart is what made the work reviewable, and what let the project survive a specification that changed twice while we were building against it.</p>
-    <p class="section-body">What I would carry forward: when a system is still forming, the most valuable thing a designer can do is be specific about what their product actually needs. The gaps I found were not obstacles to the migration — they were the contribution.</p>
+    <p class="section-body">What I would carry forward: a migration that produces no visible difference can hide mistakes as easily as it hides risk. Phoenix's near-invisibility was the whole point of the approach, but it also meant a few wrong token assignments didn't surface until MAI's larger visual delta forced them into view, a year after they'd shipped quietly. Next time, I'd stress-test the mapping against a deliberately different theme earlier, instead of waiting for the first real theme swap to be the first real test.</p>
   </section>
 
   <a class="next" href="projects/crafting-inc/">
