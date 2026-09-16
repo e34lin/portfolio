@@ -394,12 +394,12 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
     <p class="section-title">Background</p>
     <p class="section-body lede">Edge's design files were built on Fluent. Edge's code was not. The two had never shared a token layer, so the interface people designed and the interface that shipped were described by different systems, and the plan was to reconcile them.</p>
     <p class="section-body">Microsoft was moving its whole product line onto a new shared design system, a semantic token set meant to give everything the same visual language. Edge was also being positioned as the browser for the company's shift to AI, and it could not join the new system until its interface was described in the vocabulary it used.</p>
-    <p class="section-body">The browser ships continuously, and that new system arrived partway through Edge's Fluent reconciliation work, bringing multiple themes with it.</p>
+    <p class="section-body">The browser ships continuously, and that new system arrived partway through Edge's Fluent reconciliation work. It supported theming, but the themes themselves still had to be built.</p>
   </section>
 
   <section class="panel" id="system" data-rail-target>
     <p class="section-title">The system we were adopting</p>
-    <p class="section-body">The new system was Microsoft's shared semantic token set, one vocabulary of role-based tokens with themes layered on top, so a product could take on a different appearance by changing what its tokens resolve to rather than by being redesigned.</p>
+    <p class="section-body">The new system was Microsoft's shared semantic token set, one vocabulary of role-based tokens built to support theming, so a product could take on a different appearance by changing what its tokens resolve to rather than by being redesigned.</p>
     <p class="section-body">I was part of that system's design group as well as Edge's adoption of it, which meant I saw both sides, what the system wanted to be in the abstract and what a shipping product needed from it on a schedule. Nearly everything I contributed to the system came out of Edge, cases a browser has that the token set had not yet accounted for.</p>
     <p class="section-body">It was young. Names, structure and component-level tokens were all still settling while we were building against them, which is the constraint the rest of this project is a response to.</p>
   </section>
