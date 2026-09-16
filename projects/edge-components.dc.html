@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <title>Edge component layer — Elizabeth Lin</title>
-<meta name="description" content="Case study: deciding what a browser should carry — which parts of Edge's interface the team must own, and which it should stop owning.">
+<meta name="description" content="Case study: deciding what a browser should carry, which parts of Edge's interface the team must own and which it should stop owning.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta property="og:title" content="Edge component layer — Elizabeth Lin">
 <meta property="og:description" content="Deciding what a browser should carry: which parts of Edge's interface are ours to maintain, and which shouldn't be.">
@@ -221,7 +221,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
   <header class="header">
     <span class="kicker">Microsoft Edge</span>
     <h1 class="display">Deciding what a browser should carry</h1>
-    <p class="hero-q">Design system work on Edge, joined by one question: which parts of this interface should be ours to maintain, and which shouldn't?</p>
+    <p class="hero-q">Design system work on Edge, all of it circling one question. Which parts of this interface should be ours to maintain, and which shouldn't?</p>
     <div class="meta-row">
       <div><p class="meta-label">Role</p><p class="meta-value">Product Designer, design systems</p></div>
       <div><p class="meta-label">Duration</p><p class="meta-value">2024 – present</p></div>
@@ -231,20 +231,20 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
   </header>
 
   <figure class="hero-figure">
-    <image-slot id="ec-hero" shape="rect" placeholder="Drop the component library — an overview of the Edge component set"></image-slot>
+    <image-slot id="ec-hero" shape="rect" placeholder="Drop the component library, an overview of the Edge component set"></image-slot>
   </figure>
 
   <section class="panel" id="thread" data-rail-target>
     <p class="section-title">The thread</p>
     <p class="section-body lede">Edge is built on Chromium and sits on a shared Microsoft design system, so most of its interface is inherited. The design work that matters is deciding which parts shouldn't be.</p>
-    <p class="section-body">Three pieces of work, one question underneath all of them. Some components Edge has no choice but to own, because nothing upstream will ever build them. Others Edge had been carrying for years without needing to, at a cost that renewed every release. And illustration was carried by one person, which is its own kind of ownership problem.</p>
-    <p class="section-body">Everything below is a version of the same judgment: what should this team be responsible for, and what should it stop being responsible for.</p>
+    <p class="section-body">Three pieces of work with the same question underneath. Some components Edge has no choice but to own, because nothing upstream will ever build them. Others Edge had been carrying for years without needing to, at a cost that came back every release. And illustration sat with one person, which is its own kind of ownership problem.</p>
+    <p class="section-body">All three come down to the same call. What should this team be responsible for, and what should it stop being responsible for?</p>
   </section>
 
   <section class="panel" id="inventory" data-rail-target>
     <p class="section-title">What Edge must own</p>
-    <p class="section-body">A shared design system is general by definition. It carries what every product has in common — buttons, inputs, menus — and stops there. For a browser, what's left over is most of the interface: the address bar, the profile control, the side panel, the surfaces a browser puts around a page. None of them exist in a general system and none of them ever will.</p>
-    <p class="section-body">So Edge keeps its own component layer on top of the shared one — twenty to twenty-five components, each with its own sub-components, states, sizes and per-feature variants. A team of five designers owns it. I built and maintain five to ten.</p>
+    <p class="section-body">A shared design system is general by definition. It carries what every product has in common, things like buttons, inputs and menus, and stops there. For a browser, what's left over is most of the interface. The address bar, the profile control, the side panel, all the surfaces a browser puts around a page. None of them exist in a general system and none of them ever will.</p>
+    <p class="section-body">So Edge keeps its own component layer on top of the shared one, twenty to twenty-five components, each with its own sub-components, states, sizes and per-feature variants. A team of five designers owns it. I built and maintain five to ten.</p>
     <div class="dg">
       <p class="dg-h">Who covers what</p>
       <div class="cov">
@@ -257,7 +257,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
           <div class="cov-items"><span class="cov-i">Button</span><span class="cov-i">Input</span><span class="cov-i">Menu</span><span class="cov-i">Checkbox</span><span class="cov-i">Dialog</span><span class="cov-i">Tooltip</span><span class="cov-i">…</span></div>
         </div>
       </div>
-      <p class="dg-note">A shared system carries what every product has in common. What's left over for a browser is most of the interface — and none of it is coming from anywhere else.</p>
+      <p class="dg-note">A shared system carries what every product has in common. What's left over for a browser is most of the interface, and none of it is coming from anywhere else.</p>
     </div>
 
     <div class="inv">
@@ -274,7 +274,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
       <div class="pills">
         <span class="pill" data-mine="no">The remaining 20-odd components and their sub-components</span>
       </div>
-      <p class="inv-note">Each of these is a family rather than a single object: an address bar is a text field, a dropdown, a security signal and a set of in-field controls, and it has to hold together at every window width.</p>
+      <p class="inv-note">Each of these is a family, not a single object. An address bar is a text field, a dropdown, a security signal and a set of in-field controls, and it has to hold together at every window width.</p>
     </div>
   </section>
 
@@ -282,12 +282,12 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 
   <section class="panel" id="rebuild" data-rail-target>
     <p class="section-title">Rebuilding from the product</p>
-    <p class="section-body">The components were not designed from a blank canvas. Each one was recreated from what the product was actually rendering at the time, then rebuilt on semantic tokens.</p>
-    <p class="section-body">That order matters. A component library that describes an improved version of the product is a proposal, not a system — engineering cannot adopt it without also shipping a redesign. Rebuilding from what shipped meant the layer could be adopted immediately, and improvements could then be made against it deliberately, one at a time, with everyone able to see exactly what changed.</p>
+    <p class="section-body">The components were not designed from a blank canvas. I recreated each one from what the product was rendering at the time, then rebuilt it on semantic tokens.</p>
+    <p class="section-body">That order matters. If a component library describes an improved version of the product, engineering can't adopt it without shipping a redesign at the same time, which makes it a proposal instead of a system. Rebuilding from what shipped meant the layer could be picked up right away, and improvements could come after, one at a time, with everyone able to see exactly what changed.</p>
     <div class="pull">Describe the product as it is before describing the product as it should be. Otherwise the library and the browser drift apart on day one.</div>
-    <p class="section-body" style="margin-top: var(--space-4)">Working this way turns up how much of an interface was never actually decided. A component in code has whatever states someone needed at the time; a component in a library has to declare all of them. The distance between those two is where most of the inconsistency in a mature product lives.</p>
-    <p class="section-body">So a large part of rebuilding each component was enumeration rather than design: listing every state, size and variant the component owed, then finding which of them existed, which existed inconsistently across surfaces, and which had never been drawn at all and were simply whatever the code happened to produce.</p>
-    <p class="section-body">The undrawn ones were the point. Nobody had chosen them, so nobody could be said to be following them, and no two surfaces were obliged to agree. Specifying them didn't change how the browser looked in the common case — it changed how many ways the uncommon cases could go.</p>
+    <p class="section-body" style="margin-top: var(--space-4)">Working this way turns up how much of an interface was never decided in the first place. A component in code has whatever states someone needed at the time. A component in a library has to declare all of them. Most of the inconsistency in a mature product lives in the gap between those two.</p>
+    <p class="section-body">So a lot of rebuilding each component was closer to counting than to designing. I listed every state, size and variant the component owed, then worked out which ones existed, which existed but differed from surface to surface, and which had never been drawn at all and were just whatever the code happened to produce.</p>
+    <p class="section-body">The undrawn ones were the point. Nobody had chosen them, so nobody was following them, and no two surfaces had to agree. Specifying them didn't change how the browser looked in the common case. It changed how many ways the uncommon cases could go.</p>
   </section>
 
   <section class="panel" id="maintaining" data-rail-target>
@@ -295,7 +295,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
     <p class="section-body">The layer is not a project with an end. The browser keeps shipping, and the shared system underneath keeps moving, so the work is continuous.</p>
     <ul class="list" style="margin-top: var(--space-4)">
       <li><strong>New variants as features ship.</strong> Every new feature wants something the component doesn't do yet. Deciding whether that's a variant, a new component, or a request the feature should drop is the recurring judgment.</li>
-      <li><strong>Keeping step with the system underneath.</strong> The shared system changes its own tokens and components; the Edge layer has to absorb that without breaking what's built on it.</li>
+      <li><strong>Keeping step with the system underneath.</strong> The shared system changes its own tokens and components, and the Edge layer has to absorb that without breaking what's built on it.</li>
       <li><strong>Reviewing how other designers use it.</strong> Components get used in ways they weren't designed for. Catching that early is cheaper than the pattern spreading.</li>
       <li><strong>Deprecating and consolidating.</strong> Old patterns accumulate. Removing one means finding every use of it and giving each a replacement.</li>
       <li><strong>Behaviour at every window width.</strong> A browser gets resized constantly, so components have to be specified across the full range, not at one canvas size.</li>
@@ -306,9 +306,9 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 
   <section class="panel" id="upstream" data-rail-target>
     <p class="section-title">What Edge stopped owning</p>
-    <p class="section-body">The other half of the question. Edge had diverged from Chromium in a lot of small places over the years — features where Edge's version looked or behaved differently for no reason that survived scrutiny. Each of those differences is a patch the team carries forever: re-applied, re-tested, and occasionally re-fixed every time upstream moves. The cost does not end when the feature ships.</p>
-    <p class="section-body">Reducing that divergence is a standing direction from leadership: every patch retired is engineering time returned to the team, and that time gets spent on features instead of on maintenance. The work lands on me as a feature at a time — <span class="fn-on">energy saver, the performance detector, picture-in-picture, media controls, toast notifications</span><span class="fn-off">energy and performance surfaces, media and notification controls among them</span>.</p>
-    <p class="section-body">Alignment does not mean becoming Chromium. Edge can't ship upstream's interface literally — it has its own components, its own tokens and its own brand — so each one has to be <em>edgeified</em>: adopt upstream's structure and behaviour, then rebuild the surface out of Edge's own system. Same shape underneath, so the patch is thin and cheap to carry; Edge's own appearance on top, so nothing about it reads as borrowed.</p>
+    <p class="section-body">The other half of the question. Over the years Edge had diverged from Chromium in a lot of small places, features where Edge's version looked or behaved differently for no reason that held up. Each of those differences is a patch the team carries forever, re-applied, re-tested, and occasionally re-fixed every time upstream moves. The cost doesn't end when the feature ships.</p>
+    <p class="section-body">Reducing that divergence is a standing direction from leadership. Every patch retired is engineering time back in the team's hands, spent on features instead of maintenance. The work lands on me a feature at a time, <span class="fn-on">energy saver, the performance detector, picture-in-picture, media controls, toast notifications</span><span class="fn-off">energy and performance surfaces, media and notification controls among them</span>.</p>
+    <p class="section-body">Alignment doesn't mean becoming Chromium. Edge can't ship upstream's interface literally, since it has its own components, tokens and brand. So each feature gets <em>edgeified</em>. Take upstream's structure and behaviour, then rebuild the surface out of Edge's own system. Same shape underneath keeps the patch thin and cheap to carry. Edge's own appearance on top means nothing about it reads as borrowed.</p>
     <p class="section-body">In practice that means digging into what upstream actually does, working through with the PM which parts of Edge's version were load-bearing and which were habit, resolving the difference into Edge's components, and handing the result to engineering. The judgment is in the middle step. Most of what looked like a deliberate Edge decision turned out to be an accident nobody had revisited.</p>
     <div class="dg">
       <p class="dg-h">What "edgeify" means</p>
@@ -332,8 +332,8 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
         </div>
       </div>
       <div class="anat-cost">
-        <p><b>Diverged behaviour</b> — re-applied and re-tested every release, forever</p>
-        <p><b>Diverged surface</b> — carried by the token layer, at no ongoing cost</p>
+        <p><b>Diverged behaviour</b>, re-applied and re-tested every release, forever</p>
+        <p><b>Diverged surface</b>, carried by the token layer, at no ongoing cost</p>
       </div>
     </div>
 
@@ -346,7 +346,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
       <div class="tcard">
         <p class="tcard-k">Edgeify</p>
         <p class="tcard-n">Upstream's structure, Edge's surface</p>
-        <p class="tcard-b">The usual answer. Keep upstream's shape and rebuild the surface from Edge's components and tokens, so the difference rides on theming rather than on forked behaviour.</p>
+        <p class="tcard-b">The usual answer. Keep upstream's shape and rebuild the surface from Edge's components and tokens, so the difference rides on theming instead of forked behaviour.</p>
       </div>
       <div class="tcard">
         <p class="tcard-k">Diverge</p>
@@ -356,33 +356,33 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
     </div>
     <div class="case">
       <p class="case-k">One case in detail</p>
-      <p class="section-body"><span class="fn-on">Edge's performance detector</span><span class="fn-off">One of Edge's performance surfaces</span> watches for conditions that might be slowing the browser down and badges the toolbar to recommend an action. It arrived as part of a wider Edge-only hub gathering the performance and safety features in one place; that hub underperformed and was later folded down into a single performance surface.</p>
+      <p class="section-body"><span class="fn-on">Edge's performance detector</span><span class="fn-off">One of Edge's performance surfaces</span> watches for conditions that might be slowing the browser down and badges the toolbar to recommend an action. It arrived as part of a wider Edge-only hub that gathered the performance and safety features in one place. That hub underperformed and was later folded down into a single performance surface.</p>
       <div class="stats">
         <div>
           <p class="stat-n">&lt;1%</p>
-          <p class="stat-b">Clickthrough among monthly active users — effectively nobody was acting on it.</p>
+          <p class="stat-b">Clickthrough among monthly active users. Effectively nobody was acting on it.</p>
         </div>
         <div>
           <p class="stat-n">Badges ≫ actions</p>
           <p class="stat-b">A large gap between how often the badge appeared and how often anyone did anything about it.</p>
         </div>
       </div>
-      <p class="section-body">That gap says something more specific than "low usage." Two things were wrong at once. The interface wasn't persuading anyone, and the heuristic behind it was firing when there was nothing worth acting on. A badge that is usually wrong teaches people to ignore it — after which it fails even in the cases where it's right.</p>
-      <p class="section-body">Which made the decision straightforward. Redesigning the badge would have made an untrusted signal more prominent, not more useful, and Edge would have kept paying to maintain its own version of it either way. Aligning to upstream removed the patch, put the feature on a pattern maintained by everyone, and left the underlying heuristic as the problem it actually was.</p>
+      <p class="section-body">That gap says something more specific than "low usage." Two things were wrong at once. The interface wasn't persuading anyone, and the heuristic behind it was firing when there was nothing worth acting on. A badge that is usually wrong teaches people to ignore it, and then it fails even in the cases where it's right.</p>
+      <p class="section-body">That made the decision straightforward. Redesigning the badge would have made an untrusted signal more prominent without making it more useful, and Edge would have kept paying to maintain its own version either way. Aligning to upstream removed the patch, put the feature on a pattern everyone maintains, and left the underlying heuristic as the problem it had been all along.</p>
     </div>
-    <p class="section-body" style="margin-top: var(--space-4)">Designers are not usually the ones raising maintenance cost in a review. Being able to say what a difference costs the team every release, rather than only what it looks like, is what made these conversations short.</p>
+    <p class="section-body" style="margin-top: var(--space-4)">Designers aren't usually the ones raising maintenance cost in a review. Being able to say what a difference costs the team every release, not just what it looks like, kept these conversations short.</p>
   </section>
 
   <div class="chapter" data-ch="{{ chapterStyle }}" data-n="03"><h2 class="chapter-t">Spreading ownership</h2></div>
 
   <section class="panel" id="illustration" data-rail-target>
     <p class="section-title">What nobody owned</p>
-    <p class="section-body">Illustrations were the one part of the interface with no system at all. Every one was a one-off, and the creative director drew all of them — ownership concentrated in a single person rather than spread across a system.</p>
+    <p class="section-body">Illustrations were the one part of the interface with no system at all. Every one was a one-off, and the creative director drew all of them, so the ownership sat with one person instead of in a system.</p>
     <p class="section-body">That produced two problems at once. The set was inconsistent, because nothing defined the frame or the style, and the creative director was a bottleneck on every feature that needed an image.</p>
-    <p class="section-body">I wrote a guideline that gives designers a shared frame and style to work in, so they can produce a usable baseline themselves and hand it to the creative director to refine rather than originate. It changed the shape of the request: designers now bring a draft and ask for an opinion rather than asking for an illustration. That moved the creative director from producing every one to editing them, and it gave the set a common foundation for the first time. Edge's product designers use it, and so do the marketing teams — it has since been used as the basis for marketing video work as well as in-product illustration.</p>
+    <p class="section-body">I wrote a guideline that gives designers a shared frame and style to work in, so they can get to a usable baseline themselves and hand that to the creative director to refine instead of originate. It changed the shape of the request. Designers now bring a draft and ask for an opinion instead of asking for an illustration. The creative director went from drawing every one to editing them, and the set had a common foundation for the first time. Edge's product designers use it, and so do the marketing teams, who have since built marketing video work on it as well as in-product illustration.</p>
     <figure class="inline-fig">
-      <image-slot id="ec-illo" shape="rect" placeholder="Drop the illustration guideline — the frame and style spec"></image-slot>
-      <figcaption>The guideline: a shared frame and style, so a baseline can come from any designer.</figcaption>
+      <image-slot id="ec-illo" shape="rect" placeholder="Drop the illustration guideline, the frame and style spec"></image-slot>
+      <figcaption>The guideline, a shared frame and style, so a baseline can come from any designer.</figcaption>
     </figure>
   </section>
 
@@ -391,8 +391,8 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
   <section class="panel" id="reflection" data-rail-target>
     <p class="section-title">Reflection</p>
     <p class="section-body">The useful contribution was rarely the drawing. It was deciding what should be a component and what shouldn't, which differences from upstream were worth their permanent cost, and what other people should be able to make without me.</p>
-    <p class="section-body">The argument that carried the alignment work was never a visual one. A difference that nobody could justify is engineering time spent every release on keeping it alive — time that buys nothing and could be buying features instead. Framing it that way is what made a design proposal legible to the people who fund the work.</p>
-    <p class="section-body">Design systems work is usually described as adding — more components, more coverage, more documentation. Most of what was valuable here was the opposite: removing a difference that nobody could justify, retiring a pattern, taking work off one person's desk. A smaller thing to maintain is worth more than a bigger thing to admire.</p>
+    <p class="section-body">The argument that carried the alignment work was never a visual one. A difference nobody could justify is engineering time spent every release keeping it alive, time that buys nothing and could be buying features instead. Put that way, a design proposal made sense to the people who fund the work.</p>
+    <p class="section-body">Design systems work usually gets described as adding. More components, more coverage, more documentation. Most of what was valuable here went the other way, removing a difference nobody could justify, retiring a pattern, taking work off one person's desk. A smaller thing to maintain was worth more than a bigger thing to show off.</p>
   </section>
 
   <a class="next" href="projects/crafting-inc/">
