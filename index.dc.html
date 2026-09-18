@@ -157,6 +157,19 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
 @media (max-width: 880px) {
   .lead { grid-template-columns: 1fr; }
 }
+
+/* on-load entrance: nav fades, hero cascades, work section follows */
+@keyframes dcFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dcRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .nav { animation: dcFade 420ms ease both; }
+  .hero-flush > *, .hero-glow > * { --i: 0; animation: dcRise 520ms cubic-bezier(.2,.6,.2,1) both; animation-delay: calc(80ms + var(--i) * 80ms); }
+  .hero-flush > :nth-child(2), .hero-glow > :nth-child(2) { --i: 1; }
+  .hero-flush > :nth-child(3), .hero-glow > :nth-child(3) { --i: 2; }
+  .hero-flush > :nth-child(4), .hero-glow > :nth-child(4) { --i: 3; }
+  .projects > .group-h { animation: dcRise 520ms cubic-bezier(.2,.6,.2,1) both; animation-delay: 400ms; }
+  .featured > .lead:first-child { animation: dcRise 560ms cubic-bezier(.2,.6,.2,1) both; animation-delay: 460ms; }
+}
 </style>
 </helmet>
 <div style="--leading: {{ leadingPx }}px">
