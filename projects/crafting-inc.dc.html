@@ -938,6 +938,23 @@ class Component extends DCLogic {
     if (io) { this.revealTargets.forEach(el => { el.classList.add('reveal'); io.observe(el); }); }
     this.io = io;
     this.revealFailsafe = setTimeout(() => { this.revealTargets.forEach(el => el.classList.add('is-in')); }, 2000);
+    // Only trust the observer once it has actually fired. A 1px probe that is
+    // always in view confirms it works and cancels the failsafe above, so the
+    // failsafe no longer reveals the whole page two seconds in.
+    if (io) {
+      const probe = document.createElement('div');
+      probe.setAttribute('aria-hidden', 'true');
+      probe.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;pointer-events:none';
+      document.body.appendChild(probe);
+      this.probeIo = new IntersectionObserver((es) => {
+        if (!es.some(e => e.isIntersecting)) return;
+        clearTimeout(this.revealFailsafe);
+        this.revealFailsafe = null;
+        this.probeIo.disconnect();
+        probe.remove();
+      });
+      this.probeIo.observe(probe);
+    }
     const bar = document.querySelector('.progress span');
     if (bar) {
       this.onProg = () => {
@@ -984,6 +1001,7 @@ class Component extends DCLogic {
   componentWillUnmount() {
     if (this.revealFailsafe) clearTimeout(this.revealFailsafe);
     if (this.io) this.io.disconnect();
+    if (this.probeIo) this.probeIo.disconnect();
     if (this.onProg) { window.removeEventListener('scroll', this.onProg); window.removeEventListener('resize', this.onProg); }
     window.removeEventListener('scroll', this.onScroll);
     window.removeEventListener('resize', this.onScroll);

@@ -107,9 +107,12 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
   .header > div > :nth-child(3) { --i: 2; }
   .header > div > :nth-child(4) { --i: 3; }
   .portrait { animation: dcFade 760ms cubic-bezier(.33,0,.35,1) both, dcLift 760ms cubic-bezier(.16,.7,.28,1) both; animation-delay: 180ms; }
-  .panel { animation: dcFade 700ms cubic-bezier(.33,0,.35,1) both, dcLift 700ms cubic-bezier(.16,.7,.28,1) both; animation-delay: 470ms; }
-  .panel + .panel { animation-delay: 550ms; }
 }
+
+/* scroll reveal, applied by the observer in componentDidMount */
+.reveal { opacity: 0; transform: translateY(10px); transition: opacity 500ms cubic-bezier(.33,0,.35,1), transform 500ms cubic-bezier(.16,.7,.28,1); }
+.reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal, .reveal.is-in { opacity: 1; transform: none; transition: none; } }
 </style>
 </helmet>
 <div data-sf="{{ surface }}" data-hs="{{ heroSurface }}" data-hl="{{ headerLayout }}" data-sk="{{ focusLayout }}" data-cs="{{ contactSurface }}">
@@ -186,6 +189,36 @@ class Component extends DCLogic {
       headerLayout: this.props.headerLayout ?? 'split',
       focusLayout: this.props.focusLayout ?? 'columns',
     };
+  }
+  componentDidMount() {
+    const io = window.IntersectionObserver && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: 0.06 })
+      : null;
+    if (!io) return;
+    this.revealTargets = [...document.querySelectorAll('.panel, footer')];
+    this.revealTargets.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+    this.io = io;
+    // Failsafe: reveal everything if the observer never fires. The 1px probe
+    // below confirms it does and cancels this, so a working observer is left
+    // to do its job.
+    this.revealFailsafe = setTimeout(() => { this.revealTargets.forEach(el => el.classList.add('is-in')); }, 2000);
+    const probe = document.createElement('div');
+    probe.setAttribute('aria-hidden', 'true');
+    probe.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;pointer-events:none';
+    document.body.appendChild(probe);
+    this.probeIo = new IntersectionObserver((es) => {
+      if (!es.some(e => e.isIntersecting)) return;
+      clearTimeout(this.revealFailsafe);
+      this.revealFailsafe = null;
+      this.probeIo.disconnect();
+      probe.remove();
+    });
+    this.probeIo.observe(probe);
+  }
+  componentWillUnmount() {
+    if (this.revealFailsafe) clearTimeout(this.revealFailsafe);
+    if (this.io) this.io.disconnect();
+    if (this.probeIo) this.probeIo.disconnect();
   }
 }
 </script>
