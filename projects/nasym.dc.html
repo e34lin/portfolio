@@ -352,6 +352,19 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 @media (prefers-reduced-motion: reduce) { .reveal, .reveal.is-in { opacity: 1; transform: none; transition: none; } }
 .progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 20; pointer-events: none; }
 .progress span { display: block; height: 100%; width: 0%; background: var(--color-accent); transition: width 90ms linear; }
+
+/* on-load entrance */
+@keyframes dcFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dcRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .nav { animation: dcFade 420ms ease both; }
+  .backlink { animation: dcRise 460ms cubic-bezier(.2,.6,.2,1) both; animation-delay: 60ms; }
+  .header > * { --i: 0; animation: dcRise 520ms cubic-bezier(.2,.6,.2,1) both; animation-delay: calc(120ms + var(--i) * 80ms); }
+  .header > :nth-child(2) { --i: 1; }
+  .header > :nth-child(3) { --i: 2; }
+  .header > :nth-child(4) { --i: 3; }
+  .stage { transition-delay: 440ms; }
+}
 </style>
 </helmet>
 <div class="progress"><span></span></div>

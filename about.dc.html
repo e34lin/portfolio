@@ -95,6 +95,20 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
   .skills { grid-template-columns: 1fr; }
   [data-sk="rows"] .skills > div { grid-template-columns: 1fr; }
 }
+
+/* on-load entrance */
+@keyframes dcFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dcRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .nav { animation: dcFade 420ms ease both; }
+  .header > div > * { --i: 0; animation: dcRise 520ms cubic-bezier(.2,.6,.2,1) both; animation-delay: calc(100ms + var(--i) * 80ms); }
+  .header > div > :nth-child(2) { --i: 1; }
+  .header > div > :nth-child(3) { --i: 2; }
+  .header > div > :nth-child(4) { --i: 3; }
+  .portrait { animation: dcRise 580ms cubic-bezier(.2,.6,.2,1) both; animation-delay: 180ms; }
+  .panel { animation: dcRise 520ms cubic-bezier(.2,.6,.2,1) both; animation-delay: 440ms; }
+  .panel + .panel { animation-delay: 520ms; }
+}
 </style>
 </helmet>
 <div data-sf="{{ surface }}" data-hs="{{ heroSurface }}" data-hl="{{ headerLayout }}" data-sk="{{ focusLayout }}" data-cs="{{ contactSurface }}">
