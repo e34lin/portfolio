@@ -301,7 +301,7 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
   .map-row { grid-template-columns: 1fr; gap: 6px; }
   .map-arrow { text-align: left; }
 }
-.reveal { opacity: 0; transform: translateY(10px); transition: opacity 560ms cubic-bezier(.33,0,.35,1), transform 560ms cubic-bezier(.16,.7,.28,1); }
+.reveal { opacity: 0; transform: translateY(10px); transition: opacity 500ms cubic-bezier(.33,0,.35,1), transform 500ms cubic-bezier(.16,.7,.28,1); }
 .reveal.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal, .reveal.is-in { opacity: 1; transform: none; transition: none; } }
 .progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 20; pointer-events: none; }
@@ -310,15 +310,15 @@ footer.credits { display: flex; flex-wrap: wrap; align-items: baseline; justify-
 /* on-load entrance. opacity and transform run as separate animations so the
    fade can stay gradual while the lift decelerates. */
 @keyframes dcFade { from { opacity: 0; } to { opacity: 1; } }
-@keyframes dcLift { from { transform: translateY(14px); } to { transform: none; } }
+@keyframes dcLift { from { transform: translateY(13px); } to { transform: none; } }
 @media (prefers-reduced-motion: no-preference) {
-  .nav { animation: dcFade 700ms cubic-bezier(.33,0,.35,1) both; }
-  .backlink { animation: dcFade 760ms cubic-bezier(.33,0,.35,1) both, dcLift 760ms cubic-bezier(.16,.7,.28,1) both; animation-delay: 90ms; }
-  .header > * { --i: 0; animation: dcFade 820ms cubic-bezier(.33,0,.35,1) both, dcLift 820ms cubic-bezier(.16,.7,.28,1) both; animation-delay: calc(170ms + var(--i) * 95ms); }
+  .nav { animation: dcFade 600ms cubic-bezier(.33,0,.35,1) both; }
+  .backlink { animation: dcFade 660ms cubic-bezier(.33,0,.35,1) both, dcLift 660ms cubic-bezier(.16,.7,.28,1) both; animation-delay: 80ms; }
+  .header > * { --i: 0; animation: dcFade 700ms cubic-bezier(.33,0,.35,1) both, dcLift 700ms cubic-bezier(.16,.7,.28,1) both; animation-delay: calc(140ms + var(--i) * 78ms); }
   .header > :nth-child(2) { --i: 1; }
   .header > :nth-child(3) { --i: 2; }
   .header > :nth-child(4) { --i: 3; }
-  .hero-figure { transition-duration: 860ms; transition-timing-function: cubic-bezier(.33,0,.35,1), cubic-bezier(.16,.7,.28,1); transition-delay: 560ms; }
+  .hero-figure { transition-duration: 740ms; transition-timing-function: cubic-bezier(.33,0,.35,1), cubic-bezier(.16,.7,.28,1); transition-delay: 470ms; }
 }
 </style>
 </helmet>

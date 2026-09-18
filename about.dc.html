@@ -99,16 +99,16 @@ footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content:
 /* on-load entrance. opacity and transform run as separate animations so the
    fade can stay gradual while the lift decelerates. */
 @keyframes dcFade { from { opacity: 0; } to { opacity: 1; } }
-@keyframes dcLift { from { transform: translateY(14px); } to { transform: none; } }
+@keyframes dcLift { from { transform: translateY(13px); } to { transform: none; } }
 @media (prefers-reduced-motion: no-preference) {
-  .nav { animation: dcFade 700ms cubic-bezier(.33,0,.35,1) both; }
-  .header > div > * { --i: 0; animation: dcFade 820ms cubic-bezier(.33,0,.35,1) both, dcLift 820ms cubic-bezier(.16,.7,.28,1) both; animation-delay: calc(140ms + var(--i) * 95ms); }
+  .nav { animation: dcFade 600ms cubic-bezier(.33,0,.35,1) both; }
+  .header > div > * { --i: 0; animation: dcFade 700ms cubic-bezier(.33,0,.35,1) both, dcLift 700ms cubic-bezier(.16,.7,.28,1) both; animation-delay: calc(120ms + var(--i) * 78ms); }
   .header > div > :nth-child(2) { --i: 1; }
   .header > div > :nth-child(3) { --i: 2; }
   .header > div > :nth-child(4) { --i: 3; }
-  .portrait { animation: dcFade 880ms cubic-bezier(.33,0,.35,1) both, dcLift 880ms cubic-bezier(.16,.7,.28,1) both; animation-delay: 220ms; }
-  .panel { animation: dcFade 820ms cubic-bezier(.33,0,.35,1) both, dcLift 820ms cubic-bezier(.16,.7,.28,1) both; animation-delay: 560ms; }
-  .panel + .panel { animation-delay: 650ms; }
+  .portrait { animation: dcFade 760ms cubic-bezier(.33,0,.35,1) both, dcLift 760ms cubic-bezier(.16,.7,.28,1) both; animation-delay: 180ms; }
+  .panel { animation: dcFade 700ms cubic-bezier(.33,0,.35,1) both, dcLift 700ms cubic-bezier(.16,.7,.28,1) both; animation-delay: 470ms; }
+  .panel + .panel { animation-delay: 550ms; }
 }
 </style>
 </helmet>
